@@ -1,0 +1,26 @@
+{
+    "name": "fast-barter",
+    "version": "1.0.0",
+    "description": "Barter for good guys",
+    "main": "index.js",
+    "type": "commonjs",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "dev": "gulp build",
+        "buid": "gulp build"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "browserify": "^17.0.0",
+        "del": "^7.1.0",
+        "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
+        "gulp-clean-css": "^4.3.0",
+        "gulp-sass": "^5.1.0",
+        "sass": "^1.66.1",
+        "swiper": "^10.3.1"
+    }
+}

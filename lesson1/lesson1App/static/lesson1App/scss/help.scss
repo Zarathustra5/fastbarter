@@ -1,0 +1,44 @@
+@import "modules/common.scss";
+
+.help{
+  color:white;
+  margin: 80px auto;
+  max-width: 960px;
+  &__title {
+    font-size: 30px;
+  }
+  .container{
+    display:flex;
+    @media(max-width:767px){
+      flex-direction:column;
+    }
+  }
+  &__content{
+    padding-left:98px;
+    width:100%;
+    @media(max-width:767px){
+      padding:45px 0 0 0;
+    }
+    .question{
+      &._active{
+        border-top: 1px solid rgba(255, 255, 255);
+      }
+      &:last-child{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding:30px 0;
+      &__caption{
+        list-style-type:none;
+        font-size: 24px;
+        line-height: 35px;
+        cursor:pointer;
+      }
+      &__answer{
+        font-size: 16px;
+        line-height: 24px;
+        padding-top:30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{% extends 'lesson1App/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'lesson1App/header.html' %}
+    <link rel="stylesheet" href="{% static 'lesson1App/css/index.css' %}">
+{% endblock %}
+
+{% block title %} Главная страница {% endblock %}
+
+{% block content %}
+<main class="page">
+    <!--BEGIN MAIN-SCREEN SECTION-->
+    <section class="main-screen">
+    <div class="container">
+        <div class="swiper-container main-swiper">
+        <div class="swiper-wrapper">
+            <figure class="swiper-slide">
+                <img src="{% static 'lesson1App/img/slide1.jpg' %}" alt="slide">
+                <figcaption>Слайд 1</figcaption>
+            </figure>
+            <figure class="swiper-slide">
+                <img src="{% static 'lesson1App/img/barter.png' %}" alt="barter">
+                <figcaption>Сервис обмена вещами</figcaption>
+            </figure>
+            <figure class="swiper-slide">
+                <img src="{% static 'lesson1App/img/slide2.jpg' %}" alt="slide">
+                <figcaption>Слайд 3</figcaption>
+            </figure>
+        </div>
+        <div class="swiper-button-prev">
+            <svg>
+                <use href="#main-button"></use>
+            </svg>
+        </div>
+        <div class="swiper-button-next">
+            <svg>
+                <use href="#main-button"></use>
+            </svg>
+        </div>
+        </div>
+    </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'lesson1App/footer.html' %}
+{% endblock %}

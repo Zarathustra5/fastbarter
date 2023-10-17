@@ -1,0 +1,28 @@
+<header class="header">
+  <div class="container">
+    <div class="header__toolbar header-toolbar">
+      <a class="header__logo" href="/">
+        <svg width="84" height="67">
+          <use href="#logo"></use>
+        </svg>
+      </a>
+      <div class="header-toolbar__auth">
+        <a href="#">Регистрация</a>
+        <a href="#">Вход</a>
+      </div>
+      <div class="header__burger">
+        <span></span>
+      </div>
+    </div>
+    <menu class="header__menu menu menu_desktop">
+      <ul>
+        <li><a href="{% url 'catalog' %}">Каталог</a></li>
+        <li><a href="{% url 'help' %}">Помощь</a></li>
+      </ul>
+      <div class="menu__auth">
+        <a href="#">Регистрация</a>
+        <a href="#">Вход</a>
+      </div>
+    </menu>
+  </div>
+</header>

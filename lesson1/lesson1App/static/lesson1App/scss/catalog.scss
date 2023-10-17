@@ -1,0 +1,68 @@
+@import "modules/common.scss";
+
+.catalog{
+  &__tools {
+    margin-top: 40px;
+    text-align: center;
+  }
+  &__search {
+    width: 360px;
+    height: 42px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 28px; 
+    padding: 20px;
+    @media(max-width:500px){
+      width: 100%;
+    }
+  }
+  &__products {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 60px;
+    max-width: 960px;
+    margin: 50px auto;
+    @media(max-width:768px){
+      align-items: center;
+      flex-direction: column;
+    }
+    .product {
+      padding-bottom: 15px;
+      border-radius: 10px;
+      background-color: white;
+      width: 280px;
+      &__image{
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      &__row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        padding: 0 15px;
+      }
+      &__price {
+        padding-right: 10px;
+      }
+      &__desc {
+        color: #939393;
+        font-family: Sansation;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 14px; /* 140% */
+        letter-spacing: 0.5px;
+      }
+      &__link {
+        display: flex;
+        width: 82px;
+        height: 34px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 25px;
+        background: #F94E00;
+        color: white;
+      }
+    }
+  }
+}
