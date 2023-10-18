@@ -1,0 +1,133 @@
+/*Подключение шрифтов-----------------------------------------*/
+@mixin font($font_name, $file_name, $weight, $style) {
+    @font-face { 
+      font-family: $font_name;
+      font-display: swap;
+      src: url("./fonts/#{$file_name}.woff") format("woff"), url("./fonts/#{$file_name}.woff2") format("woff2");
+      font-weight: #{$weight};
+      font-style: #{$style};
+    }
+  }
+  @include font("Roboto", "Roboto-Light", "300", "normal");
+  @include font("Roboto", "Roboto-Regular", "400", "normal");
+  @include font("Roboto", "Roboto-Bold", "700", "normal");
+  @include font("Sansation", "SansationLight", "300", "normal");
+  @include font("Sansation", "SansationRegular", "400", "normal");
+  @include font("Sansation", "SansationBold", "700", "normal");
+  
+  @import "nullstyle.scss";
+  @import "mixins.scss";
+  
+  /*Брейк поинты-----------------------------------------*/
+  @media(max-width:1200px){
+    .container{
+      max-width:1030px;
+    }
+  }
+  
+  @media(max-width:1052px){
+    .container{
+      max-width:810px;
+    }
+  }
+  
+  @media(max-width:827px){
+    .container{
+      max-width:none;
+    }
+  }
+
+  * {
+    font-family: 'Sansation';
+  }
+  
+  body {
+    background-color: #DADADA;
+    color: #0b0a0d;
+  }
+
+  /*Контейнер-----------------------------------------*/
+  .container{
+    padding:0 30px;
+    margin:0 auto;
+    @media(max-width:768px){
+      padding: 0 15px;
+    }
+  }
+  
+  /*Обертка-----------------------------------------*/
+  .wrapper{
+    min-height:100%;
+    overflow:hidden;  
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  
+  /*Шапка страницы-----------------------------------------*/
+  @import "header.scss";
+  
+  /*Главный контент страниц-----------------------------------------*/
+  .search {
+    border-radius: 28px;
+    background: #FFF;
+    width: 360px;
+    position: relative;
+    margin: auto;
+    svg {
+      width: 50px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      padding: 10px;
+      left: 5px;
+      margin: auto;
+    }
+    &__input {
+      @include txt16;
+      padding: 20px 20px 20px 60px;
+      width: 100%;
+      border-radius: 28px;
+      border: 1px solid transparent;
+      &:focus {
+        border: 1px solid $orange;
+      }
+    }
+  }
+  
+  .accordion{
+    &_active{
+      .accordion__header {
+          svg {
+              transform: rotate(90deg);
+          }
+      }
+    }
+    &__item {
+      border-bottom: 1px solid rgba(0, 0, 0);
+      padding: 30px 0;
+    }
+    &__header{
+      font-size: 24px;
+      line-height: 35px;
+      cursor:pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      svg {
+          transition: transform ease .3s;
+          height: 35px;
+          width: 35px;
+      }
+    }
+    &__body{
+      font-size: 16px;
+      line-height: 24px;
+      padding-top:30px;
+      display: none;
+    }
+  }
+  /*Подвал страницы-----------------------------------------*/
+  @import "footer.scss";

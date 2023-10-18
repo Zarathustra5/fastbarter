@@ -1,0 +1,106 @@
+$small: 540px;
+$medium: 720px;
+$large: 960px;
+$extralarge: 1140px;
+
+$orange: #F94E00;
+$dark-orange: #E04700;
+$dark: #3B1300;
+$dark-brown: #7A2700;
+$brown: #BA3B00;
+
+// Медиа запросы для разных экранов
+@mixin phone {
+	@media (max-width: 576px) {
+		@content;
+    }
+}
+
+@mixin gap {
+	@media (max-width: 768px) {
+		@content;
+    }
+}
+
+@mixin tablet {
+	@media (max-width: 992px) {
+		@content;
+    }
+}
+
+@mixin desktop {
+	@media ( max-width: 1200px) {
+		@content;
+    }
+}
+
+@mixin h1 {
+	text-align: center;
+	font-family: Sansation;
+	font-size: 36px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 20px; /* 55.556% */
+	letter-spacing: 0.5px;
+}
+
+@mixin h2 {
+	text-align: center;
+	font-family: Sansation;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 20px; /* 100% */
+	letter-spacing: 0.5px;
+}
+
+@mixin txt18 {
+	text-align: center;
+	font-family: Roboto;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 300;
+	line-height: 20px; /* 111.111% */
+}
+
+@mixin txt16 {
+	font-feature-settings: 'clig' off, 'liga' off;
+	font-family: Roboto;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 16px; /* 100% */
+	letter-spacing: 1.25px;
+}
+
+@mixin underline {
+	position: relative;
+	&:hover {
+		&:after {
+		content: "";
+		height: 2px;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		z-index: 11;
+		background-color: #000;
+		}
+	}
+}
+
+@mixin btn {
+	padding: 0 20px;
+	height: 60px; 
+	background: $dark-orange;
+	border-radius: 100px; 
+	color: #FFF;
+	text-align: center;
+	@include txt18;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+    font-weight: 400;
+}

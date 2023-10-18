@@ -1,0 +1,257 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block title %} Главная страница {% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/index.css' %}">
+    <script src="{% static 'fastbarterApp/js/libs/jquery-3.7.1.min.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+<header class="header">
+  <div class="container">
+    <a class="header__logo" href="/">
+      <svg width="84" height="67">
+        <use href="#logo-landing"></use>
+      </svg>
+    </a>
+    <div class="header__burger">
+      <span></span>
+    </div>
+    <menu class="header__menu menu menu_desktop">
+      <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#faq">Faq</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <a href="{% url 'catalog' %}" class="header-button">Начать обменивать</a>
+    </menu>
+    <a href="{% url 'catalog' %}" class="header-button header-button_desktop">Начать обменивать</a>
+  </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<main class="page">
+    <!--BEGIN MAIN-SCREEN SECTION-->
+    <section class="main-screen">
+      <figure class="main-screen__bg bg">
+        <img src="{% static 'fastbarterApp/img/main-bg.png' %}" alt="slide">
+      </figure>
+      <div class="container">
+          <div class="main-screen__header">
+            <h1 class="main-screen__title"><span>FAST B</span>arter</h1>
+            <h2 class="main-screen__subtitle">"Дари.Обменивай.Создавай."</h2>
+            <p class="main-screen__paragraph">WEB-Сервис по обмену вещами</p>
+            <div class="main-screen__search search">
+              <button class="search__send">
+                <svg>
+                  <use href="#search"></use>
+                </svg>
+              </button><input type="text" class="search__input" placeholder="Поиск товаров...">
+            </div>
+          </div>
+      </div>
+    </section>
+    <section class="about" id="about">
+      <div class="container">
+          <div class="about__header">
+            <h2 class="about__title">О нас</h2>
+            <p class="about__text">WEB-Сервис по обмену вещами</p>
+          </div>
+          <div class="swiper-container main-swiper">
+            <div class="swiper-wrapper">
+                <figure class="swiper-slide">
+                    <img src="{% static 'fastbarterApp/img/slide1.jpg' %}" alt="slide">
+                    <figcaption>Слайд 1</figcaption>
+                </figure>
+                <figure class="swiper-slide">
+                    <img src="{% static 'fastbarterApp/img/slide1.png' %}" alt="barter">
+                    <figcaption>Сервис обмена вещами</figcaption>
+                </figure>
+                <figure class="swiper-slide">
+                    <img src="{% static 'fastbarterApp/img/slide2.jpg' %}" alt="slide">
+                    <figcaption>Слайд 3</figcaption>
+                </figure>
+            </div>
+            <div class="swiper-button swiper-button-prev">
+                <svg>
+                    <use href="#pointer"></use>
+                </svg>
+            </div>
+            <div class="swiper-button swiper-button-next">
+                <svg>
+                    <use href="#pointer"></use>
+                </svg>
+            </div>
+          </div>
+      </div>
+    </section>
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="faq__header">
+          <h3 class="faq__title">Часто задаваемые вопросы</h3>
+        </div>
+        <div class="faq__content accordion">
+          <div class="accordion__item">
+            <div class="accordion__header">
+              <p>Как обменять то, что никому не нужно?</p>
+              <svg><use href="#accordion-pointer"></use></svg>
+            </div>
+            <div class="accordion__body">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, voluptas ad repellat accusantium, at eos delectus fugit ratione fuga veritatis suscipit eius corrupti tempore. Enim similique ducimus aperiam laudantium doloribus, minima laboriosam perspiciatis, veniam inventore sed optio numquam? Laborum iure, accusantium sint reiciendis tempore nesciunt, incidunt, quos quisquam reprehenderit quibusdam quaerat sit et maxime dignissimos. Esse, porro reprehenderit ad ipsa soluta excepturi aliquid aut eveniet iure explicabo possimus nihil voluptatem suscipit! Eum reprehenderit in itaque tempore unde eligendi quia recusandae quaerat exercitationem voluptates saepe, aliquid quibusdam sit quis, excepturi, molestiae cumque amet odio sed id! Culpa voluptatibus similique recusandae. Obcaecati.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <div class="accordion__header">
+              <p>Как обменять то, что никому не нужно?</p>
+              <svg><use href="#accordion-pointer"></use></svg>
+            </div>
+            <div class="accordion__body">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, voluptas ad repellat accusantium, at eos delectus fugit ratione fuga veritatis suscipit eius corrupti tempore. Enim similique ducimus aperiam laudantium doloribus, minima laboriosam perspiciatis, veniam inventore sed optio numquam? Laborum iure, accusantium sint reiciendis tempore nesciunt, incidunt, quos quisquam reprehenderit quibusdam quaerat sit et maxime dignissimos. Esse, porro reprehenderit ad ipsa soluta excepturi aliquid aut eveniet iure explicabo possimus nihil voluptatem suscipit! Eum reprehenderit in itaque tempore unde eligendi quia recusandae quaerat exercitationem voluptates saepe, aliquid quibusdam sit quis, excepturi, molestiae cumque amet odio sed id! Culpa voluptatibus similique recusandae. Obcaecati.</p>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <div class="accordion__header">
+              <p>Как обменять то, что никому не нужно?</p>
+              <svg><use href="#accordion-pointer"></use></svg>
+            </div>
+            <div class="accordion__body">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, voluptas ad repellat accusantium, at eos delectus fugit ratione fuga veritatis suscipit eius corrupti tempore. Enim similique ducimus aperiam laudantium doloribus, minima laboriosam perspiciatis, veniam inventore sed optio numquam? Laborum iure, accusantium sint reiciendis tempore nesciunt, incidunt, quos quisquam reprehenderit quibusdam quaerat sit et maxime dignissimos. Esse, porro reprehenderit ad ipsa soluta excepturi aliquid aut eveniet iure explicabo possimus nihil voluptatem suscipit! Eum reprehenderit in itaque tempore unde eligendi quia recusandae quaerat exercitationem voluptates saepe, aliquid quibusdam sit quis, excepturi, molestiae cumque amet odio sed id! Culpa voluptatibus similique recusandae. Obcaecati.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+<section>
+  {% for el in news %}
+  <a href="{% url 'detail_news' el.pk %}">
+    <h1> {{el.title}} </h1>
+    <p> {{el.content}} </p>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}
+
+{% block footer %}
+<footer class="footer">
+  <div class="container">
+    <div class="footer__contacts footer-contacts" id="contacts"> 
+      <p class="footer-contacts__title">Контакты</p>
+      <div class="footer-contacts__social">
+        <a href="https://t.me/idk13">
+          <svg width="33px" height="32px"><use href="#telegram"></use></svg>
+        </a>
+        <a href="mailto:tat@disroot.org">
+          <svg width="33px" height="32px"><use href="#mail"></use></svg>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=89373537413">
+          <svg width="33px" height="32px"><use href="#whatsapp"></use></svg>
+        </a>
+      </div>
+      <p class="footer__copyright">© 2023 FastBarter.</p>
+    </div>
+    <div class="footer__links footer-links">
+      <ul class="footer-links__nav">
+        <li><a href="#">Главная</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="footer-links__documents">
+        <a href="#.">Политика конфидинциальности</a>
+      </div>
+    </div>
+    <div class="footer__feedback footer-feedback">
+      <div class="footer-feedback__header">
+        <h3 class="footer-feedback__title">Обратная связь</h3>
+        <p class="footer-feedback__text">Оставьте свое обращение и мы обязательно с вами свяжемся</p>
+      </div>
+      <form class="footer-feedback__form">
+        <input class="footer-feedback__input" type="text" name="name" placeholder="Имя">
+        <input class="footer-feedback__input" type="email" name="email" placeholder="Email">
+        <input class="footer-feedback__input" type="text" name="text" placeholder="Сообщение">
+        <input class="footer-feedback__submit" type="submit" value="Отправить">
+      </form>
+    </div>
+  </div>
+</footer>
+
+<script src="{% static 'fastbarterApp/js/index.js' %}"></script>
+
+<svg style="display: none;">
+    <symbol width="100%" height="100%" id="pointer" viewBox="0 0 54 54">
+        <path d="M15 25.5L33.255 25.5L24.87 17.115L27 15L39 27L27 39L24.885 36.885L33.255 28.5L15 28.5L15 25.5Z" stroke="none" fill="currentColor"></path>
+    </symbol>
+    <symbol id="telegram" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.67068 18.3351C4.29014 17.563 4.15228 14.3374 6.45866 13.3757L23.2783 6.3621C25.5689 5.40694 28.0288 7.3224 27.573 9.70626L25.1686 22.2803C24.6471 25.0081 21.3905 26.2858 19.07 24.6731L13.6239 20.8882C13.0887 20.5162 12.7144 20.015 12.5076 19.4635C11.4403 19.6134 10.3373 19.5243 9.28564 19.1832L6.67068 18.3351ZM7.38008 15.4675C7.05059 15.6049 7.07029 16.0657 7.41036 16.176L10.0253 17.0241C10.8718 17.2986 11.7683 17.3284 12.6124 17.1283C12.9874 17.0394 13.3521 16.9051 13.6975 16.7267C13.8787 16.6332 14.0546 16.5275 14.2238 16.4099L19.5411 12.7144C19.6378 12.6472 19.7472 12.6886 19.7963 12.7661C19.8309 12.8206 19.8358 12.8929 19.7857 12.9579C19.7744 12.9725 19.7632 12.987 19.7519 13.0015C19.4394 13.4027 19.0991 13.7827 18.7332 14.1386L14.8854 17.8825C14.6369 18.1242 14.5945 18.482 14.7418 18.7637C14.7965 18.8683 14.8773 18.9624 14.9835 19.0362L20.4296 22.8211C21.3578 23.4662 22.6604 22.9551 22.869 21.864L25.2734 9.28999C25.3873 8.69402 24.7723 8.21516 24.1997 8.45395L7.38008 15.4675Z" fill="currentColor"></path>
+    </symbol>
+    <symbol id="mail" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5.07916" y="6.69141" width="23.8417" height="19.8979" rx="2.75" stroke="currentColor" stroke-width="2.5"></rect>
+        <path d="M12.088 13.2012L15.0603 15.3596C16.1115 16.123 17.5347 16.123 18.5859 15.3595L21.5579 13.2012" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
+    </symbol>
+    <symbol id="whatsapp" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.17259 27.001L10.4287 26.1452C12.1317 27.1312 14.069 27.6573 16.0474 27.6573C22.2099 27.6573 27.2382 22.6506 27.2137 16.4782C27.2185 15.0082 26.9318 13.5519 26.3702 12.1934C25.8084 10.8343 24.9826 9.60014 23.9407 8.56233C21.836 6.44534 19.0205 5.27637 16.0353 5.27637C9.86804 5.27637 4.84485 10.2996 4.84485 16.4668L4.84485 16.4677C4.84637 18.5385 5.42094 20.5677 6.50401 22.3312L5.649 25.4628C5.53138 25.8936 5.65251 26.3544 5.96678 26.6717C6.28104 26.9889 6.74069 27.1145 7.17259 27.001Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path>
+        <path d="M21.5891 18.9116C21.2815 18.764 19.7806 18.0258 19.5099 17.915C19.2269 17.8166 19.0301 17.7674 18.8209 18.0627C18.6118 18.3703 18.0335 19.0592 17.8613 19.2561C17.6891 19.4652 17.5045 19.4898 17.1969 19.3299C16.8894 19.1823 15.9051 18.8501 14.7486 17.8166C13.8382 17.0046 13.2354 16.0081 13.0508 15.7005C12.8786 15.3929 13.0262 15.233 13.1861 15.073C13.3215 14.9377 13.4937 14.7163 13.6414 14.544C13.789 14.3718 13.8505 14.2364 13.9489 14.0396C14.0474 13.8304 13.9981 13.6582 13.9243 13.5106C13.8505 13.3629 13.2354 11.862 12.9893 11.2468C12.7432 10.6563 12.4849 10.7301 12.3003 10.7178H11.7098C11.5006 10.7178 11.1808 10.7916 10.8978 11.0992C10.6271 11.4067 9.83972 12.1449 9.83972 13.6459C9.83972 15.1469 10.9347 16.5986 11.0823 16.7955C11.23 17.0046 13.2354 20.0804 16.2865 21.3968C17.0124 21.7167 17.5783 21.9012 18.0212 22.0366C18.7471 22.2703 19.4115 22.2334 19.9405 22.1596C20.5311 22.0735 21.7491 21.4214 21.9951 20.7078C22.2535 19.9943 22.2535 19.3914 22.1674 19.2561C22.0812 19.1207 21.8967 19.0592 21.5891 18.9116Z" fill="currentColor"></path>
+    </symbol>
+      <symbol id="logo-landing" width="100%" height="100%" viewBox="0 0 82 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_511_12276)">
+        <path d="M58.6367 45.1035V19.9667H70.4141C75.1953 19.9667 77.5859 21.9179 77.5859 25.8203C77.5859 28.6796 76.0273 30.7245 72.9102 31.955C76.2383 32.5761 77.9023 34.4804 77.9023 37.6679C77.9023 42.6249 75.2832 45.1035 70.0449 45.1035H58.6367ZM69.8516 41.0605C71.9141 41.0605 72.9453 40.0058 72.9453 37.8964C72.9453 35.2831 71.4043 33.9765 68.3223 33.9765H66.916V30.9706C70.7832 30.3261 72.7168 28.7089 72.7168 26.1191C72.7168 24.7128 71.8496 24.0097 70.1152 24.0097H63.2949V41.0605H69.8516Z" fill="#F94E00"/>
+        </g>
+        <g filter="url(#filter1_dd_511_12276)">
+        <path d="M34 7.75L24 15.6667M24 15.6667L34 23.5833M24 15.6667L54 15.6667" stroke="#3B1300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M44.2667 24L54.2667 31.9167M54.2667 31.9167L44.2667 39.8333M54.2667 31.9167L24.2667 31.9167" stroke="#3B1300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g filter="url(#filter2_d_511_12276)">
+        <path d="M21.1426 0.863281V4.87109H9.25977V11.1992H20.5449V15.3652H9.20703V26H4.63672V0.863281H21.1426Z" fill="#F94E00"/>
+        </g>
+        <defs>
+        <filter id="filter0_d_511_12276" x="54.6367" y="19.9667" width="27.2656" height="33.1367" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_511_12276"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_511_12276" result="shape"/>
+        </filter>
+        <filter id="filter1_dd_511_12276" x="16" y="3" width="56" height="46" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_511_12276"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="effect1_dropShadow_511_12276" result="effect2_dropShadow_511_12276"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_511_12276" result="shape"/>
+        </filter>
+        <filter id="filter2_d_511_12276" x="0.636719" y="0.863281" width="24.5059" height="33.1367" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset dy="4"/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_511_12276"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_511_12276" result="shape"/>
+        </filter>
+        </defs>
+    </symbol>
+    <symbol height="100%" width="100%" id="search" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M20.91 19.3521L29.0275 27.7083L26.9167 29.8813L18.7992 21.525C17.2833 22.6479 15.4558 23.3333 13.4583 23.3333C8.3725 23.3333 4.25 19.0896 4.25 13.8542C4.25 8.61875 8.3725 4.375 13.4583 4.375C18.5442 4.375 22.6667 8.61875 22.6667 13.8542C22.6667 15.9104 22.0008 17.7917 20.91 19.3521ZM13.4583 7.29167C9.93083 7.29167 7.08333 10.2229 7.08333 13.8542C7.08333 17.4854 9.93083 20.4167 13.4583 20.4167C16.9858 20.4167 19.8333 17.4854 19.8333 13.8542C19.8333 10.2229 16.9858 7.29167 13.4583 7.29167Z" fill="#E04700"/>
+    </symbol>
+    <svg id="accordion-pointer" width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.6686 23.5314C11.0437 22.9065 11.0437 21.8935 11.6686 21.2686L16.9372 16L11.6686 10.7314C11.0437 10.1065 11.0437 9.09347 11.6686 8.46863C12.2934 7.84379 13.3065 7.84379 13.9313 8.46863L20.3313 14.8686C20.9562 15.4935 20.9562 16.5065 20.3313 17.1314L13.9313 23.5314C13.3065 24.1562 12.2934 24.1562 11.6686 23.5314Z" fill="#13151A"/>
+    </svg> 
+</svg>
+{% endblock %}
