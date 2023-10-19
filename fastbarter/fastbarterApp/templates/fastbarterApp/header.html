@@ -1,0 +1,59 @@
+<header class="header">
+  <div class="container">
+    <a class="header__logo" href="/">
+      <svg width="84" height="67">
+        <use href="#logo"></use>
+      </svg>
+    </a>
+    <div class="menu-container">
+      <menu class="header__menu menu menu_desktop">
+        <a href="#." class="menu__btn-announce">
+            <svg><use href="#announcement"></use></svg>
+            <p class="menu__text">Разместить объявление</p>
+        </a>
+        <ul>
+          <li>
+            <a href="{% url 'catalog' %}">
+              <svg><use href="#groups"></use></svg>
+              <p class="menu__text">Сообщества</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'catalog' %}">
+              <svg><use href="#account"></use></svg>
+              <p class="menu__text">Аккаунт</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'catalog' %}">
+              <svg><use href="#notifications"></use></svg>
+              <p class="menu__text">Уведомления</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'catalog' %}">
+              <svg><use href="#chats"></use></svg>
+              <p class="menu__text">Чаты</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'catalog' %}">
+              <svg><use href="#heart"></use></svg>
+              <p class="menu__text">Избранное</p>
+            </a>
+          </li>
+          <li>
+        </ul>
+      </menu>
+    </div>
+    <a class="header__support" href="/#contacts">
+      <svg width="40" height="40">
+        <use href="#support"></use>
+      </svg>
+      <p>Поддержка</p>
+    </a>
+    <div class="header__burger">
+      <span></span>
+    </div>
+  </div>
+</header>

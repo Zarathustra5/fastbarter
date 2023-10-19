@@ -166,6 +166,7 @@ body.locked{
       position: absolute;
       top: 0;
       left: 0;
+      right: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -309,19 +310,75 @@ body.locked{
     padding-bottom: 40px;
     .container {
         display: flex;
+        & > * {
+          flex-basis: 33.333%;
+        }
+    }
+    &-contacts,
+    &-links {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
     }
     &-contacts {
         &__title {
             @include h1;
             border-bottom: 1px solid #E6EAEE;
             padding-bottom: 20px;
+            display: inline;
+        }
+        &__social {
+          margin-top: 50px;
+          a {
+            margin-left: 20px;
+            &:first-child {
+              margin-left: 0;
+            }
+            svg {
+              width: 38px;
+              height: 38px;
+            }
+          }
+        }
+        &__copyright {
+          flex: 1 0 auto;
+          display: flex;
+          align-items: flex-end;
+          @include txt16;
         }
     }
+    &-links {
+      &__nav,
+      &__documents {
+        a {
+          @include txt18;
+          text-decoration: underline;
+          color: #000;
+        }
+      }
+      &__nav {
+          li {
+            margin-top: 15px;
+            &:first-child {
+              margin-top: 0;
+            }
+          }
+      }
+      &__documents {
+          flex: 1 0 auto;
+          display: flex;
+          align-items: flex-end;
+      }
+    }
     &-feedback {
+      &-container {
+        display: flex;
+        justify-content: flex-end;
+      }
       border-radius: 28px;
       border: 1px solid #000;
       padding: 24px;
-      width: 350px;
+      width: 400px;
       &__title {
         @include h1;
       }

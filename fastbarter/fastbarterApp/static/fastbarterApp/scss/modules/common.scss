@@ -1,20 +1,3 @@
-/*Подключение шрифтов-----------------------------------------*/
-@mixin font($font_name, $file_name, $weight, $style) {
-    @font-face { 
-      font-family: $font_name;
-      font-display: swap;
-      src: url("./fonts/#{$file_name}.woff") format("woff"), url("./fonts/#{$file_name}.woff2") format("woff2");
-      font-weight: #{$weight};
-      font-style: #{$style};
-    }
-  }
-  @include font("Roboto", "Roboto-Light", "300", "normal");
-  @include font("Roboto", "Roboto-Regular", "400", "normal");
-  @include font("Roboto", "Roboto-Bold", "700", "normal");
-  @include font("Sansation", "SansationLight", "300", "normal");
-  @include font("Sansation", "SansationRegular", "400", "normal");
-  @include font("Sansation", "SansationBold", "700", "normal");
-  
   @import "nullstyle.scss";
   @import "mixins.scss";
   
@@ -48,6 +31,7 @@
 
   /*Контейнер-----------------------------------------*/
   .container{
+    max-width: 1920px;
     padding:0 30px;
     margin:0 auto;
     @media(max-width:768px){
@@ -64,9 +48,6 @@
     flex-direction:column;
     justify-content:space-between;
   }
-  
-  /*Шапка страницы-----------------------------------------*/
-  @import "header.scss";
   
   /*Главный контент страниц-----------------------------------------*/
   .search {
