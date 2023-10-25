@@ -1,68 +1,120 @@
 @import "modules/modules.scss";
 
 .catalog{
-  &__tools {
-    margin-top: 40px;
-    text-align: center;
-  }
   &__search {
-    width: 360px;
-    height: 42px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 28px; 
-    padding: 20px;
-    @media(max-width:500px){
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  &__toolbar {
+    max-width: 1500px;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    margin: auto;
+  }
+  &-filter {
+    &__btn {
+      @include btn-border;
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      color: black;
+    }
+    p {
+      padding-left: 10px;
+    }
+  }
+  &-product {
+    padding-bottom: 15px;
+    border-radius: 10px;
+    background-color: white;
+    width: calc(25% - 30px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    &__info {
+      display: flex;
+      align-items: center;
+    }
+    &__favorite {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      fill: transparent;
+      &_active {
+        fill: red;
+        stroke: red;
+      }
+    }
+    & > a {
+      overflow: hidden;
+    }
+    &:hover img {
+      transform: scale(1.1,1.1);
+    }
+    &__image{
       width: 100%;
+      margin-bottom: 10px;
+      max-height: 150px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+      transition: all 0.4s ease;
+    }
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+      padding: 0 15px;
+      align-items: center;
+      &:nth-child(3) {
+        flex: 1 0 auto;
+      }
+    }
+    &__price {
+      padding-right: 10px;
+      white-space: nowrap;
+      position: relative;
+      span {
+        font-size: 20px;
+        position: absolute;
+        top: -5px;
+        left: -13px;
+      }
+    }
+    &__desc {
+      color: #939393;
+      font-family: Sansation;
+      @include txt13;
+      align-self: flex-start;
+    }
+    &__link {
+      display: flex;
+      width: 82px;
+      height: 34px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 25px;
+      background: #F94E00;
+      color: white;
+      padding: 0 5px;
+      margin-left: 5px;
     }
   }
   &__products {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 60px;
-    max-width: 960px;
+    gap: 30px;
+    max-width: 1500px;
     margin: 50px auto;
     @media(max-width:768px){
       align-items: center;
       flex-direction: column;
-    }
-    .product {
-      padding-bottom: 15px;
-      border-radius: 10px;
-      background-color: white;
-      width: 280px;
-      &__image{
-        width: 100%;
-        margin-bottom: 10px;
-      }
-      &__row {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 5px;
-        padding: 0 15px;
-      }
-      &__price {
-        padding-right: 10px;
-      }
-      &__desc {
-        color: #939393;
-        font-family: Sansation;
-        font-size: 10px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 14px; /* 140% */
-        letter-spacing: 0.5px;
-      }
-      &__link {
-        display: flex;
-        width: 82px;
-        height: 34px;
-        justify-content: center;
-        align-items: center;
-        border-radius: 25px;
-        background: #F94E00;
-        color: white;
-      }
     }
   }
 }

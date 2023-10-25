@@ -1,0 +1,81 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/detail-catalog.css' %}">
+{% endblock %}
+
+{% block title %} Каталог товаров {% endblock %}
+
+{% block content %}
+<main class="page">
+    <section class="product">
+    <div class="container">
+        <div class="product-header">
+          <div class="product-header__info">
+            <div class="product-header__text">
+              <p class="product-header__name">{{detail_catalog.title}}</p>
+              <p class="product-header__date">Товар добавлен {{detail_catalog.created_at}}</p>
+            </div>
+            <svg class="product__favorite">
+                <use href="#heart"></use>
+            </svg>
+          </div>
+          <a href="{% url 'catalog' %}" class="product-header__back">
+            <p>Вернуться в каталог</p>
+            <svg>
+                <use href="#back"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="product-about">
+          <div class="product-about__image">
+            <img src="/media/{{detail_catalog.photo}}" alt="slide">
+          </div>
+          <div class="product-about__exchange">
+            <div class="product-about__price">
+              <p>Примерная стоимость:</p>
+              <p>~{{detail_catalog.price}}₽</p>
+            </div>
+            <div class="product-about__wish">
+              <p>Категория товара на обмен:</p>
+              <p>Телефоны и планшеты</p>
+            </div>
+            <a href="#." class="product-about__btn">Предложить обмен</a>
+          </div>
+          <div class="product-about__seller product-seller">
+            <p class="product-seller__label">Обменивает</p>
+            <p class="product-seller__name">Ахтямов Чучмек</p>
+            <figure class="product-seller__image">
+              <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
+            </figure>
+            <p class="product-seller__registered">Зарегестрирован: 18.09.2023</p>
+            <div class="product-seller__stars">
+              <svg><use href="#star"></use></svg>
+              <svg><use href="#star"></use></svg>
+              <svg><use href="#star"></use></svg>
+              <svg><use href="#star"></use></svg>
+              <svg><use href="#star"></use></svg>
+            </div>
+            <p class="product-seller__reviews">65 отзывов</p>
+          </div>
+        </div>
+        <div class="product-content">
+          <h3 class="product-content__title">Категория товара</h3>
+          <div class="product-content__link">
+            <a href="#.">Телефоны и планшеты</a>
+          </div>
+          <h3 class="product-content__title">Описание товара</h3>
+          <p class="product-content__paragraph">{{detail_catalog.short_desc | safe}}</p>
+        </div>
+    </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
+{% endblock %}

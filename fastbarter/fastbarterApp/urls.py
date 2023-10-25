@@ -24,7 +24,7 @@ urlpatterns = [
     path('', views.index),
     path('catalog', views.catalog, name="catalog"),
     path('help', views.help, name="help"),
-    path('news/<int:news_id>/', views.detail_news, name="detail_news"),
+    path('catalog/<int:catalog_id>/', views.detail_catalog, name="detail_catalog"),
 ]
 
 if settings.DEBUG:

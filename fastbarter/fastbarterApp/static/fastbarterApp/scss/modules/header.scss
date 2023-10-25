@@ -11,6 +11,14 @@
     justify-content: space-between;
     padding-bottom: 20px;
   }
+  &__support {
+    text-align: center;
+    p {
+      padding-top: 5px;
+      @include txt13;
+      color: var(--black-06, rgba(0, 0, 0, 0.60));
+    }
+  }
   &__burger{
     position:relative;
     width:30px;
@@ -88,6 +96,7 @@
         svg {
             width: 28px;
             height: 28px;
+            fill: transparent;
         }
       }
     }

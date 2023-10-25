@@ -13,115 +13,66 @@
 <main class="page">
     <section class="catalog">
     <div class="container">
-        <div class="catalog__tools">
-            <input type="search" class="catalog__search" placeholder="Поиск товаров...">
+        <div class="catalog__toolbar">
+            <div class="catalog__sort catalog-sort">
+            </div>
+            <div class="catalog__search search catalog-search">
+                <button class="search__send">
+                <svg>
+                    <use href="#search"></use>
+                </svg>
+                </button><input type="text" class="search__input" placeholder="Поиск товаров...">
+            </div>
+            <div class="catalog__filter catalog-filter">
+                <button class="catalog-filter__btn">
+                    <svg>
+                        <use href="#filter"></use>
+                    </svg>
+                    <p>ФИЛЬТРЫ</p>
+                </button>
+            </div>
         </div>
         <div class="catalog__products">
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
+            {% for el in catalog %}
+                <div class="catalog-product">
+                    <a href="{% url 'detail_catalog' el.pk %}">
+                        <img src="/media/{{el.photo}}" alt="Товар" class="catalog-product__image">
+                    </a>
+                    <div class="catalog-product__row">
+                        <h6 class="catalog-product__title">{{el.title}}</h6>
+                        <div class="catalog-product__info">
+                            <p class="catalog-product__price"><span>≈</span>{{el.price}}₽</p>
+                            <svg class="catalog-product__favorite"><use href="#heart"></use></svg>
+                        </div>
+                    </div>
+                    <div class="catalog-product__row">
+                        <p class="catalog-product__desc">{{el.short_desc | safe }}</p>
+                        <a href="{% url 'detail_catalog' el.pk %}" class="catalog-product__link">Обменять</a>
+                    </div>
                 </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
-                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+    <section class="popup-filters">
+        <div class="container">
+            <div class="popup-filters__header">
+                <div class="popup-filters__reset"></div>
+                <div class="popup-filters__search"></div>
+                <div class="popup-filters__submit"></div>
             </div>
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
+            <div class="popup-filters__fields">
+                <div class="popup-filters__price">
                 </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
-                </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
-                </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
-                </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
-                </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
-                </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
-                </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
-                </div>
-            </div>
-            <div class="product">
-                <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="Товар" class="product__image">
-                <div class="product__row">
-                    <h6 class="product__title">Толстовка lookonline</h6>
-                    <p class="product__price">~6500₽</p>
-                </div>
-                <div class="product__row">
-                    <p class="product__desc">Была надета пару раз. One size</p>
-                    <a href="#" class="product__link">Обменять</a>
+                <div class="popup-filters__checkbox">
                 </div>
             </div>
         </div>
-    </div>
     </section>
 </main>
 {% endblock %}
 
 {% block footer %}
     {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
 {% endblock %}
