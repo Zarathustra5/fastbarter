@@ -1,0 +1,65 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/edit-profile.css' %}">
+{% endblock %}
+
+{% block title %} Каталог товаров {% endblock %}
+
+{% block content %}
+<main class="page">
+    <div class="container">
+      {% include 'fastbarterApp/modules/account-menu.html' %}
+      <section class="edit-profile">
+        <h1 class="edit-profile__title">Настройки профиля</h1>
+        <form action="" class="edit-profile__form profile-form">
+            <div class="profile-form__fields">
+                <label for="surname">
+                    <span>Фамилия</span>
+                    <input type="text" id="surname" value="Иванов">
+                </label>
+                <label for="surname">
+                    <span>Имя</span>
+                    <input type="text" id="name" value="Иван">
+                </label>
+                <label for="location">
+                    <span>Город</span>
+                    <select name="location" id="location">
+                        <option value="">Казань</option>
+                        <option value="">Москва</option>
+                        <option value="">Санкт-Петербург</option>
+                        <option value="">Самара</option>
+                        <option value="">Екатеринбург</option>
+                        <option value="">Краснодар</option>
+                    </select> 
+                </label>
+                <label for="phone">
+                    <span>Телефон</span>
+                    <input type="text" id="phone" value="+7 (933) 333-33-33">
+                </label>
+                <label for="email">
+                    <span>Эл.почта</span>
+                    <input type="email" id="email" value="mail@mail.ru">
+                </label>
+            </div>
+            <div class="profile-form__avatar">
+                <figure class="profile-form__avatar-image">
+                    <img src="{% static 'fastbarterApp/img/slide2.jpg' %}">
+                </figure>
+                <label class="profile-form__avatar-btn" for="avatar">Изменить фото профиля</label>
+                <input type="file" id="avatar" style="display: none;">
+                <input class="profile-form__submit" type="submit" value="Сохранить изменения">
+            </div>
+        </form>
+      </section>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,144 @@
+@import "modules/modules.scss";
+
+.product {
+  border-radius: 30px 30px 0px 0px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  max-width: 906px;
+  margin: auto;
+  min-height: 100%;
+  &__favorite {
+    fill: transparent;
+    cursor: pointer;
+    &_active {
+      fill: red;
+    }
+  }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 10px 0;
+    &__text {
+      max-width: 500px;
+    }
+    &__info {
+      display: flex;
+    }
+    &__back {
+      color: #878787; 
+    }
+    svg {
+      margin-left: 10px;
+      width: 30px;
+      height: 30px;
+    }
+    &__name {
+      @include h1;
+      color: #4D4D4D; 
+      text-align: left;
+    }
+    &__date {
+      padding-top: 20px;
+      @include txt16;
+    }
+  }
+  &-about {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    &__image {
+      img {
+        max-width: 391px;
+        border-radius: 25px;
+      }
+    }
+    &__price {
+      @include h2;
+      text-align: left;
+      p:last-child {
+        padding-top: 10px;
+      }
+      white-space: nowrap;
+    }
+    &__wish {
+      padding-top: 20px;
+      @include txt18;
+      text-align: left;
+      p:last-child {
+        padding-top: 10px;
+        font-weight: 400;
+        text-decoration: underline;
+      }
+    }
+    &__btn {
+      @include btn;
+      margin-top: 30px;
+    }
+  }
+  &-seller {
+    color: #878787; 
+    text-align: center;
+    &__label {
+      @include txt18;
+    }
+    &__name {
+      padding-top: 5px;
+      @include h2;
+    }
+    &__image {
+      margin-top: 10px;
+    }
+    &__registered {
+      @include txt13;
+    }
+    &__stars {
+      margin-top: 5px;
+      svg {
+        width: 30px;
+        height: 30px;
+        color: #FDD835; 
+        &:last-child {
+          color: #BDBDBD; 
+        }
+      }
+    }
+    &__reviews {
+      @include txt13;
+      color: var(--black-06, rgba(0, 0, 0, 0.60)); 
+      &:hover {
+        p {
+          text-decoration: underline;
+        }
+      }
+      &-count {
+        margin-top: 5px;
+      }
+    }
+  }
+  &-content {
+    flex: 1 0 auto;
+    &__title {
+      font-family: Roboto;
+      font-size: 26px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 24px; /* 92.308% */
+      text-align: left;
+      color: #4D4D4D; 
+      margin-top: 15px;
+    }
+    &__link {
+      margin: 10px 0 0 20px;
+      a {
+        @include txt13;
+        font-size: 15px;
+        margin-top: 10px;
+        color: $orange;
+      }
+    }
+    &__paragraph {
+      margin-top: 15px;
+      @include txt16;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/new-product.css' %}">
+{% endblock %}
+
+{% block title %} Каталог товаров {% endblock %}
+
+{% block content %}
+<main class="page">
+    <section class="new-product">
+    <div class="container">
+      <form action="" class="new-product__form">
+        <div class="new-product__row new-product__name">
+          <label class="new-product__title" for="name">Название :</label>
+          <input class="new-product__input" type="text" placeholder="Xiaomi Redmi Note 9, 6/128 ГБ" name="name" id="name">
+        </div>
+        <div class="new-product__row new-product__price">
+          <label class="new-product__title" for="price">Примерная стоимость :</label>
+          <input class="new-product__input" type="text" placeholder="7.500" name="price" id="price">
+          <label class="new-product__checkbox" for="free">
+              <input id="free" type="checkbox" value="">
+              <span>Даром</span>
+          </label>
+        </div>
+        <div class="new-product__row new-product__category">
+          <label class="new-product__title" for="category">Категория товара :</label>
+          <select class="new-product__input new-product__input_category" name="category" id="category">
+            <option value="">Выбрать...</option>
+            <option value="">Транспорт</option>
+            <option value="">Электроника</option>
+            <option value="">Хобби и отдых</option>
+            <option value="">Запчасти и аксессуары</option>
+            <option value="">Личные вещи</option>
+            <option value="">Для дома и дачи</option>
+          </select> 
+        </div>
+        <div class="new-product__row new-product__images">
+          <p class="new-product__title">Фотографии товара :</p>
+          <label class="new-product__add-image" for="image">
+            <svg><use href="#plus"></use></svg>
+            <span>Добавить картинку</span>
+          </label>
+          <input type="file" placeholder="Xiaomi Redmi Note 9, 6/128 ГБ" name="image" id="image">
+        </div>
+        <div class="new-product__row new-product__category">
+          <label class="new-product__title" for="category">Категория желаемого товара :</label>
+          <select class="new-product__input new-product__input_category" name="category" id="category">
+            <option value="">Выбрать...</option>
+            <option value="">Транспорт</option>
+            <option value="">Электроника</option>
+            <option value="">Хобби и отдых</option>
+            <option value="">Запчасти и аксессуары</option>
+            <option value="">Личные вещи</option>
+            <option value="">Для дома и дачи</option>
+          </select> 
+        </div>
+        <div class="new-product__row new-product__location">
+          <label class="new-product__title" for="location">Город :</label>
+          <select class="new-product__input" name="location" id="location">
+            <option value="">Казань</option>
+            <option value="">Москва</option>
+            <option value="">Санкт-Петербург</option>
+            <option value="">Самара</option>
+            <option value="">Екатеринбург</option>
+            <option value="">Краснодар</option>
+          </select> 
+        </div>
+        <div class="new-product__row new-product__desc">
+          <label class="new-product__title" for="desc">Описание товара :</label>
+          <textarea class="new-product__input" name="desc" id="desc" cols="30" rows="10" placeholder="Опишите вкратце свой товар"></textarea>
+        </div>
+        <div class="new-product__row new-product__submit">
+          <input class="new-product__submit-btn" type="submit" name="submit" value="Опубликовать">
+        </div>
+      </form>
+    </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
+{% endblock %}

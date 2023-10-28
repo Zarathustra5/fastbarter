@@ -6,3 +6,10 @@
 
 #Npm modules
 node_modules
+
+**/.idea
+**/.vscode
+**/__pycache__
+venv
+env
+*.xml

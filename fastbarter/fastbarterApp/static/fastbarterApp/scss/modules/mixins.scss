@@ -52,27 +52,24 @@ $brown: #BA3B00;
 }
 
 @mixin h1 {
-	text-align: center;
 	font-family: Sansation;
 	font-size: 36px;
 	font-style: normal;
 	font-weight: 700;
-	line-height: 20px; /* 55.556% */
+	line-height: 40px;
 	letter-spacing: 0.5px;
 }
 
 @mixin h2 {
-	text-align: center;
 	font-family: Sansation;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 700;
-	line-height: 20px; /* 100% */
+	line-height: 35px; /* 100% */
 	letter-spacing: 0.5px;
 }
 
 @mixin txt18 {
-	text-align: center;
 	font-family: Roboto;
 	font-size: 18px;
 	font-style: normal;
@@ -88,6 +85,14 @@ $brown: #BA3B00;
 	font-weight: 500;
 	line-height: 16px; /* 100% */
 	letter-spacing: 1.25px;
+}
+
+@mixin txt13 {
+	font-family: Roboto;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 20px; /* 153.846% */
 }
 
 @mixin underline {
@@ -120,4 +125,29 @@ $brown: #BA3B00;
 	align-items: center;
 	cursor: pointer;
     font-weight: 400;
+	&:hover {
+		background-color: $brown;
+	}
+}
+
+@mixin btn-border {
+	@include btn;
+	border: 1px solid $dark-orange;
+	background: #FFF;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+	color: black;
+	&:hover {
+		background-color: white;
+	}
+}
+
+@mixin btn-white {
+	@include btn;
+	border-radius: 100px;
+	background: #FAF6F2;
+	box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+	color: $orange;
+	&:hover {
+		background: #FAF6F2;
+	}
 }

@@ -1,0 +1,62 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/account.css' %}">
+{% endblock %}
+
+{% block title %} Каталог товаров {% endblock %}
+
+{% block content %}
+<main class="page">
+    <div class="container">
+      {% include 'fastbarterApp/modules/account-menu.html' %}
+      <section class="account">
+        <h1 class="account__title">Ваши объявления</h1>
+        <div class="my-announcements">
+          <div class="my-announcement">
+              <a href="{% url 'new-product' %}">
+                  <img src="{% static 'fastbarterApp/img/som.webp' %}" alt="Товар" class="my-announcement__image">
+              </a>
+              <div class="my-announcement__row">
+                  <h6 class="my-announcement__title">Говорящий сом</h6>
+                  <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>100₽</p>
+                  </div>
+              </div>
+              <div class="my-announcement__row">
+                  <p class="my-announcement__desc">Говорящий сом для большого аквариума</p>
+                  <a href="{% url 'new-product' %}" class="my-announcement__link">
+                    <svg><use href="#edit"></use></svg>
+                  </a>
+              </div>
+          </div>
+          <div class="my-announcement">
+              <a href="{% url 'new-product' %}">
+                  <img src="{% static 'fastbarterApp/img/sailentblock.webp' %}" alt="Товар" class="my-announcement__image">
+              </a>
+              <div class="my-announcement__row">
+                  <h6 class="my-announcement__title">Сайлентблок передней балки</h6>
+                  <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>614₽</p>
+                  </div>
+              </div>
+              <div class="my-announcement__row">
+                  <p class="my-announcement__desc">Бренд: АSVА, aртикул: 0501GHFС2, Сайлентблок пeрeдней балки.</p>
+                  <a href="{% url 'new-product' %}" class="my-announcement__link">
+                    <svg><use href="#edit"></use></svg>
+                  </a>
+              </div>
+          </div>
+        </div>
+      </section>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
+{% endblock %}

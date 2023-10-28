@@ -1,0 +1,51 @@
+{% load static %}
+
+<aside class="account-menu">
+  <div class="account-user">
+    <figure class="account-user__image">
+      <img src="{% static 'fastbarterApp/img/slide2.jpg' %}">
+      <figcaption class="account-user__name">Иванов Иван</figcaption>
+    </figure>
+    <a href="{% url 'reviews' %}" class="account-user__reviews">
+      <div class="account-user__stars">
+        <svg><use href="#star"></use></svg>
+        <svg><use href="#star"></use></svg>
+        <svg><use href="#star"></use></svg>
+        <svg><use href="#star"></use></svg>
+        <svg><use href="#star"></use></svg>
+      </div>
+      <p class="account-user__reviews-score">4.1</p>
+    </a>
+    <p class="account-user__registered">Зарегестрирован: 18.09.2023</p>
+  </div>
+  <nav class="account-nav">
+    <a href="{% url 'account' %}" class="account-nav__item">
+        <svg><use href="#my-announcements"></use></svg>
+        <span>Мои объявления</span>
+    </a>
+    <a href="{% url 'account' %}" class="account-nav__item">
+        <svg><use href="#deals"></use></svg>
+        <span>Сделки</span>
+    </a>
+    <a href="{% url 'account' %}" class="account-nav__item">
+        <svg><use href="#settings"></use></svg>
+        <span>Настройки</span>
+    </a>
+    <a href="{% url 'account' %}" class="account-nav__item">
+        <svg><use href="#fastbarter-plus"></use></svg>
+        <span>FastBarter+</span>
+    </a>
+    <a href="{% url 'edit-profile' %}" class="account-nav__item">
+        <svg><use href="#user-edit"></use></svg>
+        <span>Редактировать профиль</span>
+    </a>
+    <a href="{% url 'reviews' %}" class="account-nav__item">
+        <svg><use href="#my-reviews"></use></svg>
+        <span>Мои отзывы</span>
+    </a>
+    <a href="{% url 'account' %}" class="account-nav__item">
+        <svg><use href="#analytics"></use></svg>
+        <span>Аналитика</span>
+    </a>
+  </nav>
+</aside>
