@@ -116,5 +116,13 @@
     }
   }
 
+  .pagination-button {
+    padding: 50px 0;
+    &__btn {
+      @include btn-border;
+      margin: auto;
+    }
+  }
+
   /*Подвал страницы-----------------------------------------*/
   @import "footer.scss";

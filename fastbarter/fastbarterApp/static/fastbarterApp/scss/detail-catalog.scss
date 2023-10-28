@@ -103,7 +103,16 @@
       }
     }
     &__reviews {
-      margin-top: 5px;
+      @include txt13;
+      color: var(--black-06, rgba(0, 0, 0, 0.60)); 
+      &:hover {
+        p {
+          text-decoration: underline;
+        }
+      }
+      &-count {
+        margin-top: 5px;
+      }
     }
   }
   &-content {

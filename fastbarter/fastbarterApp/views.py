@@ -19,3 +19,15 @@ def catalog(request):
 
 def help(request):
     return render(request, 'fastbarterApp/help.html')
+
+def new_product(request):
+    return render(request, 'fastbarterApp/new-product.html')
+
+def reviews(request):
+    return render(request, 'fastbarterApp/reviews.html')
+
+def account(request):
+    return render(request, 'fastbarterApp/account/index.html')
+
+def edit_profile(request):
+    return render(request, 'fastbarterApp/account/edit-profile.html')

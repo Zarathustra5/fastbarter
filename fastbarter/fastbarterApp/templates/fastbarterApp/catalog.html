@@ -15,6 +15,14 @@
     <div class="container">
         <div class="catalog__toolbar">
             <div class="catalog__sort catalog-sort">
+                <svg class="catalog-sort__icon"><use href="#sort"></use></svg>
+                <p class="catalog-sort__title">Сортировка</p>
+                <button class="catalog-sort__btn catalog-sort__btn_default">По умолчанию</button>
+                <button class="catalog-sort__btn catalog-sort__btn_price">
+                    <svg><use href="#sort-price"></use></svg>
+                    <span>Примерная стоимость</span>
+                    <svg><use href="#sort-price"></use></svg>
+                </button>
             </div>
             <div class="catalog__search search catalog-search">
                 <button class="search__send">
@@ -25,9 +33,7 @@
             </div>
             <div class="catalog__filter catalog-filter">
                 <button class="catalog-filter__btn">
-                    <svg>
-                        <use href="#filter"></use>
-                    </svg>
+                    <svg><use href="#filter"></use></svg>
                     <p>ФИЛЬТРЫ</p>
                 </button>
             </div>
@@ -54,17 +60,85 @@
         </div>
     </div>
     </section>
+    <section class="pagination-button">
+        <div class="container">
+            <button class="pagination-button__btn">Показать  еще</button>
+        </div>
+    </section>
     <section class="popup-filters">
         <div class="container">
             <div class="popup-filters__header">
-                <div class="popup-filters__reset"></div>
-                <div class="popup-filters__search"></div>
-                <div class="popup-filters__submit"></div>
+                <div class="popup-filters__reset">Сбросить фильтры</div>
+                <div class="popup-filters__search search popup-filters-search">
+                    <button class="search__send">
+                    <svg>
+                        <use href="#search"></use>
+                    </svg>
+                    </button><input type="text" class="search__input" placeholder="Поиск товаров...">
+                </div>
+                <input type="submit" class="popup-filters__submit" value="Применить фильтры">
             </div>
             <div class="popup-filters__fields">
-                <div class="popup-filters__price">
+                <p class="popup-filters__subtitle">Примерная стоимость</p>
+                <div class="popup-filters-prices">
+                    <input type="text" placeholder="От ...">
+                    <input type="text" placeholder="До ...">
+                    <label class="popup-filters__checkbox" for="free">
+                        <input id="free" type="checkbox" value="">
+                        <span>Даром</span>
+                    </label>
+                    <div class="popup-filters__location">
+                        <svg><use href="#location"></use></svg>
+                        <p>г. Казань</p>
+                    </div>
                 </div>
                 <div class="popup-filters__checkbox">
+                </div>
+            </div>
+            <div class="popup-filters-categories">
+                <div class="popup-filters-categories__menu">
+                    <p class="popup-filters__subtitle">Категория товара</p>
+                    <ul class="popup-filters-categories__list">
+                        <li>Транспорт</li>
+                        <li>Электроника</li>
+                        <li>Хобби и отдых</li>
+                        <li>Запчасти и аксессуары</li>
+                        <li>Личные вещи</li>
+                        <li>Для дома и дачи</li>
+                    </ul>
+                </div>
+                <div class="popup-filters-categories__blocks">
+                    <ul class="popup-filters-categories__block">
+                        <li>Телефоны</li>
+                        <li>Мобильные телефоны</li>
+                        <li>Аксессуары</li>
+                        <li>Рации</li>
+                        <li>Стационарные телефоны</li>
+                    </ul>
+                    <ul class="popup-filters-categories__block">
+                        <li>Ноутбуки</li>
+                    </ul>
+                    <ul class="popup-filters-categories__block">
+                        <li>Телефоны</li>
+                        <li>Мобильные телефоны</li>
+                        <li>Аксессуары</li>
+                        <li>Рации</li>
+                        <li>Стационарные телефоны</li>
+                    </ul>
+                    <ul class="popup-filters-categories__block">
+                        <li>Телефоны</li>
+                        <li>Мобильные телефоны</li>
+                        <li>Аксессуары</li>
+                        <li>Рации</li>
+                        <li>Стационарные телефоны</li>
+                    </ul>
+                    <ul class="popup-filters-categories__block">
+                        <li>Телефоны</li>
+                        <li>Мобильные телефоны</li>
+                        <li>Аксессуары</li>
+                        <li>Рации</li>
+                        <li>Стационарные телефоны</li>
+                    </ul>
                 </div>
             </div>
         </div>

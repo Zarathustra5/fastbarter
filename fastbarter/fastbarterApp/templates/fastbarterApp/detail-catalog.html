@@ -52,14 +52,16 @@
               <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
             </figure>
             <p class="product-seller__registered">Зарегестрирован: 18.09.2023</p>
-            <div class="product-seller__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-            </div>
-            <p class="product-seller__reviews">65 отзывов</p>
+            <a href="{% url 'reviews' %}" class="product-seller__reviews">
+              <div class="product-seller__stars">
+                <svg><use href="#star"></use></svg>
+                <svg><use href="#star"></use></svg>
+                <svg><use href="#star"></use></svg>
+                <svg><use href="#star"></use></svg>
+                <svg><use href="#star"></use></svg>
+              </div>
+              <p class="product-seller__reviews-count">65 отзывов</p>
+            </a>
           </div>
         </div>
         <div class="product-content">

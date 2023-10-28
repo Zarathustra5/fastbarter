@@ -1,0 +1,163 @@
+@import "modules/modules.scss";
+
+.page {
+  & > .container {
+    display: flex;
+  }
+}
+
+.account-menu {
+  width: 400px;
+}
+.account-user {
+  height: 225px;
+  border-radius: 25px;
+  background: #FFF;
+  padding: 40px 30px;
+  &__image {
+    @include h1;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+    }
+    figcaption {
+      margin-left: 10px;
+    }
+  }
+  &__stars {
+    margin-top: 5px;
+    svg {
+      width: 30px;
+      height: 30px;
+      color: #FDD835; 
+      &:last-child {
+        color: #BDBDBD; 
+      }
+    }
+  } 
+  &__reviews {
+    @include txt13;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-score {
+      margin-left: 10px;
+    }
+  }
+  &__registered {
+    @include txt13;
+    color: #515151; 
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+.account-nav {
+  margin-top: 10px;
+  border-radius: 25px;
+  background: #FFF;
+  padding: 20px 0;
+  &__item {
+    padding: 0 20px;
+    color: black;
+    @include h2;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    &:hover {
+      border-left: 1px solid $orange;
+      border-right: 1px solid $orange;
+      color: $orange;
+    }
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+    span {
+      padding-left: 10px;
+    }
+  }
+}
+
+.edit-profile {
+  margin-left: 60px;
+  flex: 1 1 auto;
+  max-width: 800px;
+  border-radius: 30px 30px 0px 0px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  max-width: 906px;
+  min-height: 100%;
+  padding: 36px 20px;
+  &__title {
+    @include h1;
+    color: #4D4D4D; 
+  }
+  .profile-form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1500px;
+    margin: 50px auto;
+    &__fields {
+      display: flex;
+      flex-direction: column;
+      label {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+          @include txt18;
+          font-weight: 400;
+        }
+        select,
+        input {
+          background-color: white;
+          @include txt16;
+          padding-left: 20px;
+          margin-left: 20px;
+          border-radius: 25px;
+          border: 1px solid $orange;
+          width: 285px;
+          height: 41px; 
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+      }
+    }
+    &__avatar {
+      margin-right: 40px;
+      text-align: center;
+      figure {
+        width: 180px;
+        height: 180px;
+        margin: auto;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          max-width: 100%;
+        }
+      }
+      &-btn {
+        margin-top: 17px;
+        @include btn-border;
+        height: 50px;
+      }
+    }
+    &__submit {
+      @include btn;
+      margin: auto;
+      margin-top: 160px;
+    }
+  }
+}

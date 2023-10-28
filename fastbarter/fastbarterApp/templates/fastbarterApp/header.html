@@ -7,7 +7,7 @@
     </a>
     <div class="menu-container">
       <menu class="header__menu menu menu_desktop">
-        <a href="#." class="menu__btn-announce">
+        <a href="{% url 'new-product' %}" class="menu__btn-announce">
             <svg><use href="#announcement"></use></svg>
             <p class="menu__text">Разместить объявление</p>
         </a>
@@ -19,7 +19,7 @@
             </a>
           </li>
           <li>
-            <a href="{% url 'catalog' %}">
+            <a href="{% url 'account' %}">
               <svg><use href="#account"></use></svg>
               <p class="menu__text">Аккаунт</p>
             </a>
