@@ -31,3 +31,13 @@ def account(request):
 
 def edit_profile(request):
     return render(request, 'fastbarterApp/account/edit-profile.html')
+
+def favorite(request):
+    catalog = Catalog.objects.filter(is_published=True, is_favorite=True)
+    return render(request, 'fastbarterApp/favorite.html', {'catalog': catalog})
+
+def services(request):
+    return render(request, 'fastbarterApp/account/services.html')
+
+def chats(request):
+    return render(request, 'fastbarterApp/chats.html')

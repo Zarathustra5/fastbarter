@@ -409,3 +409,14 @@ body.locked{
       }
     }
 }
+
+.reveal {
+  position: relative;
+  transform: translateY(75px);
+  opacity: 0;
+  transition: all 1.5s ease;
+  &_active {
+      transform: translateY(0px);
+      opacity: 1;
+  }
+}

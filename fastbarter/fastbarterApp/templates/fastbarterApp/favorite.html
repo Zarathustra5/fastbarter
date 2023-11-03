@@ -1,0 +1,47 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/favorite.css' %}">
+{% endblock %}
+
+{% block title %} Избранное {% endblock %}
+
+{% block content %}
+<main class="page">
+    <section class="favorite">
+    <div class="container">
+        <div class="favorite__toolbar">
+            <h1 class="favorite__title">Избранное</h1>
+        </div>
+        <div class="favorite__products">
+            {% for el in catalog %}
+                <div class="favorite-product">
+                    <a href="{% url 'detail_catalog' el.pk %}">
+                        <img src="/media/{{el.photo}}" alt="Товар" class="favorite-product__image">
+                    </a>
+                    <div class="favorite-product__row">
+                        <h6 class="favorite-product__title">{{el.title}}</h6>
+                        <div class="favorite-product__info">
+                            <p class="favorite-product__price"><span>≈</span>{{el.price}}₽</p>
+                            <svg class="favorite-product__favorite favorite-product__favorite_active"><use href="#heart"></use></svg>
+                        </div>
+                    </div>
+                    <div class="favorite-product__row">
+                        <p class="favorite-product__desc">{{el.short_desc | safe }}</p>
+                        <a href="{% url 'detail_catalog' el.pk %}" class="favorite-product__link">Обменять</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
+{% endblock %}

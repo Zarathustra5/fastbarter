@@ -21,6 +21,7 @@ class Catalog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     category = models.ForeignKey(Category, verbose_name='Категория товара', on_delete=models.CASCADE, blank=True, null=True)
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
+    is_favorite = models.BooleanField(default=False, verbose_name='Избранное')
 
     def __str__(self):
         return f'{self.title}'

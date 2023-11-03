@@ -140,9 +140,8 @@
   }
   &__products {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
     max-width: 1500px;
     margin: 50px auto;
     @media(max-width:768px){

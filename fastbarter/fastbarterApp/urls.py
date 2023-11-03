@@ -29,6 +29,9 @@ urlpatterns = [
     path('reviews', views.reviews, name="reviews"),
     path('account', views.account, name="account"),
     path('edit-profile', views.edit_profile, name="edit-profile"),
+    path('favorite', views.favorite, name="favorite"),
+    path('services', views.services, name="services"),
+    path('chats', views.chats, name="chats"),
 ]
 
 if settings.DEBUG:

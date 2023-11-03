@@ -1,0 +1,110 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/services.css' %}">
+{% endblock %}
+
+{% block title %} Каталог товаров {% endblock %}
+
+{% block content %}
+<main class="page">
+    <div class="container">
+      {% include 'fastbarterApp/modules/account-menu.html' %}
+      <div class="services-container">
+        <section class="services my-services">
+            <h1 class="services__title">Купленные услуги</h1>
+            <div class="services__content">
+            <div class="service">
+                <h6 class="service__title">Премиум-подписка</h6>
+                <p class="service__subtitle">Подписка включает в себя:</p>
+                <ul class="service__list">
+                    <li>Расширенная кастомизация профиля</li>
+                    <li>Неограниченная публикация объявлений</li>
+                    <li>Поддержка 24/7</li>
+                </ul>
+                <p class="service__date">Срок истекает: 15.11.2023</p>
+            </div>
+            </div>
+        </section>
+        <section class="services services-catalog">
+            <h1 class="services__title">Каталог услуг</h1>
+            <div class="services__content">
+                <div class="service">
+                    <h6 class="service__title">Подписка на 1 месяц</h6>
+                    <p class="service__subtitle">Подписка включает в себя:</p>
+                    <ul class="service__list">
+                        <li>Расширенная кастомизация профиля</li>
+                        <li>Неограниченная публикация объявлений</li>
+                        <li>Увеличение лимита  личных чатов</li>
+                    </ul>
+                    <div class="service__row">
+                        <span class="service__price">249₽</span>
+                        <a href="#." class="service__link">Купить</a>
+                    </div>
+                </div>
+                <div class="service">
+                    <h6 class="service__title">Подписка на 3 месяца</h6>
+                    <p class="service__subtitle">Подписка включает в себя:</p>
+                    <ul class="service__list">
+                        <li>Расширенная кастомизация профиля</li>
+                        <li>Неограниченная публикация объявлений</li>
+                        <li>Увеличение лимита  личных чатов</li>
+                    </ul>
+                    <div class="service__row">
+                        <span class="service__price">549₽</span>
+                        <a href="#." class="service__link">Купить</a>
+                    </div>
+                </div>
+                <div class="service">
+                    <h6 class="service__title">Подписка на 1 год</h6>
+                    <p class="service__subtitle">Подписка включает в себя:</p>
+                    <ul class="service__list">
+                        <li>Расширенная кастомизация профиля</li>
+                        <li>Неограниченная публикация объявлений</li>
+                        <li>Увеличение лимита  личных чатов</li>
+                    </ul>
+                    <div class="service__row">
+                        <span class="service__price">1599₽</span>
+                        <a href="#." class="service__link">Купить</a>
+                    </div>
+                </div>
+                <div class="service">
+                    <h6 class="service__title">Подписка на 1 месяц</h6>
+                    <p class="service__subtitle">Подписка включает в себя:</p>
+                    <ul class="service__list">
+                        <li>Расширенная кастомизация профиля</li>
+                        <li>Неограниченная публикация объявлений</li>
+                        <li>Увеличение лимита  личных чатов</li>
+                    </ul>
+                    <div class="service__row">
+                        <span class="service__price">249₽</span>
+                        <a href="#." class="service__link">Купить</a>
+                    </div>
+                </div>
+                <div class="service">
+                    <h6 class="service__title">Подписка на 1 месяц</h6>
+                    <p class="service__subtitle">Подписка включает в себя:</p>
+                    <ul class="service__list">
+                        <li>Расширенная кастомизация профиля</li>
+                        <li>Неограниченная публикация объявлений</li>
+                        <li>Увеличение лимита  личных чатов</li>
+                    </ul>
+                    <div class="service__row">
+                        <span class="service__price">249₽</span>
+                        <a href="#." class="service__link">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
+{% endblock %}
