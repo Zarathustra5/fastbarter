@@ -29,6 +29,11 @@ urlpatterns = [
     path('reviews', views.reviews, name="reviews"),
     path('account', views.account, name="account"),
     path('edit-profile', views.edit_profile, name="edit-profile"),
+
+    path('settings', views.settings, name="settings"),
+    path('analytics', views.analytics, name="analytics"),
+    path('deals', views.deals, name="deals"),
+
     path('favorite', views.favorite, name="favorite"),
     path('services', views.services, name="services"),
     path('chats', views.chats, name="chats"),

@@ -1,0 +1,91 @@
+@import "modules/modules.scss";
+@import "modules/account-menu.scss";
+
+.settings {
+  margin-left: 60px;
+  flex: 1 1 auto;
+  max-width: 800px;
+  border-radius: 30px 30px 0px 0px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  max-width: 906px;
+  min-height: 100%;
+  padding: 36px 100px;
+  &__title {
+    @include h1;
+    color: #4D4D4D;
+  }
+  &__subtitle {
+    margin-top: 20px;
+    @include h2;
+    color: #4D4D4D;
+  }
+  .profile-form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 1500px;
+    margin: -10px auto;
+    &__fields {
+      display: flex;
+      flex-direction: column;
+      label {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span {
+          @include txt18;
+          font-weight: 400;
+        }
+      }
+    }
+    &__avatar {
+      margin-right: 40px;
+      text-align: center;
+      figure {
+        width: 180px;
+        height: 180px;
+        margin: auto;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          max-width: 100%;
+        }
+      }
+      &-btn {
+        margin-top: 17px;
+        @include btn-border;
+        height: 50px;
+      }
+    }
+    &__submit {
+      @include btn;
+      margin: auto;
+      margin-top: 60px;
+    }
+  }
+}
+.form-check-input {
+          background-color: white;
+          @include txt16;
+          padding-left: 20px;
+          margin-left: 20px;
+          border-radius: 25px;
+          border: 1px solid $orange;
+          width: 120px;
+          height: 41px;
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.form-checkbox {
+          background-color: white;
+          @include txt16;
+          margin-right:  60px;
+          border-radius: 2px;
+          border: 1px solid $orange;
+          width: 25px;
+          height: 25px;
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}

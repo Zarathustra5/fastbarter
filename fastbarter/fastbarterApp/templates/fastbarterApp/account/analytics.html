@@ -1,0 +1,82 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js">
+
+    </script>
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/analytics.css' %}">
+{% endblock %}
+
+{% block title %} Аналитика {% endblock %}
+
+{% block content %}
+<main class="page">
+    <div class="container">
+      {% include 'fastbarterApp/modules/account-menu.html' %}
+      <section class="analytics">
+        <h1 class="analytics__title">Аналитика</h1>
+         <form action="" class="analytics__form analytics-form">
+            <div class="analytics-form__fields">
+                <label for="goods">
+                    <span>Смотреть для:</span>
+                    <select name="goods" id="goods">
+                        <option value="">Всех товаров</option>
+                        <option value="">Сом говорящий</option>
+                    </select>
+                </label>
+                <label for="period">
+                    <span>За:</span>
+                    <select name="period" id="period">
+                        <option value="">Последние сутки</option>
+                        <option value="">Последние 10 дней</option>
+                        <option value="">Последние 30 дней</option>
+                        <option value="">Последние 90 дней</option>
+                    </select>
+                </label>
+            </div>
+                <input class="analytics-form__submit" type="submit" value="Смотреть">
+        </form>
+          <h3 class="analytics__subtitle">Количество просмотров по дням</h3>
+          <div class="ct-chart ct-golden-section" id="chart1" style="margin-top: 30px"></div>
+          <h3 class="analytics__subtitle">Количество добавлений в избранное по дням</h3>
+          <div class="ct-chart ct-golden-section" id="chart2" style="margin-top: 30px"></div>
+
+<script>
+ const options = {
+    axisY: {
+    showGrid: true,
+    showLabel: true,
+    onlyInteger: true
+  },
+      chartPadding: {
+      top: 20,
+      right: 0,
+      bottom: 20,
+      left: 0
+    },
+    axisY: {
+      onlyInteger: true
+    },
+};
+  new Chartist.Line('#chart1', {
+    labels: [9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 9.10],
+    series: [[11, 22, 50, 57, 60, 53, 45, 34, 47, 71]]
+  }, options);
+  new Chartist.Line('#chart2', {
+    labels: [9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 9.10],
+    series: [[1, 2, 5, 5, 6, 5, 4, 3, 4, 7]],
+  }, options);
+</script>
+      </section>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
+{% endblock %}
