@@ -1,4 +1,5 @@
 @import "modules/modules.scss";
+@import "modules/account-menu.scss";
 
 .page {
   & > .container {
@@ -16,83 +17,6 @@
   }
   &-menu {
     width: 400px;
-  }
-  &-user {
-    height: 225px;
-    border-radius: 25px;
-    background: #FFF;
-    padding: 40px 30px;
-    &__image {
-      @include h1;
-      font-weight: 400;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        border-radius: 50%;
-        width: 90px;
-        height: 90px;
-        object-fit: cover;
-      }
-      figcaption {
-        margin-left: 10px;
-      }
-    }
-    &__stars {
-      margin-top: 5px;
-      svg {
-        width: 30px;
-        height: 30px;
-        color: #FDD835; 
-        &:last-child {
-          color: #BDBDBD; 
-        }
-      }
-    } 
-    &__reviews {
-      @include txt13;
-      color: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      &-score {
-        margin-left: 10px;
-      }
-    }
-    &__registered {
-      @include txt13;
-      color: #515151; 
-      margin-top: 10px;
-      text-align: center;
-    }
-  }
-  &-nav {
-    margin-top: 10px;
-    border-radius: 25px;
-    background: #FFF;
-    padding: 20px 0;
-    &__item {
-      padding: 0 20px;
-      color: black;
-      @include h2;
-      display: flex;
-      align-items: center;
-      margin: 20px 0;
-      border-left: 1px solid transparent;
-      border-right: 1px solid transparent;
-      &:hover {
-        border-left: 1px solid $orange;
-        border-right: 1px solid $orange;
-        color: $orange;
-      }
-      svg {
-        width: 25px;
-        height: 25px;
-      }
-      span {
-        padding-left: 10px;
-      }
-    }
   }
   .my-announcements {
     display: flex;

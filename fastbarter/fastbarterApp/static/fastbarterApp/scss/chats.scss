@@ -56,6 +56,10 @@
                 height: 30px;
                 width: 50px;
             }
+            &_active {
+                background-color: $dark-orange;
+                color: white;
+            }
         }
         &_personal {
             margin-top: 30px;
@@ -89,6 +93,9 @@
                 height: 25px;
                 cursor: pointer;
             }
+        }
+        &__body {
+            padding: 0 15px;
         }
         &__info {
             margin-left: 30px;
@@ -147,15 +154,68 @@
             flex: 1 0 auto;
         }
     }
+    &-message {
+        display: flex;
+        margin-top: 20px;
+        &__avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            img {
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            margin-right: 10px; 
+        }
+        &__body {
+            background: #FFF;
+            filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 0.30000001192092896px 0.8999999761581421px rgba(0, 0, 0, 0.10));
+            width: 333px;
+            border-radius: 25px;
+            display: flex;
+            padding: 10px 15px;
+            @include txt13;
+            justify-content: space-between;
+        }
+        &__name {
+            @include txt16;
+            color: black;
+            padding-bottom: 5px;
+        }
+        &__content {
+            color: #4F4F4F; 
+        }
+        &__info {
+            text-align: right;
+            max-width: 50px;
+            svg {
+                width: 26px;
+                height: 29px;
+            }
+        }
+        &_my {
+            .chats-message {
+                &__body {
+                    background: $dark-orange;
+                    color: white;
+                    margin-left: auto;
+                }
+                &__content {
+                    color: white;
+                }
+            }
+        }
+    }
     &-new-message {
         display: flex;
         align-items: center;
         position: fixed;
-        bottom: 0;
+        bottom: 20px;
         width: 900px;
         padding: 0 30px;
         &__input {
-            width: 593px;
             height: 41px;
             border-radius: 30px;
             background: #FFF;
@@ -163,8 +223,26 @@
             padding: 0 30px;
             @include txt16;
             color: #9E9E9E; 
+            width: 100%;
+            &-container {
+                flex: 1 0 auto;
+                position: relative;
+                width: 593px;
+            }
         }
+        &__attach {
+            position: absolute;
+            right: 15px;
+            top: 8px;
+            cursor: pointer;
+            svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        &__voice,
         &__submit {
+            margin-left: 10px;
             cursor: pointer;
             border-radius: 30px;
             background: #FFF;

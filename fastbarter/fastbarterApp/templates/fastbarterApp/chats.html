@@ -16,7 +16,7 @@
             <div class="chats-list chats-list_groups">
                 <h2 class="chats-list__title">Чаты сообществ <span>4</span></h2>
                 <div class="chats-list__content">
-                    <div class="chats-list-item">
+                    <div class="chats-list-item chats-list-item_active">
                         <figure class="chats-list-item__image">
                             <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
                         </figure>
@@ -74,7 +74,7 @@
         <section class="chats-window">
             <div class="chats-window__header">
                 <figure class="chats-window__image">
-                    <img src="{% static 'fastbarterApp/img/slide1.jpg' %}" alt="slide">
+                    <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
                 </figure>
                 <div class="chats-window__info">
                     <div class="chats-window__menu">
@@ -89,20 +89,78 @@
                 </div>
             </div>
             <div class="chats-window__body">
+                <div class="chats-message">
+                    <figure class="chats-message__avatar">
+                        <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
+                    </figure>
+                    <div class="chats-message__body">
+                        <div class="chats-message__content">
+                            <p class="chats-message__name">Рябов Максим</p>
+                            <p class="chats-message__paragraph">Обменяю учебники 9 класса на учебники 10-11 классов</p>
+                        </div>
+                        <div class="chats-message__info">
+                            <span class="chats-message__time">20:00</span>
+                            <svg><use href="#readed"></use></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="chats-message">
+                    <figure class="chats-message__avatar">
+                        <img src="{% static 'fastbarterApp/img/slide1.png' %}" alt="slide">
+                    </figure>
+                    <div class="chats-message__body">
+                        <div class="chats-message__content">
+                            <p class="chats-message__name">Файзулин Ахмад</p>
+                            <p class="chats-message__paragraph">Есть учебники 7 класса на обмен?</p>
+                        </div>
+                        <div class="chats-message__info">
+                            <span class="chats-message__time">20:00</span>
+                            <svg><use href="#readed"></use></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="chats-message chats-message_my">
+                    <div class="chats-message__body">
+                        <div class="chats-message__content">
+                            <p class="chats-message__paragraph">Обменяю учебники 9 класса на учебники 10-11 классов</p>
+                        </div>
+                        <div class="chats-message__info">
+                            <span class="chats-message__time">20:00</span>
+                            <svg><use href="#readed"></use></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="chats-message">
+                    <figure class="chats-message__avatar">
+                        <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
+                    </figure>
+                    <div class="chats-message__body">
+                        <div class="chats-message__content">
+                            <p class="chats-message__name">Рябов Максим</p>
+                            <p class="chats-message__paragraph">Обменяю учебники 9 класса на учебники 10-11 классов</p>
+                        </div>
+                        <div class="chats-message__info">
+                            <span class="chats-message__time">20:00</span>
+                            <svg><use href="#readed"></use></svg>
+                        </div>
+                    </div>
+                </div>
             </div>
             <form class="chats-new-message" action="">
-                <input class="chats-new-message__input" type="text">
-                <label class="chats-new-message__attach" for="attach">
-                    <svg><use href="#attach"></use></svg>
-                    <input id="attach" type="file" style="display: none;">
-                </label>
+                <div class="chats-new-message__input-container">
+                    <input class="chats-new-message__input" type="text">
+                    <label class="chats-new-message__attach" for="attach-file">
+                        <svg><use href="#attach"></use></svg>
+                        <input id="attach-file" type="file" style="display: none;">
+                    </label>
+                </div>
                 <label class="chats-new-message__submit" for="submit">
                     <svg><use href="#send"></use></svg>
                     <input id="submit" type="submit" style="display: none;">
                 </label>
-                <label class="chats-new-message__voice" for="voice">
+                <label class="chats-new-message__voice" for="voice-message">
                     <svg><use href="#voice"></use></svg>
-                    <input id="voice" type="text" style="display: none;">
+                    <input id="voice-message" type="text" style="display: none;">
                 </label>
             </form>
         </section>

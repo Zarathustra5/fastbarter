@@ -57,3 +57,37 @@
     </div>
   </div>
 </header>
+<section class="popup popup-auth">
+    <div class="container">
+      <div class="popup-auth__window">
+        <div class="popup-auth__header">
+          <label class="popup-auth__auth-btn" for="auth">
+            <input name="auth-radio" id="auth" type="radio" style="display: none;" checked>
+            <span>Вход</span>
+          </label>
+          <span>/</span>
+          <label class="popup-auth__register-btn" for="register">
+            <input name="auth-radio" id="register" type="radio" style="display: none;">
+            <span>Регистрация</span>
+          </label>
+          <div class="popup__close">
+            <svg><use href="#close"></use></svg>
+          </div>
+        </div>
+        <form class="popup-auth__form popup-auth__form_auth popup-auth__form_active">
+          <input class="popup-auth__input" type="email" placeholder="Эл. почта">
+          <input class="popup-auth__input" type="password" placeholder="Пароль">
+          <input class="popup-auth__submit" type="submit" value="Войти">
+          <p class="popup-auth__note">При авторизации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
+        </form>
+        <form class="popup-auth__form popup-auth__form_register">
+          <input class="popup-auth__input" type="text" placeholder="ФИО">
+          <input class="popup-auth__input" type="email" placeholder="Эл. почта">
+          <input class="popup-auth__input" type="password" placeholder="Пароль">
+          <input class="popup-auth__input" type="password" placeholder="Подтвердите пароль">
+          <input class="popup-auth__submit" type="submit" value="Зарегистрироваться">
+          <p class="popup-auth__note">При регистрации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
+        </form>
+      </div>
+    </div>
+</section>
