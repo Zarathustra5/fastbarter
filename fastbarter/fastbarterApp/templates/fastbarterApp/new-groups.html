@@ -42,9 +42,11 @@
                         <img src="/media/{{el.photo}}" alt="Товар" class="catalog-product__image">
                     </a>
                     <div class="catalog-product__row">
-                        <h6 class="catalog-product__title">{{el.title}}</h6>
+                        <div class="catalog-product__header">
+                          <h6 class="catalog-product__title">{{el.title}}</h6>
+                          <p class="catalog-product__participants"><span>{{el.members_count}}</p>
+                        </div>
                         <div class="catalog-product__info">
-                            <p class="catalog-product__price"><span>{{el.members_count}}</p>
                           <p class="catalog-product__desc">{{el.short_desc | safe }}</p>
                         </div>
                     </div>

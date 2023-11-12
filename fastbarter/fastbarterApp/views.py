@@ -27,6 +27,9 @@ def new_product(request):
 def reviews(request):
     return render(request, 'fastbarterApp/reviews.html')
 
+def my_reviews(request):
+    return render(request, 'fastbarterApp/account/my-reviews.html')
+
 def account(request):
     return render(request, 'fastbarterApp/account/index.html')
 

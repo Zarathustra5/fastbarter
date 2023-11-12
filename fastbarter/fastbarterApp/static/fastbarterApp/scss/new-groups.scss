@@ -6,7 +6,8 @@
     text-align: right; 
     width: 761px;
     margin: auto;
-    margin-top: 60px;
+    margin-top: 25px;
+    color: $grey;
   }
   &__search {
     position: absolute;
@@ -80,6 +81,10 @@
     margin: auto;
     display: flex;
     overflow: hidden;
+    &__header {
+      display: flex;
+      align-items: center;
+    }
     &__title {
       @include h2;
     }
@@ -132,10 +137,10 @@
         cursor: pointer;
       }
     }
-    &__price {
+    &__participants {
       white-space: nowrap;
       position: relative;
-      padding: 10px 0;
+      padding-left: 15px;
       color: #939393;
     }
     &__desc {
@@ -146,7 +151,6 @@
     }
     &__link {
       display: flex;
-      width: 82px;
       height: 34px;
       justify-content: center;
       align-items: center;
@@ -155,6 +159,8 @@
       color: white;
       padding: 0 5px;
       margin-left: 5px;
+      @include txt18-btn;
+      font-size: 16px;
     }
   }
   &__products {

@@ -127,7 +127,6 @@
     }
     &__link {
       display: flex;
-      width: 82px;
       height: 34px;
       justify-content: center;
       align-items: center;
@@ -136,6 +135,9 @@
       color: white;
       padding: 0 5px;
       margin-left: 5px;
+      font-size: 16px;
+      padding: 0 5px;
+      align-self: flex-end;
     }
   }
   &__products {

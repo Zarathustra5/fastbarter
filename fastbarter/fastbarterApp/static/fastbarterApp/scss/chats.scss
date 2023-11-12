@@ -128,13 +128,15 @@
             }
         }
         &__btns {
-            display: flex;
-            align-items: center;
+            text-align: right;
             svg {
+                color:  #7A2700;
+                margin-right: 10px;
                 width: 30px;
                 height: 30px;
-                border-radius: 15px;
-                background: rgba(255, 82, 82, 0.30);
+                &:last-child {
+                  margin-right: 0
+                }
             }
         }
         &__leave-chat {
@@ -143,7 +145,7 @@
             background: #D4D4D4;
             color: $orange;
             height: 50px;
-            margin-left: 20px;
+            margin-top: 10px;
             &:hover {
                 color: white;
                 background: $orange;

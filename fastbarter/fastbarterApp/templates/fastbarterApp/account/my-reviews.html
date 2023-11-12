@@ -11,42 +11,9 @@
 
 {% block content %}
 <main class="page">
-    <div class="container container_reviews">
-      <section class="reviews">
-        <div class="review review_new">
-          <div class="review__header review-header">
-            <div class="reviewer">
-              <figure class="reviewer__image">
-                <img src="{% static 'fastbarterApp/img/slide1.jpg' %}">
-              </figure>
-              <div class="reviewer__info">
-                <h4 class="reviewer__name">Шавалиев Альберт</h4>
-              </div>
-            </div>
-            <div class="review-header__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-            </div>
-          </div>
-          <h3 class="review__title">7 советских монет</h3>
-          <form action="" class="review-form">
-            <div class="review-form__textarea">
-              <textarea name="" id="" cols="30" rows="6" placeholder="Оставьте свой отзыв"></textarea>
-              <label for="file">
-                <svg><use href="#attach"></use></svg>
-              </label>
-            </div>
-            <input type="file" id="file" style="display: none;">
-            <label class="review-form__submit-btn" for="submit">
-              <span>Отправить</span>
-              <svg><use href="#send"></use></svg>
-            </label>
-            <input id="submit" type="submit" value="">
-          </form>
-        </div>
+    <div class="container">
+      {% include 'fastbarterApp/modules/account-menu.html' %}
+      <section class="reviews my-reviews">
         <div class="review">
           <div class="review__header review-header">
             <div class="reviewer">
@@ -113,23 +80,6 @@
             </div>
         </section>
       </section>
-      <aside class="seller">
-        <figure class="seller__image">
-          <img src="{% static 'fastbarterApp/img/seller.png' %}">
-          <figcaption class="seller__name">Ахтямов Чучмек</figcaption>
-        </figure>
-        <a href="{% url 'reviews' %}" class="seller__reviews">
-          <div class="seller__stars">
-            <svg><use href="#star"></use></svg>
-            <svg><use href="#star"></use></svg>
-            <svg><use href="#star"></use></svg>
-            <svg><use href="#star"></use></svg>
-            <svg><use href="#star"></use></svg>
-          </div>
-          <p class="seller__reviews-score">4.1</p>
-        </a>
-        <p class="seller__registered">Зарегестрирован: 18.09.2023</p>
-      </aside>
     </div>
 </main>
 {% endblock %}

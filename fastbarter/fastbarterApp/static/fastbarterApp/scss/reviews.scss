@@ -1,14 +1,20 @@
 @import "modules/modules.scss";
+@import "modules/account-menu.scss";
 
 .page {
   & > .container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1480px;
-    padding-left: 200px;
+    &_reviews {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1480px;
+      padding-left: 200px;
+    }
   }
 }
 
+.my-reviews {
+  margin-left: 60px;
+}
 .reviews {
   max-width: 660px;
   padding-bottom: 50px;

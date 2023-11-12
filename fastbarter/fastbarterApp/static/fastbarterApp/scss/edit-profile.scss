@@ -1,6 +1,13 @@
 @import "modules/modules.scss";
 @import "modules/account-menu.scss";
 
+.page {
+  min-height: 100%;
+  & > .container {
+    min-height: 100%;
+  }
+}
+
 .edit-profile {
   margin-left: 60px;
   flex: 1 1 auto;
@@ -71,7 +78,7 @@
     &__submit {
       @include btn;
       margin: auto;
-      margin-top: 160px;
+      margin-top: 200px;
     }
   }
 }

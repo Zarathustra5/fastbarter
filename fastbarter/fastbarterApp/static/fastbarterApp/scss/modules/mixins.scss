@@ -25,6 +25,7 @@ $dark-orange: #E04700;
 $dark: #3B1300;
 $dark-brown: #7A2700;
 $brown: #BA3B00;
+$grey: #939393;
 
 // Медиа запросы для разных экранов
 @mixin phone {
@@ -67,6 +68,15 @@ $brown: #BA3B00;
 	font-weight: 700;
 	line-height: 35px; /* 100% */
 	letter-spacing: 0.5px;
+}
+
+@mixin txt18-btn {
+  font-family: Sansation;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 104.762% */
+  letter-spacing: 0.1px;
 }
 
 @mixin txt18 {
@@ -118,7 +128,7 @@ $brown: #BA3B00;
 	border-radius: 100px; 
 	color: #FFF;
 	text-align: center;
-	@include txt18;
+	@include txt18-btn;
 	white-space: nowrap;
 	display: flex;
 	justify-content: center;
