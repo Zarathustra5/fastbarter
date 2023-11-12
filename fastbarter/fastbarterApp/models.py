@@ -29,3 +29,17 @@ class Catalog(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Каталог товаров'
+
+class Groups(models.Model):
+    photo = models.ImageField(upload_to='images/', height_field=None, width_field=None, max_length=None, verbose_name='Фото', blank=True, null=True)
+    title = models.CharField(max_length=255, verbose_name='Название товара')
+    short_desc = models.CharField(max_length=255, verbose_name='Краткое описание')
+    members_count = models.CharField(max_length=255, verbose_name='Количество участников')
+    is_joined = models.BooleanField(default=False, verbose_name='Вступил')
+
+    def __str__(self):
+        return f'{self.title}'
+    
+    class Meta:
+        verbose_name = 'Сообщество'
+        verbose_name_plural = 'Список сообществ'

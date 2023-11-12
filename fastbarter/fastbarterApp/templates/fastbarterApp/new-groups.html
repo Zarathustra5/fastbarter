@@ -4,7 +4,7 @@
 
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
-    <link rel="stylesheet" href="{% static 'fastbarterApp/css/catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/new-groups.css' %}">
 {% endblock %}
 
 {% block title %} Каталог товаров {% endblock %}
@@ -20,7 +20,7 @@
                 <button class="catalog-sort__btn catalog-sort__btn_default">По умолчанию</button>
                 <button class="catalog-sort__btn catalog-sort__btn_price">
                     <svg><use href="#sort-price"></use></svg>
-                    <span>Примерная стоимость</span>
+                    <span>Число участников</span>
                     <svg><use href="#sort-price"></use></svg>
                 </button>
             </div>
@@ -32,28 +32,27 @@
                 </button><input type="text" class="search__input" placeholder="Поиск товаров...">
             </div>
             <div class="catalog__filter catalog-filter">
-                <button class="catalog-filter__btn">
-                    <svg><use href="#filter"></use></svg>
-                    <p>ФИЛЬТРЫ</p>
-                </button>
             </div>
         </div>
+        <p class="catalog__found">Найдено 23.350 сообществ</p>
         <div class="catalog__products">
-            {% for el in catalog %}
+            {% for el in groups %}
                 <div class="catalog-product">
-                    <a href="{% url 'detail_catalog' el.pk %}">
+                    <a href="{% url 'detail_group' el.pk %}">
                         <img src="/media/{{el.photo}}" alt="Товар" class="catalog-product__image">
                     </a>
                     <div class="catalog-product__row">
                         <h6 class="catalog-product__title">{{el.title}}</h6>
                         <div class="catalog-product__info">
-                            <p class="catalog-product__price"><span>≈</span>{{el.price}}₽</p>
-                            <svg class="catalog-product__favorite"><use href="#heart"></use></svg>
+                            <p class="catalog-product__price"><span>{{el.members_count}}</p>
+                          <p class="catalog-product__desc">{{el.short_desc | safe }}</p>
                         </div>
                     </div>
                     <div class="catalog-product__row">
-                        <p class="catalog-product__desc">{{el.short_desc | safe }}</p>
-                        <a href="{% url 'detail_catalog' el.pk %}" class="catalog-product__link">Обменять</a>
+                    <svg>
+                        <use href="#more"></use>
+                    </svg>
+                        <a href="{% url 'detail_group' el.pk %}" class="catalog-product__link">Вступить</a>
                     </div>
                 </div>
             {% endfor %}

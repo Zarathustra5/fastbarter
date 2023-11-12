@@ -3,6 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.http import HttpResponse
 from .models import Catalog
+from .models import Groups
 from django.views.generic import ListView
 
 def index(request):
@@ -48,3 +49,11 @@ def services(request):
 
 def chats(request):
     return render(request, 'fastbarterApp/chats.html')
+
+def detail_group(request, group_id):
+    detail_group = Groups.objects.get(pk=group_id)
+    return render(request, 'fastbarterApp/detail-group.html', {'detail_group': detail_group})
+
+def new_groups(request):
+    groups = Groups.objects.filter()
+    return render(request, 'fastbarterApp/new-groups.html', {'groups': groups})

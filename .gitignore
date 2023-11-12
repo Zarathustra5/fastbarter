@@ -2,7 +2,7 @@
 *.bak
 
 #Database
-*.sqlite3
+#*.sqlite3
 
 #Npm modules
 node_modules
@@ -13,3 +13,4 @@ node_modules
 venv
 env
 *.xml
+/fastbarter/nbproject/private/

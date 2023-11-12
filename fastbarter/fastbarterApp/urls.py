@@ -37,6 +37,8 @@ urlpatterns = [
     path('favorite', views.favorite, name="favorite"),
     path('services', views.services, name="services"),
     path('chats', views.chats, name="chats"),
+    path('new-groups', views.new_groups, name="new-groups"),
+    path('new-groups/<int:group_id>/', views.detail_group, name="detail_group"),
 ]
 
 if settings.DEBUG:

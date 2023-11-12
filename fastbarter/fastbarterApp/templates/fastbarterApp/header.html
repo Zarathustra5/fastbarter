@@ -1,3 +1,5 @@
+{% load static %}
+
 <header class="header">
   <div class="container">
     <a class="header__logo" href="/catalog">
@@ -13,7 +15,7 @@
         </a>
         <ul>
           <li>
-            <a href="{% url 'catalog' %}">
+            <a href="{% url 'new-groups' %}">
               <svg><use href="#groups"></use></svg>
               <p class="menu__text">Сообщества</p>
             </a>
@@ -70,7 +72,7 @@
             <input name="auth-radio" id="register" type="radio" style="display: none;">
             <span>Регистрация</span>
           </label>
-          <div class="popup__close">
+          <div class="popup__close popup__cross">
             <svg><use href="#close"></use></svg>
           </div>
         </div>
@@ -81,13 +83,61 @@
           <p class="popup-auth__note">При авторизации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
         </form>
         <form class="popup-auth__form popup-auth__form_register">
-          <input class="popup-auth__input" type="text" placeholder="ФИО">
           <input class="popup-auth__input" type="email" placeholder="Эл. почта">
           <input class="popup-auth__input" type="password" placeholder="Пароль">
           <input class="popup-auth__input" type="password" placeholder="Подтвердите пароль">
           <input class="popup-auth__submit" type="submit" value="Зарегистрироваться">
           <p class="popup-auth__note">При регистрации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
         </form>
+      </div>
+    </div>
+</section>
+<section class="popup popup-deals">
+    <div class="container">
+      <div class="popup-deals__window">
+        <div class="popup-deals__header">
+          <h3 class="popup-deals__title">Обмен товаров</h3>
+          <div class="popup__close popup__cross">
+            <svg><use href="#close"></use></svg>
+          </div>
+        </div>
+        <div class="popup-deals__body">
+        <div class="my-announcements">
+          <div class="my-announcement">
+              <a href="{% url 'new-product' %}">
+                  <img src="{% static 'fastbarterApp/img/som.webp' %}" alt="Товар" class="my-announcement__image">
+              </a>
+              <div class="my-announcement__row">
+                  <h6 class="my-announcement__title">Говорящий сом</h6>
+                  <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>100₽</p>
+                  </div>
+              </div>
+              <div class="my-announcement__row">
+                  <p class="my-announcement__desc">Говорящий сом для большого аквариума</p>
+              </div>
+          </div>
+           <img class="arrows" src="{% static 'fastbarterApp/img/arrows.png' %}">
+
+            <div class="my-announcement">
+              <a href="{% url 'new-product' %}">
+                  <img src="{% static 'fastbarterApp/img/sailentblock.webp' %}" alt="Товар" class="my-announcement__image">
+              </a>
+              <div class="my-announcement__row">
+                  <h6 class="my-announcement__title">Сайлентблок передней балки</h6>
+                  <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>614₽</p>
+                  </div>
+              </div>
+              <div class="my-announcement__row">
+                  <p class="my-announcement__desc">Бренд: АSVА, aртикул: 0501GHFС2, Сайлентблок пeрeдней балки.</p>
+              </div>
+          </div>
+        </div>
+        <div class="popup-deals__footer">
+          <button class="popup__close popup-deals__cancel">Отмена</button>
+          <input class="popup-deals__submit" type="submit" value="Подтвердить обмен">
+        </div>
       </div>
     </div>
 </section>

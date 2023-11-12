@@ -9,7 +9,7 @@
     color: white;
     z-index: 3000;
     transition: opacity 0.5s ease 0s;
-    &__close {
+    &__cross {
         position: absolute;
         right: 20px;
         top: 20px;
@@ -36,6 +36,7 @@
         box-shadow: 0.5px 0px 0px 0px rgba(84, 84, 88, 0.65);
         backdrop-filter: blur(50px);
     }
+    &-deals,
     &-auth {
         .container {
             height: 100%;
@@ -52,6 +53,8 @@
             max-width: 100%;
             position: relative;
         }
+    }
+    &-auth {
         &__header {
             @include h1;
             text-align: center;
@@ -205,5 +208,131 @@
             }
         }
     }
+    }
+    &-deals {
+      &__window {
+        width: 822px;
+        background: white;
+      }
+      color: #4D4D4D;
+      &__title {
+        @include h1;
+        padding-left: 30px
+      }
+      &__cancel {
+        @include btn;
+        background: #D4D4D4;
+        color: $orange;
+        margin-right: 10px;
+        &:hover {
+          color: white
+        }
+      }
+      &__submit {
+        @include btn;
+      }
+  .my-announcements {
+    padding: 20px 20px 10px 20px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: left;
+    /*gap: 30px;*/
+    max-width: 1000px;
+    margin-top: 30px ;
+    margin-left: 50px ;
+    align-items: center;
+    .arrows {
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+    }
+    .my-announcement {
+      padding-bottom: 15px;
+      border-radius: 10px;
+      background-color: white;
+      width: 300px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+      &__info {
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+      }
+      &__favorite {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        fill: transparent;
+        &_active {
+          fill: red;
+          stroke: red;
+        }
+      }
+      & > a {
+        overflow: hidden;
+      }
+      &__image{
+        width: 100%;
+        margin-bottom: 10px;
+        max-height: 100px;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+        //transition: all 0.4s ease;
+      }
+      &__row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+        padding: 0 15px;
+        align-items: center;
+        &:nth-child(3) {
+          flex: 1 0 auto;
+        }
+      }
+      &__price {
+        padding-right: 10px;
+        white-space: nowrap;
+        position: relative;
+        span {
+          font-size: 20px;
+          position: absolute;
+          top: -5px;
+          left: -13px;
+        }
+      }
+      &__desc {
+        color: #939393;
+        font-family: Sansation;
+        @include txt13;
+        align-self: flex-start;
+      }
+      &__link {
+        display: flex;
+        width: 35px;
+        height: 35px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: #F94E00;
+        color: white;
+        padding: 0 5px;
+        margin-left: 5px;
+        flex: 0 0 35px;
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    margin-right: 50px;
+  }
     }
 }
