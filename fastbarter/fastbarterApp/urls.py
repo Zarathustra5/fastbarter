@@ -36,6 +36,7 @@ urlpatterns = [
     path('deals', views.deals, name="deals"),
 
     path('favorite', views.favorite, name="favorite"),
+    path('notifications', views.notifications, name="notifications"),
     path('services', views.services, name="services"),
     path('chats', views.chats, name="chats"),
     path('new-groups', views.new_groups, name="new-groups"),

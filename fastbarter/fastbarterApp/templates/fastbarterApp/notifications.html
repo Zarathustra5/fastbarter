@@ -1,0 +1,70 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/notifications.css' %}">
+{% endblock %}
+
+{% block title %} Уведомления {% endblock %}
+
+{% block content %}
+
+<main class="page">
+    <div class="container" style="display: block;">
+      <h1 class="title">Ваши уведомления</h1>
+
+       <div class="sort">
+                <svg class="sort__icon"><use href="#sort"></use></svg>
+                <p class="sort__title">Сортировка</p>
+                <button class="sort__btn">
+                    <svg><use href="#sort-price"></use></svg>
+                    <span>По дате</span>
+                    <svg><use href="#sort-price"></use></svg>
+                </button>
+        </div>
+      <span class="count">Всего: 12 уведомлений</span>
+
+      <div class="notification" style="border-left: 8px solid #E04700; border-right: 8px solid #E04700;">
+        <div class="notification__text">
+          <span class="ntitle">Вас упомянули в сообществе “Нумизматы”</span>
+          <p>Пользователеь Ахтямов Чучмек упомянул вас в чате сообщества “Нумизматы”. Вот полный текст сообщения: “Есть такие же монеты но 1983 года? мне как раз не хватает”</p>
+          <span class="ndata"> 11.11.2023  08:37</span>
+        </div>
+        <div class="notification__image">
+          <img src="{% static 'fastbarterApp/img/coins.png' %}" style="border-radius:10px; width:160px; margin: 5px 0 5px 17px;" class="user-img">
+          <span>Нумизматы</span>
+        </div>
+      </div>
+
+    <div class="notification" style="border: 2px solid #E04700;">
+        <div class="notification__text">
+          <span class="ntitle">Вас упомянул пользователь Ахтямов Чучмек</span>
+          <p>Пользователеь Ахтямов Чучмек упомянул вас в вашем личном чате. Вот полный текст сообщения: “Есть такие же монеты но 1983 года? мне как раз не хватает”</p>
+          <span class="ndata"> 11.11.2023  07:35</span>
+        </div>
+        <div class="notification__image">
+          <img src="{% static 'fastbarterApp/img/avatar2.jpg' %}" class="user-img">
+          <span>Ахтямов Чучмек</span>
+        </div>
+      </div>
+
+    <div class="notification" style="border: 2px solid #E04700;">
+        <div class="notification__text">
+          <span class="ntitle">Вас упомянул пользователь Смирнов Сергей</span>
+          <p>Пользователеь Смирнов Сергей упомянул вас в вашем личном чате. Вот полный текст сообщения: “Можешь обменять фиурку Широ из Нет Игры Нет Жизни? посмотришь что у меня есть”</p>
+          <span class="ndata"> 11.11.2023  15:37</span>
+        </div>
+        <div class="notification__image">
+          <img src="{% static 'fastbarterApp/img/avatar1.jpg' %}" class="user-img">
+          <span>Смирнов Сергей</span>
+        </div>
+      </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
+{% endblock %}

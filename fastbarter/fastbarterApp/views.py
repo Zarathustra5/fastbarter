@@ -30,6 +30,7 @@ def reviews(request):
 def my_reviews(request):
     return render(request, 'fastbarterApp/account/my-reviews.html')
 
+
 def account(request):
     return render(request, 'fastbarterApp/account/index.html')
 
@@ -46,6 +47,8 @@ def deals(request):
 def favorite(request):
     catalog = Catalog.objects.filter(is_published=True, is_favorite=True)
     return render(request, 'fastbarterApp/favorite.html', {'catalog': catalog})
+def notifications(request):
+    return render(request, 'fastbarterApp/notifications.html')
 
 def services(request):
     return render(request, 'fastbarterApp/account/services.html')

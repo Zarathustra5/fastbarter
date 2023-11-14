@@ -1,0 +1,122 @@
+@import "modules/modules.scss";
+@import "modules/account-menu.scss";
+
+.page {
+  & > .container {
+    align-items:center;
+    width:1000px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    &_reviews {
+      justify-content: space-between;
+      max-width: 1480px;
+      padding-left: 200px;
+    }
+  }
+}
+.title{
+      @include h1;
+      margin-left:50px;
+      }
+.sort {
+    width: 340px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+    &__title {
+      @include h2;
+      padding-right: 20px;
+    }
+    &__btn {
+      @include btn-border;
+      height: 46px;
+      @include txt16;
+      &_price {
+        margin-left: 10px;
+      }
+      svg:first-child {
+        transform: rotate(180deg);
+        color: $orange;
+        margin-right: 5px;
+      }
+      svg:last-child {
+        margin-left: 5px;
+      }
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+      color: black;
+    }
+    p {
+      padding-left: 10px;
+    }
+}
+
+
+.notification{
+  width:1000px;
+  padding: 20px 40px 20px 40px;
+  background: white;
+  border-radius: 25px;
+  margin:0px 0px 25px 0px;
+  display:flex;
+  box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
+  }
+.notification__text {
+    margin: 8px 27px 0 31px;
+    width: 700px;
+}
+.notification__text > p {
+  color:#939393;
+  font-size: 16pt;
+  margin: 10px 10px 10px 10px;
+}
+.ndata {
+    color: #292D32;
+    font-size: 20px;
+    float: right;
+}
+.ntitle{
+  	font-family: Sansation;
+	font-size: 19pt;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 35px; /* 100% */
+	letter-spacing: 0.5px;
+	margin-left:-10px;
+}
+.notification__image {
+    width: 200px;
+    height: 200px;
+    background: #BA3B00;
+    border-radius: 25px;
+    padding: 5px;
+    box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.3);
+}
+.notification__image > span {
+    height: 50px;
+    width: 190px;
+    font: italic bold 20px/30px Sansation, serif;
+    color: white;
+    text-align: center;
+    display: block;
+}
+.count{
+color:#444;
+margin-right:150px;
+float:right;
+margin: -43px 35px -100px auto;
+}
+.user-img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 7px 39px 7px 36px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.4);
+}
