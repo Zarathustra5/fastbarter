@@ -16,40 +16,45 @@
         <div class="product-header">
           <div class="product-header__info">
             <div class="product-header__text">
-              <p class="product-header__name">{{detail_catalog.title}}</p>
-              <p class="product-header__date">Товар добавлен {{detail_catalog.created_at}}</p>
+              <span class="product-header__name">{{detail_catalog.title}}</span><span class="product-header__price">≈{{detail_catalog.price}}<font color="#E04700">₽</font></span>
+              <svg class="product__favorite">
+        <!--<use href="#heart"></use>-->
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" viewBox="0 0 28 24" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.03045 2.53013C3.95671 3.47804 2.4375 5.73268 2.4375 8.42126C2.4375 11.168 3.56152 13.2851 5.17286 15.0996C6.5009 16.595 8.10855 17.8344 9.67641 19.0431C10.0488 19.3303 10.4189 19.6156 10.7826 19.9023C11.4401 20.4206 12.0266 20.8755 12.592 21.2059C13.1576 21.5365 13.613 21.6874 14 21.6874C14.387 21.6874 14.8424 21.5365 15.408 21.2059C15.9734 20.8755 16.5599 20.4206 17.2175 19.9023C17.5811 19.6156 17.9512 19.3303 18.3236 19.0431C19.8915 17.8344 21.4991 16.595 22.8271 15.0996C24.4385 13.2851 25.5625 11.168 25.5625 8.42126C25.5625 5.73268 24.0432 3.47804 21.9695 2.53013C19.9549 1.60924 17.2479 1.85311 14.6755 4.52581C14.4987 4.70943 14.2549 4.81318 14 4.81318C13.7451 4.81318 13.5012 4.70943 13.3245 4.52581C10.7521 1.85311 8.04509 1.60924 6.03045 2.53013ZM14 2.57341C11.1099 -0.0123105 7.8737 -0.374023 5.25095 0.824839C2.48089 2.09104 0.5625 5.03118 0.5625 8.42126C0.5625 11.7531 1.95062 14.295 3.7709 16.3446C5.22859 17.986 7.01277 19.3599 8.58854 20.5731C8.94574 20.8481 9.29222 21.115 9.62177 21.3748C10.2621 21.8795 10.9494 22.4178 11.646 22.8248C12.3424 23.2316 13.137 23.5624 14 23.5624C14.863 23.5624 15.6576 23.2316 16.354 22.8248C17.0506 22.4178 17.7379 21.8795 18.3782 21.3748C18.7077 21.115 19.0542 20.8481 19.4115 20.5731C20.9872 19.3599 22.7714 17.986 24.2291 16.3446C26.0494 14.295 27.4375 11.7531 27.4375 8.42126C27.4375 5.03118 25.5191 2.09104 22.749 0.824839C20.1262 -0.374023 16.8901 -0.0123105 14 2.57341Z" fill="#E40000"/>
+        </svg>
+            </svg>
+                <p class="product-header__date">Товар добавлен {{detail_catalog.created_at}}</p>
+
             </div>
-            <svg class="product__favorite">
-                <use href="#heart"></use>
-            </svg>
           </div>
+
           <a href="{% url 'catalog' %}" class="product-header__back">
-            <p>Вернуться в каталог</p>
-            <svg>
-                <use href="#back"></use>
-            </svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20" fill="none">
+<path d="M16.7542 19.2369C15.9657 19.2369 15.2247 18.9914 14.6671 18.5456L6.1584 11.7383C5.58687 11.2814 5.27437 10.6492 5.29763 10.0008C5.27402 9.35167 5.58687 8.71917 6.1584 8.26167L14.6674 1.45445C15.2247 1.00862 15.9657 0.763062 16.7542 0.763062C17.5428 0.763062 18.2837 1.00862 18.841 1.45445C19.9917 2.37501 19.9917 3.87306 18.841 4.79362L12.3331 10L18.841 15.2061C19.9917 16.1267 19.9917 17.6247 18.841 18.5453C18.2834 18.9914 17.5424 19.2369 16.7542 19.2369ZM16.7542 1.87417C16.3369 1.87417 15.9445 2.00417 15.6494 2.24001L7.30492 9.04723C6.99555 9.29528 7.01569 9.62612 7.01569 9.97917C7.01569 9.99334 7.01569 10.0072 7.01569 10.0211C7.01569 10.3742 6.99555 10.7047 7.30492 10.9525L15.7317 17.7597C16.0268 17.9958 16.3782 18.1256 16.7952 18.1256C17.2129 18.1256 17.5844 17.9956 17.8796 17.7597C18.489 17.2722 18.4785 16.4792 17.8692 15.9917L10.8653 10.3928C10.5942 10.1758 10.5917 9.82417 10.8629 9.60723L17.8605 4.00834C18.4695 3.52084 18.4692 2.72778 17.8601 2.24028C17.565 2.00417 17.1716 1.87417 16.7542 1.87417Z" fill="#BA3B00"/>
+</svg>
+            <p>Выйти в каталог</p>
+
+                <!--<svg> <use href="#back"></use> </svg>-->
+
           </a>
         </div>
         <div class="product-about">
           <div class="product-about__image">
-            <img src="/media/{{detail_catalog.photo}}" alt="slide">
+            <img src="/media/{{detail_catalog.photo}}" alt="slide"><br><br>
+              <span class="product-content__category">Категория товара на обмен:</span>
+            <a href="#." class="product-content__link">Телефоны и планшеты</a><br><br>
+          <span class="product-content__category">Категория товара:</span>
+            <a href="#." class="product-content__link">Телефоны и планшеты</a>
+          <h3 class="product-content__title">Описание товара</h3>
+          <p class="product-content__paragraph">{{detail_catalog.short_desc | safe}}</p>
           </div>
-          <div class="product-about__exchange">
-            <div class="product-about__price">
-              <p>Примерная стоимость:</p>
-              <p>~{{detail_catalog.price}}₽</p>
-            </div>
-            <div class="product-about__wish">
-              <p>Категория товара на обмен:</p>
-              <p>Телефоны и планшеты</p>
-            </div>
-            <a href="#." class="product-about__btn">Предложить обмен</a>
-          </div>
+
           <div class="product-about__seller product-seller">
             <p class="product-seller__label">Обменивает</p>
-            <p class="product-seller__name">Ахтямов Чучмек</p>
+               <div style=" margin: 0px auto 10px auto; width:250px; border-radius: 25px; background-color: #C43E00;">
             <figure class="product-seller__image">
-              <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
+              <img style="width: 83px; margin: 10px -22px 0 35px;" src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
+              <span class="product-seller__name">Ахтямов Чучмек</span>
             </figure>
             <p class="product-seller__registered">Зарегестрирован: 18.09.2023</p>
             <a href="{% url 'reviews' %}" class="product-seller__reviews">
@@ -63,14 +68,54 @@
               <p class="product-seller__reviews-count">65 отзывов</p>
             </a>
           </div>
-        </div>
-        <div class="product-content">
-          <h3 class="product-content__title">Категория товара</h3>
-          <div class="product-content__link">
-            <a href="#.">Телефоны и планшеты</a>
+               <p class="product-seller__label">Местоположение</p>
+<iframe width="300" height="200" style="border-radius:25px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.8632282981366!2d49.17507747714717!3d55.76087809136872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415eadc420a34b5b%3A0x92dbaf306bb1070d!2z0YPQuy4g0JrQsNGA0LHRi9GI0LXQstCwLCA0OCwg0JrQsNC30LDQvdGMLCDQoNC10YHQvy4g0KLQsNGC0LDRgNGB0YLQsNC9LCA0MjAwODc!5e0!3m2!1sru!2sru!4v1700154818414!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+           <a href="#." class="product-about__btn">Предложить обмен</a>
           </div>
-          <h3 class="product-content__title">Описание товара</h3>
-          <p class="product-content__paragraph">{{detail_catalog.short_desc | safe}}</p>
+
+        </div>
+        <style>
+    .product-seller__name {
+color: #FFF;
+text-align: center;
+font-family: Roboto;
+font-size: 21px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 95.238% */}
+    .product-header__price {
+        color: #4D4D4D;
+        text-align: center;
+        font-family: Sansation;
+        font-size: 21px;
+        font-style: normal;
+        margin: 11px 0 -24px 5px;
+        display: inline-flex;
+        /* align-items: center; */
+        vertical-align: top;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.5px;}
+    .product-content__link{
+        color: #BA3B00;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-family: Roboto;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 20px; /* 125% */
+        letter-spacing: 0.1px;
+     }
+    .product-content__category{
+        margin: 10px 0 10px 0 0;
+        color: #4D4D4D;
+        font-family: Roboto;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; /* 133.333% */ }
+        </style>
+        <div class="product-content">
         </div>
     </div>
     </section>

@@ -1,12 +1,12 @@
 @import "modules/modules.scss";
 
 .product {
-  border-radius: 30px 30px 0px 0px;
+  border-radius: 30px;
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   max-width: 1006px;
-  margin: auto;
-  min-height: 100%;
+  margin: auto auto 30px auto;
+  /*min-height: 100%;*/
   &__favorite {
     fill: transparent;
     cursor: pointer;
@@ -201,14 +201,19 @@
       }
     }
     &__title {
-      font-family: Roboto;
-      font-size: 26px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 24px; /* 92.308% */
-      text-align: left;
-      color: #4D4D4D; 
-      margin-top: 15px;
+    font-family: Roboto;
+    font-size: 30px;
+    FONT-WEIGHT: 200;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    color: #4d4d4d;
+    margin-top: 26px;
+    /* padding-top: 30px; */
+    padding: 0px 0px 0px 50px;
+    margin: auto auto -10px auto;
+    text-align: left;
+    width: 1000px;
     }
     &__link {
       margin: 10px 0 0 20px;
