@@ -18,7 +18,11 @@
   &-menu {
     width: 400px;
   }
-  .my-announcements {
+  .switch-button{
+     @include txt18-btn;
+     background: none;
+    }
+  .deal {
     background: white;
     padding: 20px 20px 10px 20px;
     border-radius: 25px;
@@ -179,8 +183,10 @@ left: 30px;
     }
     figcaption {
       margin-left: 10px;
+      font-size: 30px;
     }
   }
+  
   &__stars {
     margin-top: 5px;
     margin-left: 25px;
