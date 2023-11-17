@@ -10,7 +10,40 @@
 {% block title %} Каталог товаров {% endblock %}
 
 {% block content %}
-<div class="backdrop"></div>
+<div class="backdrop" id="report_form">
+    <div class="report">
+        <div class="report_header"><p>Пожаловаться</p></div>
+        <form action="" class="edit-profile__form profile-form">
+            <div class="profile-form__fields">
+                <label for="spam">
+                    <span>Спам</span>
+                    <input class="form-checkbox" id="spam" type="checkbox" value="HTML">
+                </label>
+                <label for="scam">
+                    <span>Обман</span>
+                    <input class="form-checkbox" id="scam" type="checkbox" value="HTML">
+                </label>
+                <label for="violence">
+                    <span>Насилие и вражда</span>
+                <input class="form-checkbox" id="violence" type="checkbox" value="HTML">
+                </label>
+                <label for="nudity">
+                    <span>Откровенное изображение</span>
+                <input class="form-checkbox" id="nudity" type="checkbox" value="HTML">
+                </label>
+                <label for="forbidden">
+                    <span>Запрещенный товар</span>
+                <input class="form-checkbox" id="forbidden" type="checkbox" value="HTML">
+                </label>
+                <h3 class="report__subtitle">Своя жалоба</h3>
+                <label for="report_text">
+                    <input class="form-check-input" type="text" placeholder="Введите жалобу..." id="report_text">
+                </label>
+                <input class="profile-form__submit" type="submit" value="Отправить жалобу">
+                </div>
+        </form>
+    </div>
+</div>
 <main class="page">
     <section class="catalog">
     <div class="container">
@@ -36,7 +69,6 @@
             </div>
         </div>
         <p class="catalog__found">Найдено 23.350 сообществ</p>
-
         <div class="catalog__products">
             <style>
 
@@ -60,11 +92,115 @@
 <div class="dropdown">
  <a href="#"><svg><use href="#more"></use></svg></a>
     <div class="dropdown-content">
-    <a href="#">Пожаловаться</a>
+    <button type="submit" onclick="report()">Пожаловаться</button>
   </div> </div>
-
+<script>
+    function report() {
+	document.getElementById('report_form').style.display='flex';
+}
+</script>
 <style>
+ .report__subtitle{
+margin-top:25px;
+font-family: Roboto;
+font-size: 21px;
+font-weight: 400;
+letter-spacing: -0.4px;}
+  .profile-form {
+    /*display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;*/
+}
+  .profile-form label{
+width:100%;
+}
+    .profile-form__fields {
+      /*display: flex;
+      flex-direction: column;*/
+      width:100%;
+      padding:0 30px 0 50px;
+      }
+      .profile-form__fields label {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+ }
+        .profile-form__fields span {
+            color: #000;
+            font-family: Roboto;
+            font-size: 21px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 19px; /* 90.476% */
+            letter-spacing: -0.4px;
+        }
+.form-check-input {
+        width: 355px;
+        height: 95px;
+        margin-top:-15px;
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid #BA3B00;
+}
+.profile-form__submit {
+	padding: 0 20px;
+	height: 40px;
+	width:220px;
+	background: #E04700;
+	border-radius: 100px;
+	text-align: center;
+	white-space: nowrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+    font-weight: 400;
+  font-family: Roboto;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 104.762% */
+  letter-spacing: 0.1px;
+  color: #FFF;
+  margin:14px 0 0 160px;
+}
+	.profile-form__submit:hover {
+		background-color: #BA3B00;
+	}
+.form-checkbox {
+          background-color: white;
+          margin-right:  30px;
+          border-radius: 2px;
+          border: 1px solid $orange;
+          width: 20px;
+          height: 20px;
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.report_header{
+width:100%;
+height:67px;
+border-bottom: 3px solid #F94E00;
+padding:20px 0 0 60px;
+}
+.report_header p{
+font-family: Roboto;
+font-size: 30px;font-style: normal;
+font-weight: 500;
+letter-spacing: -0.4px;
+}
+.report {
+    z-index:10000;
+    position: absolute;
+    margin: auto auto auto auto;
+    background: white;
+    width: 464px;
+    height: 514px;
+    border-radius:25px;
+}
 .backdrop {
+    justify-content: center;
+    align-items: center;
     z-index:10000;
     position: absolute;
     background: rgba(0,0,0,0.7);
@@ -72,9 +208,9 @@
     height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
-  opacity: 1;
-  transition: opacity 0.3s ease;
+    display:none;
 }
+
 .dropdown {
   display: inline-block;
 }
@@ -82,23 +218,24 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  min-height:30px;
-  min-width:145px;
   z-index: 1;
-  border-radius: 12px;
-border: 2px solid #BA3B00;
-background: #FFF;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.dropdown-content a {
+.dropdown-content button {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 2px solid #BA3B00;
+  background: #FFF;
+  border-radius: 12px;
+  min-height:30px;
+  min-width:145px;
   padding: 12px 18px 12px 20px;
-  text-decoration: none;
   display: block;
 }
 
-.dropdown-content:hover {background-color: #eee}
+.dropdown-content button:hover {
+background-color: #eee;
+  border-radius: 12px;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
