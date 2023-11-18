@@ -8,7 +8,10 @@
 node_modules
 
 **/.idea
+**/.kde4
+**/fastbarter.kdev4
 **/.vscode
+**/nbproject
 **/__pycache__
 venv
 env
