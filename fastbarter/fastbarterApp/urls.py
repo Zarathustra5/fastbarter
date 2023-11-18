@@ -40,6 +40,7 @@ urlpatterns = [
     path('services', views.services, name="services"),
     path('chats', views.chats, name="chats"),
     path('new-groups', views.new_groups, name="new-groups"),
+    path('detail-group-post', views.detail_group_post, name="detail-group-post"),
     path('new-groups/<int:group_id>/', views.detail_group, name="detail_group"),
 ]
 

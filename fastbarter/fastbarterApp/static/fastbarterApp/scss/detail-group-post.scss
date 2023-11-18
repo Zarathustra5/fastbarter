@@ -1,0 +1,151 @@
+@import "modules/modules.scss";
+
+.product {
+  border-radius: 30px 30px 0 0;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  max-width: 1000px;
+  margin: auto auto 00px auto;
+  padding:0px 0 0 0;
+  /*min-height: 100%;*/
+  &__favorite {
+    fill: transparent;
+    cursor: pointer;
+    &_active {
+      fill: red;
+    }
+  }
+  &-content {
+    flex: 1 0 auto;
+    padding-bottom: 50px;
+    .article {
+      padding-top: 20px;
+      &-header {
+        display: flex;
+        align-items: center;
+        &__image {
+          width: 60px;
+          height: 60px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        &__text {
+          @include txt16;
+          padding-left: 10px;
+          h3 {
+            @include txt18;
+            font-weight: 700;
+          }
+          p {
+            padding-top: 5px;
+          }
+        }
+      }
+    }
+    &__image {
+      max-width: 100%;
+      margin-top: 30px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &__title {
+    font-family: Roboto;
+    font-size: 30px;
+    FONT-WEIGHT: 200;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    color: #4d4d4d;
+    margin-top: 26px;
+    /* padding-top: 30px; */
+    padding: 0px 0px 0px 50px;
+    margin: auto auto 20px auto;
+    text-align: left;
+    width: 1000px;
+    }
+    &__link {
+      margin: 10px 0 0 20px;
+      a {
+        @include txt13;
+        font-size: 15px;
+        margin-top: 10px;
+        color: $orange;
+      }
+
+    }
+    &__paragraph {
+      margin-top: 15px;
+      @include txt18;
+    }
+  }
+}
+.social{
+  padding:10px;
+  display:flex;
+  align-items: center;
+  margin-bottom:20px;
+  svg {
+    margin:0px 5px 0 5px;
+  }
+  svg:last-child {
+    margin:0px 250px 0 5px;
+  }
+  span{
+    @include txt18;
+    margin:0 20px 0 0;
+  }
+  a, a:visited{
+    display: flex;
+    align-items: center;
+    color:#4D4D4D;
+  }
+}
+.comment {
+  margin-top: 40px;
+  margin-bottom: 20px;
+    img {
+      width: 60px;
+      height: 60px;
+      float:left;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+  &__name {
+    @include h2;
+    font-weight: 700;
+    margin:0 20px 0 20px;
+  }
+  &__text {
+    @include txt18;
+    font-weight: 500;
+    margin:0 0 0 80px;
+  }
+  &__date {
+    @include txt13;
+    color: #939393; 
+    margin-top: 5px;
+  }
+  .social2{
+    display: flex;
+    align-items: center;
+    float:right;
+    em{
+      @include h2;
+      color:#D16152;
+      
+      margin:0 10px 0px 5px;
+    }
+    span{
+
+      @include txt18;
+      margin:0 20px 0px 5px;
+    }
+
+  }
+}

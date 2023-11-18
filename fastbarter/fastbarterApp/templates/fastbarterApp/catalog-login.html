@@ -1,0 +1,209 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/catalog.css' %}">
+{% endblock %}
+
+{% block title %} Каталог товаров {% endblock %}
+
+{% block content %}
+<main class="page">
+    <section class="catalog">
+    <div class="container">
+        <div class="catalog__toolbar">
+            <div class="catalog__sort catalog-sort">
+                <svg class="catalog-sort__icon"><use href="#sort"></use></svg>
+                <p class="catalog-sort__title">Сортировка</p>
+                <button class="catalog-sort__btn catalog-sort__btn_default">По умолчанию</button>
+                <button class="catalog-sort__btn catalog-sort__btn_price">
+                    <svg><use href="#sort-price"></use></svg>
+                    <span>Примерная стоимость</span>
+                    <svg><use href="#sort-price"></use></svg>
+                </button>
+            </div>
+            <div class="catalog__search search catalog-search">
+                <button class="search__send">
+                <svg>
+                    <use href="#search"></use>
+                </svg>
+                </button><input type="text" class="search__input" placeholder="Поиск товаров...">
+            </div>
+            <div class="catalog__filter catalog-filter">
+                <button class="catalog-filter__btn">
+                    <svg><use href="#filter"></use></svg>
+                    <p>ФИЛЬТРЫ</p>
+                </button>
+            </div>
+        </div>
+        <div class="catalog__products">
+            {% for el in catalog %}
+                <div class="catalog-product">
+                    <a href="{% url 'detail_catalog' el.pk %}">
+                        <img src="/media/{{el.photo}}" alt="Товар" class="catalog-product__image">
+                    </a>
+                    <div class="catalog-product__row">
+                        <h6 class="catalog-product__title">{{el.title}}</h6>
+                        <div class="catalog-product__info">
+                            <p class="catalog-product__price"><span>≈</span>{{el.price}}₽</p>
+                            <svg class="catalog-product__favorite"><use href="#heart"></use></svg>
+                        </div>
+                    </div>
+                    <div class="catalog-product__row">
+                        <p class="catalog-product__desc">{{el.short_desc | safe }}</p>
+                        <a href="{% url 'detail_catalog' el.pk %}" class="catalog-product__link">Обменять</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+    <section class="pagination-button">
+        <div class="container">
+            <button class="pagination-button__btn">Показать  еще</button>
+        </div>
+    </section>
+    <section class="popup popup-filters">
+        <div class="container">
+            <div class="popup-filters__header">
+                <div class="popup-filters__reset">Сбросить фильтры</div>
+                <div class="popup-filters__search search popup-filters-search">
+                    <button class="search__send">
+                    <svg>
+                        <use href="#search"></use>
+                    </svg>
+                    </button><input type="text" class="search__input" placeholder="Поиск товаров...">
+                </div>
+                <input type="submit" class="popup-filters__submit popup__close" value="Применить фильтры">
+            </div>
+            <div class="popup-filters__fields">
+                <p class="popup-filters__subtitle">Примерная стоимость</p>
+                <div class="popup-filters-prices">
+                    <input type="text" placeholder="От ...">
+                    <input type="text" placeholder="До ...">
+                    <label class="popup-filters__checkbox" for="free">
+                        <input id="free" type="checkbox" value="">
+                        <span>Даром</span>
+                    </label>
+                    <div class="popup-filters__location">
+                        <svg><use href="#location"></use></svg>
+                        <p>г. Казань</p>
+                    </div>
+                </div>
+                <div class="popup-filters__checkbox">
+                </div>
+            </div>
+            <div class="popup-filters-categories">
+                <div class="popup-filters-categories__menu">
+                    <p class="popup-filters__subtitle">Категория товара</p>
+                    <ul class="popup-filters-categories__list">
+                        <li>Транспорт</li>
+                        <li>Электроника</li>
+                        <li>Хобби и отдых</li>
+                        <li>Запчасти и аксессуары</li>
+                        <li>Личные вещи</li>
+                        <li>Для дома и дачи</li>
+                    </ul>
+                </div>
+                <div class="popup-filters-categories__blocks">
+                    <ul class="popup-filters-categories__block">
+                        <li>Телефоны</li>
+                        <li>Мобильные телефоны</li>
+                        <li>Аксессуары</li>
+                        <li>Рации</li>
+                        <li>Стационарные телефоны</li>
+                    </ul>
+                    <ul class="popup-filters-categories__block">
+                        <li>Ноутбуки</li>
+                    </ul>
+                    <ul class="popup-filters-categories__block">
+                        <li>Телефоны</li>
+                        <li>Мобильные телефоны</li>
+                        <li>Аксессуары</li>
+                        <li>Рации</li>
+                        <li>Стационарные телефоны</li>
+                    </ul>
+                    <ul class="popup-filters-categories__block">
+                        <li>Телефоны</li>
+                        <li>Мобильные телефоны</li>
+                        <li>Аксессуары</li>
+                        <li>Рации</li>
+                        <li>Стационарные телефоны</li>
+                    </ul>
+                    <ul class="popup-filters-categories__block">
+                        <li>Телефоны</li>
+                        <li>Мобильные телефоны</li>
+                        <li>Аксессуары</li>
+                        <li>Рации</li>
+                        <li>Стационарные телефоны</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<section class="popup popup-auth popup_active">
+    <div class="container">
+      <div class="popup-auth__window">
+        <div class="popup-auth__header">
+          <label class="popup-auth__auth-btn" for="auth">
+            <input name="auth-radio" id="auth" type="radio" style="display: none;" checked>
+            <span>Вход</span>
+          </label>
+          <span>/</span>
+          <label class="popup-auth__register-btn" for="register">
+            <input name="auth-radio" id="register" type="radio" style="display: none;">
+            <a href="{% url 'registrations' %}" class="registartion__link">Регистрация</a>
+          </label>
+          <div class="popup__close popup__cross">
+            <svg><use href="#close"></use></svg>
+          </div>
+        </div>
+        <form method="post" class="popup-auth__form popup-auth__form_auth popup-auth__form_active">
+            {% csrf_token %}
+            {% for f in form %}
+            <div class="form__data">
+                <div class="popup-auth__label">
+                    <label for="{{f.id_for_label}}">{{f.label}}:</label>
+                </div>
+                <div class="popup-auth__input">{{f}}</div>
+            </div>
+            {% endfor %}
+<!--          <input class="popup-auth__input" type="email" placeholder="Эл. почта">
+          <input class="popup-auth__input" type="password" placeholder="Пароль">-->
+          <input class="popup-auth__submit" type="submit" value="Войти">
+          <p class="popup-auth__note">При авторизации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <label>
+            <input type="checkbox" class="alertCheckbox" autocomplete="off"/>
+            <div class="alert error">
+                <span class="alertClose">X</span>
+                <span class="alertText">{{message}}
+        <br class="clear"/></span>
+            </div>
+        </label>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <form class="popup-auth__form popup-auth__form_register">
+          <input class="popup-auth__input" type="email" placeholder="Эл. почта">
+          <input class="popup-auth__input" type="password" placeholder="Пароль">
+          <input class="popup-auth__input" type="password" placeholder="Подтвердите пароль">
+          <input class="popup-auth__submit" type="submit" value="Зарегистрироваться">
+          <p class="popup-auth__note">При регистрации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
+        </form>
+      </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
+    <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
+{% endblock %}
