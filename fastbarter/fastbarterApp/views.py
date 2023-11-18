@@ -63,6 +63,9 @@ def detail_group(request, group_id):
     detail_group = Groups.objects.get(pk=group_id)
     return render(request, 'fastbarterApp/detail-group.html', {'detail_group': detail_group})
 
+def detail_group_post(request):
+    return render(request, 'fastbarterApp/detail-group-post.html')
+
 def new_groups(request):
     groups = Groups.objects.filter()
     return render(request, 'fastbarterApp/new-groups.html', {'groups': groups})
