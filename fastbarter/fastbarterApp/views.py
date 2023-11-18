@@ -18,6 +18,10 @@ def catalog(request):
     catalog = Catalog.objects.filter(is_published=True)
     return render(request, 'fastbarterApp/catalog.html', {'catalog': catalog})
 
+def catalog_login(request):
+    catalog = Catalog.objects.filter(is_published=True)
+    return render(request, 'fastbarterApp/catalog-login.html', {'catalog': catalog})
+
 def help(request):
     return render(request, 'fastbarterApp/help.html')
 
@@ -29,7 +33,6 @@ def reviews(request):
 
 def my_reviews(request):
     return render(request, 'fastbarterApp/account/my-reviews.html')
-
 
 def account(request):
     return render(request, 'fastbarterApp/account/index.html')

@@ -55,6 +55,17 @@
         }
     }
     &-auth {
+        &__alert {
+          display: block;
+          margin: auto;
+          margin-top: 20px;
+          color: red;
+          text-align: center;
+          max-width: 400px;
+          input {
+            display: none;
+          }
+        }
         &__header {
             @include h1;
             text-align: center;
@@ -63,6 +74,10 @@
                 cursor: pointer;
                 input:checked + span {
                     color: $orange;
+                }
+                a {
+                  color: #4D4D4D;
+                  text-decoration: underline
                 }
             }
         }
@@ -74,15 +89,23 @@
                 display: flex;
             }
         }
+        &__label {
+          @include txt16;
+          color: black;
+          margin-top: 20px;
+        }
         &__input {
-            margin-top: 20px;
+          input {
+            margin-top: 10px;
             border: 1px solid $dark-orange;
             width: 384px;
-            height: 41px; 
+            height: 41px;
             @include txt18;
             border-radius: 10px;
             background: transparent;
             padding: 0 10px;
+
+          }
         }
         &__submit {
             @include btn;
