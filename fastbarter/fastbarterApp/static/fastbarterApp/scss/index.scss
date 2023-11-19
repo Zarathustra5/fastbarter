@@ -129,7 +129,7 @@
         margin-top: 20px;
       }
       ul {
-        margin-top: 40px;
+        margin-top: 0;
         flex-direction: column;
         flex-basis: 100%;
         li{
@@ -167,11 +167,21 @@ body.locked{
 /*Главный экран со слайдами----------------------------------------*/
 .main-screen{
     position: relative;
+    @include tablet {
+      margin-top: 150px;
+    }
     &__search {
       margin-top: 30px;
+      max-width: 100%;
+      input {
+        border: 1px solid $orange;
+      }
     }
     &__bg {
       text-align: center;
+      img {
+        max-width: 100%;
+      }
     }
     .container {
       position: absolute;
@@ -184,21 +194,23 @@ body.locked{
       height: 100%;
       width: 100%;
     }
+    &__header {
+      max-width: 100%;
+    }
     &__subtitle,
     &__title {
       span {
         color: #F94E00;
       }
-      text-align: center;
-      font-family: "Sansation";
-      font-size: 36px;
-      font-style: normal;
-      font-weight: 700;
+      @include h1;
       line-height: 20px; /* 55.556% */
-      letter-spacing: 0.5px;
+      text-align: center;
     }
     &__subtitle {
       padding-top: 30px;
+      @include phone {
+        display: none;
+      }
     }
     &__paragraph {
       color: #000;
@@ -226,11 +238,17 @@ body.locked{
     &__text {
         @include h2;
         padding-top: 30px;
+        max-width: 500px;
+        margin: auto;
     }
     background-color: white;
     overflow-x: hidden;
     padding-top: 150px;
     padding-bottom: 154px;
+    @include phone {
+      padding-top: 50px;
+      padding-bottom: 54px;
+    }
   .main-swiper{
     margin-top: 100px;
     padding-bottom: 100px;
@@ -246,6 +264,15 @@ body.locked{
       border-radius:10px;
       height:828px;
       width: 1100px;
+      &:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgb(0,0,0,0.3);
+      }
       @media(max-width:767px){
         height:450px;
       }
@@ -264,9 +291,11 @@ body.locked{
         position:absolute;
         bottom:160px;
         left:50px;
+        z-index: 1;
         @media(max-width:767px){
           left:20px;
-          font-size: 12vw;
+          font-size: 10vw;
+          line-height: 13vw;
         }
       }
     }
@@ -288,6 +317,9 @@ body.locked{
       width:100px;
       height:40px;
       color: white;
+      @include gap {
+        top: 90%
+      }
     }
     &-button-prev{
       left:0;right:115px;
@@ -302,6 +334,10 @@ body.locked{
   margin: auto;
   padding: 100px 0;
   max-width: 960px;
+    @include phone {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
   &__title {
     @include h1;
     text-align: center;
@@ -325,14 +361,23 @@ body.locked{
         & > * {
           flex-basis: 33.333%;
         }
+        @include tablet {
+          flex-direction: column;
+        }
     }
     &-contacts,
     &-links {
       margin-top: 60px;
       display: flex;
       flex-direction: column;
+      @include tablet {
+        align-items: center;
+      }
     }
     &-contacts {
+        @include tablet {
+          order: 2;
+        }
         &__title {
             @include h1;
             border-bottom: 1px solid #E6EAEE;
@@ -357,9 +402,15 @@ body.locked{
           display: flex;
           align-items: flex-end;
           @include txt16;
+          @include tablet {
+            padding-top: 20px;
+          }
         }
     }
     &-links {
+        @include tablet {
+          order: 3;
+        }
       &__nav,
       &__documents {
         a {
@@ -369,6 +420,9 @@ body.locked{
         }
       }
       &__nav {
+          @include tablet {
+            text-align: center;
+          }
           li {
             margin-top: 15px;
             &:first-child {
@@ -380,12 +434,21 @@ body.locked{
           flex: 1 0 auto;
           display: flex;
           align-items: flex-end;
+          @include tablet {
+            margin-top: 20px;
+          }
       }
     }
     &-feedback {
+      @include tablet {
+        order: 1;
+      }
       &-container {
         display: flex;
         justify-content: flex-end;
+        @include tablet {
+          justify-content: center;
+        }
       }
       border-radius: 28px;
       border: 1px solid #000;

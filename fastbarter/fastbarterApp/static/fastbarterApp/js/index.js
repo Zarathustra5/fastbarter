@@ -17,7 +17,6 @@ const sMain = new Swiper('.main-swiper', {
   },
   spaceBetween: 20,
   centeredSlides: true,
-  initialSlide: 1,
 });
 
   /* Accordion */
