@@ -59,7 +59,7 @@
 
 .notification{
   width:1000px;
-  padding: 20px 40px 20px 40px;
+  padding: 10px 20px 10px 20px;
   background: white;
   border-radius: 25px;
   margin:0px 0px 25px 0px;
@@ -67,22 +67,22 @@
   box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
   }
 .notification__text {
-    margin: 8px 27px 0 31px;
+    margin: 8px 27px 0 20px;
     width: 700px;
 }
 .notification__text > p {
   color:#939393;
-  font-size: 16pt;
+  font-size: 18px;
   margin: 10px 10px 10px 10px;
 }
 .ndata {
     color: #292D32;
-    font-size: 20px;
+    font-size: 18px;
     float: right;
 }
 .ntitle{
   	font-family: Sansation;
-	font-size: 19pt;
+	font-size: 24px;
 	font-style: normal;
 	font-weight: 700;
 	line-height: 35px; /* 100% */
@@ -91,7 +91,7 @@
 }
 .notification__image {
     width: 200px;
-    height: 200px;
+    height: 150px;
     background: #BA3B00;
     border-radius: 25px;
     padding: 5px;
@@ -114,7 +114,7 @@ margin: -43px 35px -100px auto;
 .user-img {
     border-radius: 50%;
     width: 120px;
-    height: 120px;
+    height: 100px;
     margin: 7px 39px 7px 36px;
     -o-object-fit: cover;
     object-fit: cover;
