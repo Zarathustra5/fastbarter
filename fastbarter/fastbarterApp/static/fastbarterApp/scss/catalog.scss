@@ -8,6 +8,11 @@
     left: 0;
     right: 0;
     margin: auto;
+    max-width: 100%;
+    @media (max-width: 1730px) {
+      position: relative;
+      order: 1;
+    }
   }
   &__toolbar {
     max-width: 1500px;
@@ -15,11 +20,24 @@
     position: relative;
     justify-content: space-between;
     margin: auto;
+    @media (max-width: 1730px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   &-sort {
     display: flex;
     align-items: center;
     margin-left: -100px;
+    @media (max-width: 1730px) {
+      order: 3;
+      margin-top: 20px;
+      margin-left: 0;
+    }
+    @include gap {
+      flex-direction: column;
+      margin-top: 40px;
+    }
     &__title {
       @include h2;
       padding-right: 20px;
@@ -28,15 +46,40 @@
       @include btn-border;
       height: 46px;
       @include txt16;
+      @include gap {
+        margin-top: 20px;
+      }
       &_price {
         margin-left: 10px;
       }
+      &_active {
+        @include btn;
+        @include txt16;
+        height: 46px;
+        &-cheap {
+          svg:first-child {
+            color: white;
+          }
+          svg:last-child {
+            color: white;
+            opacity: 0.3;
+          }
+        }
+        &-expensive {
+          svg:first-child {
+            color: white;
+            opacity: 0.3;
+          }
+          svg:last-child {
+            color: white;
+          }
+        }
+      }
       svg:first-child {
-        transform: rotate(180deg);
-        color: $orange;
         margin-right: 5px;
       }
       svg:last-child {
+        transform: rotate(180deg);
         margin-left: 5px;
       }
     }
@@ -50,6 +93,10 @@
     }
   }
   &-filter {
+    @media (max-width: 1730px) {
+      order: 2;
+      margin-top: 20px;
+    }
     &__btn {
       @include btn-border;
     }
@@ -70,6 +117,19 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    @include desktop {
+      width: calc(33% - 30px);
+    }
+    @include tablet {
+      width: calc(50% - 30px);
+    }
+    @include gap {
+      width: 100%;
+      max-width: 400px;
+    }
+    &_hidden {
+      display: none;
+    }
     &__info {
       display: flex;
       align-items: center;

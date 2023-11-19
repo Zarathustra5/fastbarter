@@ -41,3 +41,15 @@ function reveal() {
         } else reveals[i].classList.remove('reveal_active');
     }
 }
+
+// Поиск товара
+const searchForm = document.querySelector("#form-search");
+if (searchForm) {
+    searchForm.onsubmit = e => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const search = formData.get("search");
+        const url = window.location.protocol + "//" + window.location.host;
+        window.location = url + "/catalog?s=" + search;
+    }
+}

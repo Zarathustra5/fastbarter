@@ -10,6 +10,11 @@
     align-items: center;
     justify-content: space-between;
     padding-bottom: 20px;
+    @include tablet {
+      border-bottom: 1px solid #E04700;
+      background: rgba(255, 255, 255, 0.70);
+      padding-top: 20px;
+    }
   }
   &__support {
     text-align: center;
@@ -18,6 +23,9 @@
       padding-top: 5px;
       @include txt13;
       color: var(--black-06, rgba(0, 0, 0, 0.60));
+    }
+    @include desktop {
+      display: none;
     }
   }
   &__burger{
@@ -45,13 +53,19 @@
     span{
       top:50%;
     }
-    @media(min-width:768px){
+    @media(min-width:992px){
       display:none;
     }
   }
   &__logo {
     position:relative;
     z-index: 1;
+    @include desktop {
+      display: none;
+    }
+    @include tablet {
+      display: block;
+    }
   }
   .menu {
     padding-top: 0;
@@ -66,6 +80,9 @@
     border-left: 2px solid $dark-orange; 
     background: rgba(255, 255, 255);
     padding: 15px 30px;
+    &-container {
+      margin: auto;
+    }
     &__btn-announce {
       @include btn;
       position:relative;
@@ -102,19 +119,26 @@
       }
     }
   }
-  @media(min-width:768px){
+  @media(min-width:992px){
     .menu{
       display:flex;
       flex:1 1 100%;
     }
   }
-  @media(max-width:767px){
+  @include tablet {
     .header-toolbar {
       &__auth {
         display: none;
       }
     }
     .menu{
+      &__btn-announce {
+        order: 2;
+        padding: 10px;
+        height: auto;
+        max-width: 400px;
+        margin: auto;
+      }
       padding:130px 30px 30px 30px;
       position:fixed;
       top:-1000px;
@@ -133,12 +157,15 @@
         margin-top: 20px;
       }
       ul {
-        margin-top: 40px;
         flex-direction: column;
         flex-basis: 100%;
+        order: 1;
+        margin-left: 0;
         li{
           margin-right: 0;
+          margin-top: 40px;
           a{
+            color: white;
             font-size: 20px;
           }
         }

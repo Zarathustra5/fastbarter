@@ -15,8 +15,9 @@ def detail_catalog(request, catalog_id):
 
 def catalog(request):
     # return HttpResponse('<h4>About</h4>')
+    search = request.GET.get("s")
     catalog = Catalog.objects.filter(is_published=True)
-    return render(request, 'fastbarterApp/catalog.html', {'catalog': catalog})
+    return render(request, 'fastbarterApp/catalog.html', {'catalog': catalog, 'search': search})
 
 def catalog_login(request):
     catalog = Catalog.objects.filter(is_published=True)

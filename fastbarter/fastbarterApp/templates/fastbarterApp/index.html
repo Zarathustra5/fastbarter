@@ -24,7 +24,7 @@
         <li><a href="#faq">Faq</a></li>
         <li><a href="#contacts">Контакты</a></li>
       </ul>
-      <a href="{% url 'catalog' %}" class="header-button">Начать обменивать</a>
+      <a href="{% url 'catalog' %}" class="header-button header-button_mobile">Начать обменивать</a>
     </menu>
     <a href="{% url 'catalog' %}" class="header-button header-button_desktop">Начать обменивать</a>
     <div class="header__burger">
@@ -46,13 +46,13 @@
             <h1 class="main-screen__title"><span>FAST B</span>arter</h1>
             <h2 class="main-screen__subtitle">"Дари.Обменивай.Создавай."</h2>
             <p class="main-screen__paragraph">WEB-Сервис по обмену вещами</p>
-            <div class="main-screen__search search">
-              <button class="search__send">
+            <form id="form-search" class="main-screen__search search">
+              <button class="search__send" type="submit">
                 <svg>
                   <use href="#search"></use>
                 </svg>
-              </button><input type="text" class="search__input" placeholder="Поиск товаров...">
-            </div>
+              </button><input name="search" id="input-search" type="text" class="search__input" placeholder="Поиск товаров...">
+            </form>
           </div>
       </div>
     </section>
