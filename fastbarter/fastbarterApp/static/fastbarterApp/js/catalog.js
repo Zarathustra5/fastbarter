@@ -42,7 +42,7 @@ function searchProduct(search) {
         const textFields = product.querySelectorAll(".catalog-product__search-text");
         textFields.forEach(field => {
             let fieldFormatted = field.textContent.toLowerCase();
-            if (fieldFormatted.includes(search)) {
+            if (fieldFormatted.includes(search.toLowerCase())) {
                 product.classList.remove("catalog-product_hidden");
             }
         });
