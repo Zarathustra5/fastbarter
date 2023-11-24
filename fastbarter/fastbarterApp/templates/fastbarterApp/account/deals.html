@@ -11,6 +11,13 @@
 
 {% block content %}
 <main class="page">
+<div class="navigation"><p>
+    <a href="{% url 'catalog' %}">Главная</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'account' %}">Аккаунт</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'deals' %}">Сделки</a>
+</p></div>
     <div class="container">
       {% include 'fastbarterApp/modules/account-menu.html' %}
       <section class="account">

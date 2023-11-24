@@ -8,13 +8,22 @@
     <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js">
 
     </script>
+
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/analytics.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
 {% block title %} Аналитика {% endblock %}
 
 {% block content %}
 <main class="page">
+<div class="navigation"><p>
+    <a href="{% url 'catalog' %}">Главная</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'account' %}">Аккаунт</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'analytics' %}">Аналитика</a>
+</p></div>
     <div class="container">
       {% include 'fastbarterApp/modules/account-menu.html' %}
       <section class="analytics">
