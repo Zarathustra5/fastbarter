@@ -1,5 +1,5 @@
 .popup {
-    opacity: 0;
+    opacity: 1;
     visibility: hidden;
     position: fixed;
     top: 0;
@@ -188,9 +188,6 @@
         position: relative;
         width: 100%;
         display: flex;
-        &_content{
-          justify-content: center;
-        }
         &__menu {
             width: 500px;
             margin-top: 50px;
@@ -208,6 +205,13 @@
         &__blocks {
             display: flex;
             justify-content: space-between;
+            margin: 0 10px 0 10px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        &__blocks2 {
+            display: flex;
+            justify-content: center;
             margin: 0 10px 0 10px;
             width: 100%;
             flex-wrap: wrap;
