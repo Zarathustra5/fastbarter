@@ -5,13 +5,14 @@
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/deals.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
 {% block title %} Сделки {% endblock %}
 
 {% block content %}
 <main class="page">
-<div class="navigation"><p>
+  <div class="navigation"><p>
     <a href="{% url 'catalog' %}">Главная</a>
     <span>&nbsp;>&nbsp;</span>
     <a href="{% url 'account' %}">Аккаунт</a>

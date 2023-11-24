@@ -5,6 +5,7 @@
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/notifications.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
 {% block title %} Уведомления {% endblock %}
@@ -12,9 +13,13 @@
 {% block content %}
 
 <main class="page">
+  <div class="navigation"><p>
+    <a href="{% url 'catalog' %}">Главная</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'notifications' %}">Уведомления</a>
+</p></div>
     <div class="container" style="display: block;">
       <h1 class="title">Ваши уведомления</h1>
-
        <div class="sort">
                 <svg class="sort__icon"><use href="#sort"></use></svg>
                 <p class="sort__title">Сортировка</p>

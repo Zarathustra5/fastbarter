@@ -5,6 +5,7 @@
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/new-groups.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
 {% block title %} Каталог товаров {% endblock %}
@@ -54,6 +55,11 @@
     </div>
 </div>
 <main class="page">
+    <div class="navigation"><p>
+        <a href="{% url 'main' %}">Главная</a>
+        <span>&nbsp;>&nbsp;</span>
+        <a href="{% url 'help' %}">Сообщества</a>
+    </p></div>
     <section class="catalog">
     <div class="container">
         <div class="catalog__toolbar">

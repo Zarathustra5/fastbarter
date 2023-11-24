@@ -5,6 +5,7 @@
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
     <script src="{% static 'fastbarterApp/js/libs/jquery-3.7.1.min.js' %}"></script>
 {% endblock %}
 
@@ -98,8 +99,179 @@
                 <div class="popup-filters__checkbox">
                 </div>
             </div>
-            <div class="popup-filters-categories">
-                <div class="popup-filters-categories__menu">
+
+            <div class="popup-filters-categories ">
+                <div class="popup-filters-categories__blocks upper-blocks">
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Электроника и техника</p>
+                    </div>
+
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Одежда и обувь</p>
+                    </div>
+
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Дом и быт</p>
+                    </div>
+
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Красота и здоровье</p>
+                    </div>
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Дети и игрушки</p>
+                    </div>
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Книги и музыка</p>
+                    </div>
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Спорт и отдых</p>
+                    </div>
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Хобби и коллекции</p>
+                    </div>
+                    <div class="popup-filters-categories__icon-block">
+                    <svg class="category-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none">
+                        <g filter="url(#filter0_d_1031_5605)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M49.8333 20.8333H47.75V16.6667H24.8333V43.75H35.25V47.1187C35.25 48.2104 35.5021 49.3229 36.2958 50H25.875C25.0458 50 24.2521 49.6708 23.6646 49.0854C23.0792 48.4979 22.75 47.7042 22.75 46.875V15.625C22.75 14.7958 23.0792 14.0021 23.6646 13.4146C24.2521 12.8292 25.0458 12.5 25.875 12.5H46.7083C47.5375 12.5 48.3312 12.8292 48.9188 13.4146C49.5042 14.0021 49.8333 14.7958 49.8333 15.625V20.8333ZM54 25.5208C54 24.0833 52.8333 22.9167 51.3958 22.9167H39.9375C38.5 22.9167 37.3333 24.0833 37.3333 25.5208V47.3958C37.3333 48.8333 38.5 50 39.9375 50H51.3958C52.8333 50 54 48.8333 54 47.3958V25.5208ZM21.9021 50H8.16667L13.5812 43.75H20.6667V47.5083C20.6667 48.7146 21.3687 49.7792 21.9021 50ZM45.6667 47.9167C44.5146 47.9167 43.5833 46.9833 43.5833 45.8333C43.5833 44.6833 44.5146 43.75 45.6667 43.75C46.8167 43.75 47.7479 44.6833 47.7479 45.8333C47.7479 46.9833 46.8167 47.9167 45.6667 47.9167ZM51.9167 41.6667V29.1167H39.4167V41.6667H51.9167ZM47.75 10.4167H43.5833V4.16667H8.16667V35.4167H20.6667V39.5833H4V0H47.75V10.4167ZM46.7083 25H44.625C44.05 25 43.5833 25.4667 43.5833 26.0417C43.5833 26.6167 44.05 27.0833 44.625 27.0833H46.7083C47.2812 27.0833 47.75 26.6167 47.75 26.0417C47.75 25.4667 47.2812 25 46.7083 25Z" fill="#F94E00"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_1031_5605" x="0" y="0" width="58" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1031_5605"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1031_5605" result="shape"/>
+                        </filter></defs></svg>
+                        <p class="category-title">Автомобили и мотоциклы</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popup-filters-categories popup-filters-categories_content">
+                <div class="popup-filters-categories__menu" style="display:none;">
                     <p class="popup-filters__subtitle">Категория товара</p>
                     <ul class="popup-filters-categories__list">
                         <li>Транспорт</li>
@@ -144,6 +316,9 @@
                     </ul>
                 </div>
             </div>
+
+
+
         </div>
     </section>
 </main>
