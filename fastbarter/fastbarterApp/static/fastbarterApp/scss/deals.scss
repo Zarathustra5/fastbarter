@@ -19,7 +19,8 @@
     width: 400px;
   }
   .switch-button{
-     @include txt18-btn;
+     @include h1;
+     font-size:21px;
      background: none;
     }
   .deal {
@@ -222,4 +223,11 @@ left: 30px;
     margin-top: 10px;
     text-align: center;
   }
+}
+.opened{
+  color:#E04700;
+}
+.closed{
+  color:#4D4D4D;
+  text-decoration: underline;
 }

@@ -22,21 +22,26 @@
     <div class="container">
       {% include 'fastbarterApp/modules/account-menu.html' %}
       <section class="account">
-        <h1 class="account__title">Сделки<button class="switch-button" id="open_current" style="color:#E04700; margin-left:200px;" type="submit" onclick="open_current()">Текущие</button>
-        <button style="color:#4D4D4D" class="switch-button" id="open_done" type="submit" onclick="open_done()">Совершенные</button></h1>
+        <h1 class="account__title">Сделки
+        <button class="switch-button opened" id="open_current" style=" margin-left:200px;" type="submit" onclick="open_current()">Текущие</button>
+        <button class="switch-button closed"  id="open_done" type="submit" onclick="open_done()">Совершенные</button></h1>
         <div  class="done" id="done" style="display: none;">
         
         <script>
       function open_done() { 
       document.getElementById('done').style.display='block';
       document.getElementById('current').style.display='none';
-      document.getElementById('open_done').style.color='#E04700';
-      document.getElementById('open_current').style.color='#4D4D4D'; }
+      document.getElementById('open_done').style.classList.remove('opened');
+      document.getElementById('open_done').style.classList.add('closed'); 
+      document.getElementById('open_current').style.classList.add('opened');
+      document.getElementById('open_current').style.classList.remove('closed');  }
       function open_current() { 
       document.getElementById('current').style.display='block';
       document.getElementById('done').style.display='none'; 
-      document.getElementById('open_current').style.color='#E04700';
-      document.getElementById('open_done').style.color='#4D4D4D'; }
+      document.getElementById('open_current').style.classList.remove('opened');
+      document.getElementById('open_current').style.classList.add('closed'); 
+      document.getElementById('open_done').style.classList.add('opened');
+      document.getElementById('open_done').style.classList.remove('closed');  }
       </script>
         <div class="deal">
           <div class="my-announcement">
@@ -147,7 +152,7 @@
       </div>
 
         </div>
-        <div class="current" id="current">cdsdcd
+        <div class="current" id="current">
           <div class="deal">
             <div class="my-announcement">
                 <a href="{% url 'new-product' %}">
