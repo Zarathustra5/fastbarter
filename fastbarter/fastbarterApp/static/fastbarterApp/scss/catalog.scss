@@ -133,6 +133,10 @@
     &__info {
       display: flex;
       align-items: center;
+      input,
+      select {
+        display: none;
+      }
     }
     &__favorite {
       width: 25px;

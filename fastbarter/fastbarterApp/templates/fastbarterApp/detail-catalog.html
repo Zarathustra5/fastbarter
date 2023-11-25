@@ -11,18 +11,21 @@
 
 {% block content %}
 <main class="page">
-    <section class="product">
+    <section class="product" data-id="{{detail_catalog.id}}">
     <div class="container">
         <div class="product-header">
           <div class="product-header__info">
             <div class="product-header__text">
               <span class="product-header__name">{{detail_catalog.title}}</span><span class="product-header__price">≈{{detail_catalog.price}}<font color="#E04700">₽</font></span>
-              <svg class="product__favorite">
-        <!--<use href="#heart"></use>-->
-        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" viewBox="0 0 28 24" fill="none">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.03045 2.53013C3.95671 3.47804 2.4375 5.73268 2.4375 8.42126C2.4375 11.168 3.56152 13.2851 5.17286 15.0996C6.5009 16.595 8.10855 17.8344 9.67641 19.0431C10.0488 19.3303 10.4189 19.6156 10.7826 19.9023C11.4401 20.4206 12.0266 20.8755 12.592 21.2059C13.1576 21.5365 13.613 21.6874 14 21.6874C14.387 21.6874 14.8424 21.5365 15.408 21.2059C15.9734 20.8755 16.5599 20.4206 17.2175 19.9023C17.5811 19.6156 17.9512 19.3303 18.3236 19.0431C19.8915 17.8344 21.4991 16.595 22.8271 15.0996C24.4385 13.2851 25.5625 11.168 25.5625 8.42126C25.5625 5.73268 24.0432 3.47804 21.9695 2.53013C19.9549 1.60924 17.2479 1.85311 14.6755 4.52581C14.4987 4.70943 14.2549 4.81318 14 4.81318C13.7451 4.81318 13.5012 4.70943 13.3245 4.52581C10.7521 1.85311 8.04509 1.60924 6.03045 2.53013ZM14 2.57341C11.1099 -0.0123105 7.8737 -0.374023 5.25095 0.824839C2.48089 2.09104 0.5625 5.03118 0.5625 8.42126C0.5625 11.7531 1.95062 14.295 3.7709 16.3446C5.22859 17.986 7.01277 19.3599 8.58854 20.5731C8.94574 20.8481 9.29222 21.115 9.62177 21.3748C10.2621 21.8795 10.9494 22.4178 11.646 22.8248C12.3424 23.2316 13.137 23.5624 14 23.5624C14.863 23.5624 15.6576 23.2316 16.354 22.8248C17.0506 22.4178 17.7379 21.8795 18.3782 21.3748C18.7077 21.115 19.0542 20.8481 19.4115 20.5731C20.9872 19.3599 22.7714 17.986 24.2291 16.3446C26.0494 14.295 27.4375 11.7531 27.4375 8.42126C27.4375 5.03118 25.5191 2.09104 22.749 0.824839C20.1262 -0.374023 16.8901 -0.0123105 14 2.57341Z" fill="#E40000"/>
-        </svg>
-            </svg>
+              
+                <label for="submit-product">
+                    <svg class="product__favorite{% for elFavorite in favorite %}{% if elFavorite.catalog.id == detail_catalog.id %} product__favorite_active{% else %}{% endif %}{% endfor %}"><use href="#heart"></use></svg>
+                </label>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <input type="text" id="remove-favorite" name="remove_favorite" />
+                    <input id="submit-product" type="submit" />
+                </form>
                 <p class="product-header__date">Товар добавлен {{detail_catalog.created_at}}</p>
 
             </div>
@@ -42,9 +45,9 @@
           <div class="product-about__image">
             <img src="/media/{{detail_catalog.photo}}" alt="slide"><br><br>
               <span class="product-content__category">Категория товара на обмен:</span>
-            <a href="#." class="product-content__link">Телефоны и планшеты</a><br><br>
+            <a href="#." class="product-content__link">{{detail_catalog.category}}</a><br><br>
           <span class="product-content__category">Категория товара:</span>
-            <a href="#." class="product-content__link">Телефоны и планшеты</a>
+            <a href="#." class="product-content__link">{{detail_catalog.category_exchange}}</a>
           <h3 class="product-content__title">Описание товара</h3>
           <p class="product-content__paragraph">{{detail_catalog.short_desc | safe}}</p>
           </div>
@@ -53,10 +56,11 @@
             <p class="product-seller__label">Обменивает</p>
                <div style=" margin: 0px auto 10px auto; width:250px; border-radius: 25px; background-color: #C43E00;">
             <figure class="product-seller__image">
-              <img style="width: 83px; margin: 10px -22px 0 35px;" src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-              <span class="product-seller__name">Ахтямов Чучмек</span>
+              <img style="width: 83px; margin: 10px -22px 0 35px;" src="/media/{{detail_catalog.user.photo}}" alt="slide">
+              <span class="product-seller__name">{{detail_catalog.user.name}}</span>
             </figure>
-            <p class="product-seller__registered">Зарегестрирован: 18.09.2023</p>
+            <p class="product-seller__registered">Зарегестрирован:</p>
+            <p class="product-seller__registered">{{detail_catalog.user.created_at}}</p>
             <a href="{% url 'reviews' %}" class="product-seller__reviews">
               <div class="product-seller__stars">
                 <svg><use href="#star"></use></svg>
@@ -126,4 +130,5 @@ line-height: 20px; /* 95.238% */}
     {% include 'fastbarterApp/footer.html' %}
     <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
     <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
+    <script type="module" src="{% static 'fastbarterApp/js/detail-catalog.js' %}"></script>
 {% endblock %}

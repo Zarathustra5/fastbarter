@@ -12,8 +12,8 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-    list_display = ['surname', 'name', 'phone_number', 'email']
-    list_display_links = ['surname', 'name', 'phone_number', 'email']
+    list_display = ['name', 'city', 'phone_number', 'email', 'photo']
+    list_display_links = ['name', 'city', 'phone_number', 'email', 'photo']
 
     add_fieldsets = (
         *UserAdmin.add_fieldsets,
@@ -21,10 +21,11 @@ class CustomUserAdmin(UserAdmin):
             'Пользовательская информация',
             {
                 'fields': (
-                    'surname',
                     'name',
+                    'city',
                     'phone_number',
                     'status',
+                    'photo',
                 )
             }
         )
@@ -35,10 +36,11 @@ class CustomUserAdmin(UserAdmin):
             'Пользовательская информация',
             {
                 'fields': (
-                    'surname',
                     'name',
+                    'city',
                     'phone_number',
                     'status',
+                    'photo',
                 )
             }
         )

@@ -1,3 +1,4 @@
+/*
 let favoriteBtns = document.querySelectorAll(".catalog-product__favorite");
 favoriteBtns.forEach(el => {
     el.onclick = () => {
@@ -11,6 +12,25 @@ if (productFavoriteBtn) {
         productFavoriteBtn.classList.toggle("product__favorite_active");
     }
 }
+*/
+
+let products = document.querySelectorAll(".catalog-product");
+products.forEach(el => {
+    let favoriteBtn = el.querySelector(".catalog-product__favorite");
+    if (favoriteBtn.classList.contains("catalog-product__favorite_active")) {
+        let id = el.getAttribute("data-id");
+        let removeFavoriteInput = el.querySelector("#remove-favorite");
+        removeFavoriteInput.value = id;
+    } else {
+        let options = el.querySelectorAll("#id_catalog option");
+        let title = el.querySelector(".catalog-product__title");
+        options.forEach(option => {
+            if (option.textContent == title.textContent) {
+                option.selected = true;
+            }
+        });
+    }
+});
 
 let popupFilters = document.querySelector(".popup-filters");
 let filtersBtn = document.querySelector(".catalog-filter__btn");
