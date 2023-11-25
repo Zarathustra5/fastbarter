@@ -25,32 +25,29 @@
         <h1 class="edit-profile__title">Настройки профиля</h1>
         <form action="" class="edit-profile__form profile-form">
             <div class="profile-form__fields">
-                <label for="surname">
-                    <span>Фамилия</span>
-                    <input type="text" id="surname" value="Иванов">
-                </label>
-                <label for="surname">
+                <label for="name">
                     <span>Имя</span>
-                    <input type="text" id="name" value="Иван">
+                    <input type="text" id="name" value="{{ user.name }}" placeholder="Введите имя"> 
                 </label>
                 <label for="location">
                     <span>Город</span>
                     <select name="location" id="location">
-                        <option value="">Казань</option>
-                        <option value="">Москва</option>
-                        <option value="">Санкт-Петербург</option>
-                        <option value="">Самара</option>
-                        <option value="">Екатеринбург</option>
-                        <option value="">Краснодар</option>
+                        <option value="null">Не выбрано</option>
+                        <option value="kazan">Казань</option>
+                        <option value="moscow">Москва</option>
+                        <option value="petersburg">Санкт-Петербург</option>
+                        <option value="samara">Самара</option>
+                        <option value="ekaterinburg">Екатеринбург</option>
+                        <option value="krasnodar">Краснодар</option>
                     </select> 
                 </label>
                 <label for="phone">
                     <span>Телефон</span>
-                    <input type="text" id="phone" value="+7 (933) 333-33-33">
+                    <input type="text" id="phone" value="{{ user.phone }}" placeholder="Введите номер телефона">
                 </label>
                 <label for="email">
                     <span>Эл.почта</span>
-                    <input type="email" id="email" value="mail@mail.ru">
+                    <input type="email" id="email" value="{{ user.email }}" placeholder="Введите email" disabled>
                 </label>
             </div>
             <div class="profile-form__avatar">
@@ -61,6 +58,17 @@
                 <input type="file" id="avatar" style="display: none;">
                 <input class="profile-form__submit" type="submit" value="Сохранить изменения">
             </div>
+        </form>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+            <p>
+            {{ error }}
+            </p>
+            <p>
+            {{ answer}}
+            </p>
         </form>
       </section>
     </div>

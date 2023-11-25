@@ -20,6 +20,8 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from users.views import SignUpView, LoginUser
+
 urlpatterns = [
     path('', views.index, name="index"),
     path('catalog', views.catalog, name="catalog"),
@@ -43,6 +45,7 @@ urlpatterns = [
     path('new-groups', views.new_groups, name="new-groups"),
     path('detail-group-post', views.detail_group_post, name="detail-group-post"),
     path('new-groups/<int:group_id>/', views.detail_group, name="detail_group"),
+    path('accounts/login/', LoginUser.as_view(), name='login'),
 ]
 
 if settings.DEBUG:

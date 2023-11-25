@@ -17,27 +17,43 @@
         <span>&nbsp;>&nbsp;</span>
         <a href="{% url 'favorite' %}">Избранное</a>
     </p></div>
-    <section class="favorite">
+    <section class="catalog">
     <div class="container">
-        <div class="favorite__toolbar">
-            <h1 class="favorite__title">Избранное</h1>
+        <div class="catalog__toolbar">
+            <h1 class="catalog__title">Избранное</h1>
         </div>
-        <div class="favorite__products">
-            {% for el in catalog %}
-                <div class="favorite-product">
-                    <a href="{% url 'detail_catalog' el.pk %}">
-                        <img src="/media/{{el.photo}}" alt="Товар" class="favorite-product__image">
+        <div class="catalog__products">
+            {% for el in favorite %}
+                <div class="catalog-product" data-id="{{el.catalog.id}}">
+                    {% if el.catalog.pk %}
+                        <a href="{% url 'detail_catalog' el.catalog.pk %}">
+                    {% else %}
+                        <a href="{% url 'detail_catalog' el.pk %}">
+                    {% endif %}
+                        <img src="/media/{{el.catalog.photo}}" alt="Товар" class="catalog-product__image">
                     </a>
-                    <div class="favorite-product__row">
-                        <h6 class="favorite-product__title">{{el.title}}</h6>
-                        <div class="favorite-product__info">
-                            <p class="favorite-product__price"><span>≈</span>{{el.price}}₽</p>
-                            <svg class="favorite-product__favorite favorite-product__favorite_active"><use href="#heart"></use></svg>
+                    <div class="catalog-product__row">
+                        <h6 class="catalog-product__title">{{el.catalog.title}}</h6>
+                        <div class="catalog-product__info">
+                            <p class="catalog-product__price"><span>≈</span>{{el.catalog.price}}₽</p>
+                            <label for="submit-catalog-{{el.catalog.id}}">
+                                <svg class="catalog-product__favorite catalog-product__favorite_active"><use href="#heart"></use></svg>
+                            </label>
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <input type="text" id="remove-favorite" name="remove_favorite" />
+                                {{form.catalog}}
+                                <input id="submit-catalog-{{el.catalog.id}}" type="submit" />
+                            </form>
                         </div>
                     </div>
-                    <div class="favorite-product__row">
-                        <p class="favorite-product__desc">{{el.short_desc | safe }}</p>
-                        <a href="{% url 'detail_catalog' el.pk %}" class="favorite-product__link">Обменять</a>
+                    <div class="catalog-product__row">
+                        <p class="catalog-product__desc">{{el.catalog.short_desc | safe }}</p>
+                        {% if el.catalog.pk %}
+                            <a href="{% url 'detail_catalog' el.catalog.pk %}" class="catalog-product__link">Обменять</a>
+                        {% else %}
+                            <a href="{% url 'detail_catalog' el.pk %}" class="catalog-product__link">Обменять</a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

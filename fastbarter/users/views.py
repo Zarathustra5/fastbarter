@@ -9,7 +9,7 @@ from users.forms import CustomUserCreationForm
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'fastbarterApp/catalog-signup.html'
+    template_name = 'fastbarterApp/signup.html'
 
     # Функция для кастомной валидации полей формы модели
     def form_valid(self, form):
@@ -35,7 +35,7 @@ class SignUpView(CreateView):
 
 class LoginUser(SuccessMessageMixin, LoginView):
     form_class = AuthenticationForm
-    template_name = 'fastbarterApp/catalog-login.html'
+    template_name = 'fastbarterApp/login.html'
     success_message = 'Успешная авторизация'
 
     def get_context_data(self, *, object_list=None, **kwargs):

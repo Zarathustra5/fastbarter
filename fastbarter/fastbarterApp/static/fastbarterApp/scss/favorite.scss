@@ -1,6 +1,6 @@
 @import "modules/modules.scss";
 
-.favorite{
+.catalog{
   &__title {
     @include h1;
     padding-left: 300px;
@@ -16,6 +16,10 @@
     &__info {
       display: flex;
       align-items: center;
+      input,
+      select {
+        display: none;
+      }
     }
     &__favorite {
       width: 25px;

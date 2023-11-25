@@ -12,6 +12,9 @@
     @include h2;
   }
   &__price {
+    &::after {
+      content: "₽"
+    }
     .new-product__checkbox {
       display: inline-flex;
       align-items: center;
@@ -26,6 +29,7 @@
       }
     }
   }
+  &__select select,
   &__input {
     margin-left: 20px;
     border: 1px solid $dark-orange;
@@ -38,8 +42,12 @@
   &__row {
     padding-top: 20px;
   }
+  &__message {
+    color: green;
+    text-align: center;
+  }
   &__images {
-    input#image {
+    input#id_photo {
       display: none;
     }
   }

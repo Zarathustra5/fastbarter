@@ -4,7 +4,7 @@
   <div class="account-user">
     <figure class="account-user__image">
       <img src="{% static 'fastbarterApp/img/slide2.jpg' %}">
-      <figcaption class="account-user__name">Новый пользователь</figcaption>
+      <figcaption class="account-user__name">{% if user.name %}{{ user.name }}{% else %}Новый <br> пользователь{% endif %}</figcaption>
     </figure>
     <a href="{% url 'reviews' %}" class="account-user__reviews">
       <div class="account-user__stars">
@@ -16,7 +16,7 @@
       </div>
       <p class="account-user__reviews-score">4.1</p>
     </a>
-    <p class="account-user__registered">Зарегестрирован: 18.11.2023 ({{user.email}})</p>
+    <p class="account-user__registered">Зарегестрирован: 18.11.2023</p>
     <a href="{% url 'logout' %}" class="account-user__exit" style="display: block;">Выйти из акаунта</p>
   </div>
   <nav class="account-nav">

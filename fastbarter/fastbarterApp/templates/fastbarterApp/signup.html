@@ -5,16 +5,13 @@
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/catalog.css' %}">
-    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
 {% block title %} Каталог товаров {% endblock %}
 
 {% block content %}
 <main class="page">
-    <div class="navigation"><p>
-        <a href="{% url 'catalog' %}">Главная</a>
-    </p></div>
+    
     <section class="catalog">
     <div class="container">
         <div class="catalog__toolbar">
@@ -153,19 +150,19 @@
       <div class="popup-auth__window">
         <div class="popup-auth__header">
           <label class="popup-auth__auth-btn" for="auth">
-            <input name="auth-radio" id="auth" type="radio" style="display: none;" checked>
-            <span>Вход</span>
+            <input name="auth-radio" id="auth" type="radio" style="display: none;">
+            <a href="{% url 'login' %}" class="registartion__link">Вход</a>
           </label>
           <span>/</span>
           <label class="popup-auth__register-btn" for="register">
-            <input name="auth-radio" id="register" type="radio" style="display: none;">
-            <a href="{% url 'registrations' %}" class="registartion__link">Регистрация</a>
+            <input name="auth-radio" id="register" type="radio" style="display: none;" checked>
+            <span>Регистрация</span>
           </label>
-          <div class="popup__close popup__cross">
+          <div class="popup__cross" onclick="history.back();">
             <svg><use href="#close"></use></svg>
           </div>
         </div>
-        <form method="post" class="popup-auth__form popup-auth__form_auth popup-auth__form_active">
+        <form method="post" class="popup-auth__form popup-auth__form_auth">
             {% csrf_token %}
             {% for f in form %}
             <div class="form__data">
@@ -180,10 +177,23 @@
           <input class="popup-auth__submit" type="submit" value="Войти">
           <p class="popup-auth__note">При авторизации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
         </form>
+        <form method="post" class="popup-auth__form popup-auth__form_register popup-auth__form_active">
+            {% csrf_token %}
+            {% for f in form %}
+            <div class="form__data">
+                <div class="popup-auth__label">
+                    <label for="{{f.id_for_label}}">{{f.label}}:</label>
+                </div>
+                <div class="popup-auth__input">{{f}}</div>
+            </div>
+            {% endfor %}
+          <input class="popup-auth__submit" type="submit" value="Зарегистрироваться">
+          <p class="popup-auth__note">При регистрации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
+        </form>
         {% if messages %}
         {% for message in messages %}
         {% if message.tags == 'error' %}
-        <label>
+        <label class="popup-auth__alert">
             <input type="checkbox" class="alertCheckbox" autocomplete="off"/>
             <div class="alert error">
                 <span class="alertClose">X</span>
@@ -194,13 +204,6 @@
         {% endif %}
         {% endfor %}
         {% endif %}
-        <form class="popup-auth__form popup-auth__form_register">
-          <input class="popup-auth__input" type="email" placeholder="Эл. почта">
-          <input class="popup-auth__input" type="password" placeholder="Пароль">
-          <input class="popup-auth__input" type="password" placeholder="Подтвердите пароль">
-          <input class="popup-auth__submit" type="submit" value="Зарегистрироваться">
-          <p class="popup-auth__note">При регистрации вы соглашаетесь с <a href="#.">условиями использования</a> FastBarter и <a href="#.">политикой обработки данных</a>.</p>
-        </form>
       </div>
     </div>
 </section>

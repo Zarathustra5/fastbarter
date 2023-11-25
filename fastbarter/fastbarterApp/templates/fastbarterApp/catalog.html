@@ -42,7 +42,7 @@
         </div>
         <div class="catalog__products">
             {% for el in catalog %}
-                <div class="catalog-product" data-price="{{el.price}}">
+                <div class="catalog-product" data-price="{{el.price}}" data-id="{{el.id}}">
                     <a href="{% url 'detail_catalog' el.pk %}">
                         <img src="/media/{{el.photo}}" alt="Товар" class="catalog-product__image">
                     </a>
@@ -50,7 +50,15 @@
                         <h6 class="catalog-product__title catalog-product__search-text">{{el.title}}</h6>
                         <div class="catalog-product__info">
                             <p class="catalog-product__price"><span>≈</span>{{el.price}}₽</p>
-                            <svg class="catalog-product__favorite"><use href="#heart"></use></svg>
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <label for="submit-favorite-{{el.id}}">
+                                    <svg class="catalog-product__favorite{% for elFavorite in favorite %}{% if elFavorite.catalog.id == el.id %} catalog-product__favorite_active{% else %}{% endif %}{% endfor %}"><use href="#heart"></use></svg>
+                                </label>
+                                <input type="text" id="remove-favorite" name="remove_favorite" />
+                                {{form.catalog}}
+                                <input id="submit-favorite-{{el.id}}" type="submit" />
+                            </form>
                         </div>
                     </div>
                     <div class="catalog-product__row">
