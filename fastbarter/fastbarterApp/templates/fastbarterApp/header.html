@@ -72,9 +72,20 @@
       <div class="popup-deals__window">
         <div class="popup-deals__header">
           <h3 class="popup-deals__title">Обмен товаров</h3>
+          
           <div class="popup__close popup__cross">
             <svg><use href="#close"></use></svg>
           </div>
+
+          </div>
+          <div class="reviewer">
+            <figure class="reviewer__image">
+              <img src="/static/fastbarterApp/img/slide1.jpg">
+            </figure>
+            <div class="reviewer__info">
+              <h4 class="reviewer__name">Шавалиев Альберт</h4>
+            </div>
+              <h4 class="reviewer__name">Ваш товар</h4>
         </div>
         <div class="popup-deals__body">
         <div class="my-announcements">
@@ -92,8 +103,7 @@
                   <p class="my-announcement__desc">Говорящий сом для большого аквариума</p>
               </div>
           </div>
-           <img class="arrows" src="{% static 'fastbarterApp/img/arrows.png' %}">
-
+           <svg class="arrows"><use href="#exchange"></use></svg>
             <div class="my-announcement">
               <a href="{% url 'new-product' %}">
                   <img src="{% static 'fastbarterApp/img/sailentblock.webp' %}" alt="Товар" class="my-announcement__image">
@@ -110,8 +120,13 @@
           </div>
         </div>
         <div class="popup-deals__footer">
+          <label class="popup-deals__change" for="change">Изменить товар</label>
+          <input class="popup-deal" type="submit" id="change" style="display: none;">
+        </div>
+        <div class="popup-deals__footer">
+
           <button class="popup__close popup-deals__cancel">Отмена</button>
-          <input class="popup-deals__submit" type="submit" value="Подтвердить обмен">
+          <input class="popup-deals__submit" type="submit" value="Предложить обмен">
         </div>
       </div>
     </div>

@@ -188,3 +188,10 @@ line-height: 24px;
     }
   }
 }
+.popup-deals__change {
+  width: 300px;
+  margin-right: 20px;
+  margin-top: -20px;
+  @include btn-border;
+  height: 50px;
+}
