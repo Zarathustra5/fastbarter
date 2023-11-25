@@ -5,12 +5,20 @@
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/detail-group.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
 {% block title %} Сообщества {% endblock %}
 
 {% block content %}
 <main class="page">
+  <div class="navigation"><p>
+    <a href="{% url 'main' %}">Главная</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'new-group' %}">Сообщества</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'new-group' %}">Группа</a>
+</p></div>
     <section class="product">
     <div class="container">
         <div class="product-header">

@@ -5,13 +5,25 @@
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/detail-group-post.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto&family=Roboto+Condensed&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
 {% block title %} Комментарии к записи {% endblock %}
 
 {% block content %}
 <main class="page">
-
+<div class="navigation"><p>
+      <a href="{% url 'catalog' %}">Главная</a>
+  <span>&nbsp;>&nbsp;</span>
+  <a href="{% url 'new-groups' %}">Сообщества</a>
+  <span>&nbsp;>&nbsp;</span>
+  <a href="{% url 'detail_group' 1 %}">Нумизматы</a>
+  <span>&nbsp;>&nbsp;</span>
+  <a href="{% url 'detail-group-post' %}">Комментарии</a>
+</p></div>
     <h3 class="product-content__title">Комментарии к записи</h3>
     <section class="product">
     <div class="container">
@@ -81,10 +93,72 @@
               </div>
             </div>
           </div>
+          <form action="" class="edit-profile__form profile-form">
+
+              <img class="comment__image" src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
+                <label for="report_text">
+                    <textarea class="form-check-input" type="text" placeholder="Написать комметнарий..." id="report_text"></textarea>
+                </label>
+                <input class="profile-form__submit" type="submit" value="">
+            <div class="send-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 37 37" fill="none">
+  <path d="M14.551 6.77342L27.391 13.1934C33.151 16.0734 33.151 20.7834 27.391 23.6634L14.551 30.0834C5.91104 34.4034 2.38604 30.8634 6.70604 22.2384L8.01104 19.6434C8.34104 18.9834 8.34104 17.8884 8.01104 17.2284L6.70604 14.6184C2.38604 5.99342 5.92604 2.45342 14.551 6.77342Z" stroke="#E04700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8.44629 18.4285H16.5463" stroke="#E04700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div>
+<svg class="attach" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="20px" height="20px" viewBox="0 0 612.675 612.675" style="enable-background:new 0 0 612.675 612.675;"
+	 xml:space="preserve">
+<g>
+	<g id="_x34__17_">
+		<g>
+			<path d="M581.209,223.007L269.839,530.92c-51.592,51.024-135.247,51.024-186.839,0c-51.592-51.023-51.592-133.737,0-184.761
+				L363.248,69.04c34.402-34.009,90.15-34.009,124.553,0c34.402,34.008,34.402,89.166,0,123.174l-280.249,277.12
+				c-17.19,17.016-45.075,17.016-62.287,0c-17.19-16.993-17.19-44.571,0-61.587L394.37,161.42l-31.144-30.793L114.144,376.975
+				c-34.402,34.009-34.402,89.166,0,123.174c34.402,34.009,90.15,34.009,124.552,0l280.249-277.12
+				c51.592-51.023,51.592-133.737,0-184.761c-51.593-51.023-135.247-51.023-186.839,0L36.285,330.784l1.072,1.071
+				c-53.736,68.323-49.012,167.091,14.5,229.88c63.512,62.79,163.35,67.492,232.46,14.325l1.072,1.072l326.942-323.31
+				L581.209,223.007z"/>
+		</g>
+	</g>
+</g>
+</svg>
+        </form>
         </div>
     </div>
     </section>
 </main>
+<style>
+  .profile-form{
+   margin-top:50px;
+   display:flex;
+   align-items:center;
+}
+.attach{
+display:none;
+z-index:10;
+}
+.send-btn{
+  margin-left:20px;
+  width:60px;
+  height:60px;
+  border-radius: 30px;
+background: #FFF;
+box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.25);
+   background-color:white;
+  }
+  .send-btn svg{
+   color:#E04700;
+   margin:10px 10px 10px 11px;
+  }
+  .form-check-input {
+    padding: 20px;
+        width: 700px;
+        height: 110px;
+        background-color: white;
+        border-radius: 30px;
+        border: 1px solid #BA3B00;
+}
+</style>
 {% endblock %}
 
 {% block footer %}

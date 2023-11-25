@@ -5,12 +5,20 @@
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/edit-profile.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
 {% block title %} Редактирование профиля {% endblock %}
 
 {% block content %}
 <main class="page">
+    <div class="navigation"><p>
+        <a href="{% url 'catalog' %}">Главная</a>
+        <span>&nbsp;>&nbsp;</span>
+        <a href="{% url 'account' %}">Аккаунт</a>
+        <span>&nbsp;>&nbsp;</span>
+        <a href="{% url 'edit-profile' %}">Редактирование профиля</a>
+    </p></div>
     <div class="container">
       {% include 'fastbarterApp/modules/account-menu.html' %}
       <section class="edit-profile">
