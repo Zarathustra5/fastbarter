@@ -23,15 +23,17 @@
       {% include 'fastbarterApp/modules/account-menu.html' %}
       <section class="edit-profile">
         <h1 class="edit-profile__title">Настройки профиля</h1>
-        <form action="" class="edit-profile__form profile-form">
+        <form class="edit-profile__form profile-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="profile-form__fields">
-                <label for="name">
+                <label for="id_name">
                     <span>Имя</span>
-                    <input type="text" id="name" value="{{ user.name }}" placeholder="Введите имя"> 
+                    {{ form.name }}
                 </label>
                 <label for="location">
                     <span>Город</span>
-                    <select name="location" id="location">
+                    {{ form.city }}
+                    <select name="location" id="location" style="display: none;">
                         <option value="null">Не выбрано</option>
                         <option value="kazan">Казань</option>
                         <option value="moscow">Москва</option>
@@ -41,34 +43,29 @@
                         <option value="krasnodar">Краснодар</option>
                     </select> 
                 </label>
-                <label for="phone">
+                <label for="id_phone_number">
                     <span>Телефон</span>
-                    <input type="text" id="phone" value="{{ user.phone }}" placeholder="Введите номер телефона">
+                    {{ form.phone_number }}
                 </label>
-                <label for="email">
+                <label for="id_email">
                     <span>Эл.почта</span>
-                    <input type="email" id="email" value="{{ user.email }}" placeholder="Введите email" disabled>
+                    {{ form.email }}
                 </label>
             </div>
             <div class="profile-form__avatar">
                 <figure class="profile-form__avatar-image">
-                    <img src="{% static 'fastbarterApp/img/slide2.jpg' %}">
+                    {% if user.photo %}
+                        <img src="/media/{{user.photo}}">
+                    {% else %}
+                        <img src="{% static 'fastbarterApp/img/slide2.jpg' %}">
+                    {% endif %}
                 </figure>
-                <label class="profile-form__avatar-btn" for="avatar">Изменить фото профиля</label>
-                <input type="file" id="avatar" style="display: none;">
+                <label class="profile-form__avatar-btn" for="id_photo">Изменить фото профиля</label>
+                <span class="profile-form__avatar-input">
+                    {{ form.photo }}
+                </span>
                 <input class="profile-form__submit" type="submit" value="Сохранить изменения">
             </div>
-        </form>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Submit">
-            <p>
-            {{ error }}
-            </p>
-            <p>
-            {{ answer}}
-            </p>
         </form>
       </section>
     </div>

@@ -6,6 +6,9 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ('name', 'city', 'phone_number', 'email', 'photo')
+        widgets = {
+            'short_desc': forms.Textarea(attrs={'cols': 30, 'rows': 10})
+        }
 
 class NewProductForm(forms.ModelForm):
     class Meta:

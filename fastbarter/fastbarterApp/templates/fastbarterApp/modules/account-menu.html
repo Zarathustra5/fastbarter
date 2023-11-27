@@ -3,7 +3,11 @@
 <aside class="account-menu">
   <div class="account-user">
     <figure class="account-user__image">
-      <img src="{% static 'fastbarterApp/img/slide2.jpg' %}">
+      {% if user.photo %}
+          <img src="/media/{{user.photo}}">
+      {% else %}
+          <img src="{% static 'fastbarterApp/img/slide2.jpg' %}">
+      {% endif %}
       <figcaption class="account-user__name">{% if user.name %}{{ user.name }}{% else %}Новый <br> пользователь{% endif %}</figcaption>
     </figure>
     <a href="{% url 'reviews' %}" class="account-user__reviews">

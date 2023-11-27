@@ -17,9 +17,10 @@ def index(request):
 
 def detail_catalog(request, catalog_id):
     detail_catalog = Catalog.objects.get(pk=catalog_id)
-    favorite = Favorite.objects.filter(user=request.user)
+    favorite = ""
 
     if request.user.is_authenticated & (request.method == "POST"):
+        favorite = Favorite.objects.filter(user=request.user)
         if request.POST["remove_favorite"]:
             Favorite.objects.filter(user=request.user, catalog_id=catalog_id).delete()
         else:
@@ -99,7 +100,7 @@ def edit_profile(request):
         form.save()
 
     else:
-        form = EditProfileForm()
+        form = EditProfileForm(initial={'name': request.user.name, 'phone_number': request.user.phone_number, 'email': request.user.email })
 
     return render(request, "fastbarterApp/account/edit-profile.html", {"form": form})
 
