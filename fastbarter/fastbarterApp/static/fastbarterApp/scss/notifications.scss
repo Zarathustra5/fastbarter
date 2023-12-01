@@ -4,7 +4,6 @@
 .page {
   & > .container {
     align-items:center;
-    width:1060px;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -20,12 +19,15 @@
       margin-left:50px;
       }
 .sort {
-    width: 340px;
+    width:320px;
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     margin-left: 100px;
+    @include phone {
+      margin-left: 30px;
+    }
     &__title {
       @include h2;
       padding-right: 20px;
@@ -58,13 +60,24 @@
 
 
 .notification{
-  width:1000px;
+  width:960px;
   padding: 10px 20px 10px 20px;
   background: white;
   border-radius: 25px;
   margin:0px 0px 25px 0px;
   display:flex;
   box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.2);
+      margin-left: auto;
+    margin-right: auto;
+    @include tablet {
+      width: calc(80% - 30px);
+    }
+    @include gap {
+    width: calc(100% - 30px);
+    }
+    @include phone {
+    width: calc(100% - 20px);
+    }
   }
 .notification__text {
     margin: 8px 27px 0 20px;
@@ -79,44 +92,76 @@
     color: #292D32;
     font-size: 18px;
     float: right;
+    @include tablet {
+      	font-size: 14px;
+    }
 }
 .ntitle{
   	font-family: Sansation;
 	font-size: 24px;
 	font-style: normal;
 	font-weight: 700;
-	line-height: 35px; /* 100% */
-	letter-spacing: 0.5px;
+	 /*line-height: 35px; 100%
+	letter-spacing: 0.5px;*/
 	margin-left:-10px;
+	@include tablet {
+      	font-size: 20px;
+    }
+    @include gap {
+      	font-size: 16px;
+    }
 }
 .notification__image {
     width: 200px;
-    height: 150px;
+    min-height:140px;
+    display:flex;
+    flex-direction:column;
     background: #BA3B00;
     border-radius: 25px;
-    padding: 5px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
     box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.3);
+    @include gap {
+      	width: 130px;
+      	padding: 10px;
+    }
 }
 .notification__image > span {
-    height: 50px;
-    width: 190px;
     font: italic bold 20px/30px Sansation, serif;
     color: white;
     text-align: center;
     display: block;
+    margin: auto;
 }
 .count{
 color:#444;
 margin-right:150px;
 float:right;
 margin: -43px 35px -100px auto;
+    @include tablet {
+    margin: -43px 130px -100px auto;
+    text-align: center;
+    }
+    @include gap {
+    margin: 0 30px 32px 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    }
 }
 .user-img {
     border-radius: 50%;
-    width: 120px;
-    height: 100px;
-    margin: 7px 39px 7px 36px;
+    height:110px;
+    max-height: auto;
+    margin: 10px auto 0 auto;
     -o-object-fit: cover;
     object-fit: cover;
     box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.4);
+    @include tablet {
+    width:110px;
+    height:110px;
+    object-fit:cover;
+        margin: auto;
+        text-align: center;
+    }
 }

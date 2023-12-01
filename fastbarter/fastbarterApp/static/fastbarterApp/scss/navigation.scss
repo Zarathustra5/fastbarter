@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto&family=Roboto+Condensed&display=swap');
+@import "modules/modules.scss";
 .navigation{
 margin:-35px 0 25px 28%;
+    @include gap {
+        margin:-35px 0 25px 0;
+        justify-content: center;
+        display: flex;
+    }
 }
 .navigation a{
 color: #4D4D4D;

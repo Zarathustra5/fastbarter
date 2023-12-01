@@ -92,7 +92,7 @@
                     <a href="{% url 'detail_group' el.pk %}">
                         <img src="/media/{{el.photo}}" alt="Товар" class="catalog-product__image">
                     </a>
-                    <div class="catalog-product__row">
+                    <div class="catalog-product__row catalog-product__top">
                         <div class="catalog-product__header">
                           <h6 class="catalog-product__title">{{el.title}}</h6>
                           <p class="catalog-product__participants"><span>{{el.members_count}}</p>
@@ -101,7 +101,7 @@
                           <p class="catalog-product__desc">{{el.short_desc | safe }}</p>
                         </div>
                     </div>
-                    <div class="catalog-product__row">
+                    <div class="catalog-product__row catalog-product__bottom">
 <div class="dropdown">
  <a href="#"><svg><use href="#more"></use></svg></a>
     <div class="dropdown-content">
