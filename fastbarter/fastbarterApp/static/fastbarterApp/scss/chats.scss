@@ -218,6 +218,15 @@
         width: 900px;
         padding: 0 30px;
         &__input {
+            &-container {
+                flex: 1 0 auto;
+                position: relative;
+                width: 593px;
+            }
+            width: 100%;
+        }
+        &__input input {
+            width: 100%;
             height: 41px;
             border-radius: 30px;
             background: #FFF;
@@ -225,12 +234,6 @@
             padding: 0 30px;
             @include txt16;
             color: #9E9E9E; 
-            width: 100%;
-            &-container {
-                flex: 1 0 auto;
-                position: relative;
-                width: 593px;
-            }
         }
         &__attach {
             position: absolute;

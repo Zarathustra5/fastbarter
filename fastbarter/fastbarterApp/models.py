@@ -12,16 +12,6 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
-
-class Category_exchange(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Название категории')
-
-    def __str__(self):
-        return f'{self.name}'
-    
-    class Meta:
-        verbose_name = 'Категория на обмен'
-        verbose_name_plural = 'Категории на обмен'
     
 
 class Catalog(models.Model):
@@ -31,7 +21,7 @@ class Catalog(models.Model):
     price = models.CharField(max_length=255, verbose_name='Примерная цена')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
     category = models.ForeignKey(Category, verbose_name='Категория товара', on_delete=models.CASCADE, blank=True, null=True)
-    category_exchange = models.ForeignKey(Category_exchange, verbose_name='Категория товара на обмен', on_delete=models.CASCADE, blank=True, null=True)
+    category_exchange = models.ForeignKey(Category, verbose_name='Категория товара на обмен', on_delete=models.CASCADE, blank=True, null=True,related_name="category_exchange")
     is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
     is_favorite = models.BooleanField(default=False, verbose_name='Избранное')
     user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE, blank=True, null=True)
@@ -68,3 +58,40 @@ class Favorite(models.Model):
     class Meta:
         verbose_name = 'Избранный товар'
         verbose_name_plural = 'Избранные товары'
+
+class Reviews(models.Model):
+    catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)
+    userFrom = models.ForeignKey(CustomUser, verbose_name='Пользователь, оставивший отзыв', on_delete=models.CASCADE, blank=True, null=True, related_name="user_from")
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь, которому оставили отзыв', on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.catalog}'
+    
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+
+class Chats(models.Model):
+    user1 = models.ForeignKey(CustomUser, verbose_name='Пользователь 1', on_delete=models.CASCADE, blank=True, null=True)
+    user2 = models.ForeignKey(CustomUser, verbose_name='Пользователь 2', on_delete=models.CASCADE, blank=True, null=True, related_name="user2")
+    catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.catalog}'
+    
+    class Meta:
+        verbose_name = 'Чат'
+        verbose_name_plural = 'Чаты'
+
+class Messages(models.Model):
+    user = models.ForeignKey(CustomUser, verbose_name='Отправитель', on_delete=models.CASCADE, blank=True, null=True)
+    text = models.CharField(max_length=255, verbose_name='Текст')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
+    chat = models.ForeignKey(Chats, verbose_name='Чат', on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.text}'
+    
+    class Meta:
+        verbose_name = 'Сообщение'
+        verbose_name_plural = 'Сообщения'

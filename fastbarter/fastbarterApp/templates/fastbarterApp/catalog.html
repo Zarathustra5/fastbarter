@@ -56,6 +56,7 @@
                                     <svg class="catalog-product__favorite{% for elFavorite in favorite %}{% if elFavorite.catalog.id == el.id %} catalog-product__favorite_active{% else %}{% endif %}{% endfor %}"><use href="#heart"></use></svg>
                                 </label>
                                 <input type="text" id="remove-favorite" name="remove_favorite" />
+                                <input type="text" name="filter" style="display:none;" />
                                 {{form.catalog}}
                                 <input id="submit-favorite-{{el.id}}" type="submit" />
                             </form>
@@ -79,6 +80,8 @@
     -->
     <section class="popup popup-filters"><!-- popup_active-->
         <div class="container">
+          <form method="post" enctype="multipart/form-data" action="" class="container">
+          {% csrf_token %}
             <div class="popup-filters__header">
                 <div class="popup-filters__reset">Сбросить фильтры</div>
                 <div class="popup-filters__search search popup-filters-search">
@@ -88,13 +91,15 @@
                     </svg>
                     </button><input type="text" class="search__input" placeholder="Поиск товаров...">
                 </div>
+                <input type="text" name="remove_favorite" style="display:none;" />
+                <input type="text" name="filter" value=true style="display:none;" />
                 <input type="submit" class="popup-filters__submit popup__close" value="Применить фильтры">
             </div>
             <div class="popup-filters__fields">
                 <p class="popup-filters__subtitle">Примерная стоимость</p>
                 <div class="popup-filters-prices">
-                    <input type="text" placeholder="От ...">
-                    <input type="text" placeholder="До ...">
+                    <input type="text" name="price_from" placeholder="От ...">
+                    <input type="text" name="price_to" placeholder="До ...">
                     <label class="popup-filters__checkbox" for="free">
                         <input id="free" type="checkbox" value="">
                         <span>Даром</span>
@@ -104,9 +109,11 @@
                         <p>г. Казань</p>
                     </div>
                 </div>
+                  {{form.category}}
                 <div class="popup-filters__checkbox">
                 </div>
             </div>
+          </form>
 
             <div class="popup-filters-categories">
                 <div class="popup-filters-categories__blocks">
@@ -321,7 +328,7 @@
 
 
 
-        </div>
+          </div>
     </section>
 </main>
 {% endblock %}

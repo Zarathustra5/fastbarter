@@ -22,3 +22,18 @@ class FavoriteForm(forms.ModelForm):
     class Meta:
         model = Favorite
         fields = ('catalog', 'user')
+
+class FilterForm(forms.ModelForm):
+    class Meta:
+        model = Catalog
+        fields = ('price', 'category')
+
+class NewChatForm(forms.ModelForm):
+    class Meta:
+        model = Chats
+        fields = ('user1', 'user2', 'catalog')
+
+class NewMessageForm(forms.ModelForm):
+    class Meta:
+        model = Messages
+        fields = ('user', 'text', 'chat')

@@ -20,8 +20,9 @@
     <div class="container">
         <aside class="chats__panel">
             <div class="chats-list chats-list_groups">
-                <h2 class="chats-list__title">Чаты сообществ <span>4</span></h2>
+                <h2 class="chats-list__title">Чаты сообществ <span>0</span></h2>
                 <div class="chats-list__content">
+                    <!--
                     <div class="chats-list-item chats-list-item_active">
                         <figure class="chats-list-item__image">
                             <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
@@ -35,38 +36,41 @@
                         <p class="chats-list-item__title">Спортивный инвен..</p>
                         <div class="chats-list-item__unreaded">+12</div>
                     </div>
-                    <div class="chats-list-item">
-                        <figure class="chats-list-item__image">
-                            <img src="{% static 'fastbarterApp/img/slide1.jpg' %}" alt="slide">
-                        </figure>
-                        <p class="chats-list-item__title">Свопы в Казани</p>
-                        <div class="chats-list-item__unreaded">+32</div>
-                    </div>
-                    <div class="chats-list-item">
-                        <figure class="chats-list-item__image">
-                            <img src="{% static 'fastbarterApp/img/slide2.jpg' %}" alt="slide">
-                        </figure>
-                        <p class="chats-list-item__title">Нумизматы</p>
-                        <div class="chats-list-item__unreaded">+128</div>
-                    </div>
+                    -->
                 </div>
             </div>
             <div class="chats-list chats-list_personal">
-                <h2 class="chats-list__title">Личные чаты <span>3</span></h2>
+                <h2 class="chats-list__title">Личные чаты <span>{{chats_length}}</span></h2>
                 <div class="chats-list__content">
-                    <div class="chats-list-item">
-                        <figure class="chats-list-item__image">
-                            <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
-                        </figure>
-                        <p class="chats-list-item__title">Файзулин Ахмад</p>
-                    </div>
-                    <div class="chats-list-item">
-                        <figure class="chats-list-item__image">
-                            <img src="{% static 'fastbarterApp/img/product1.png' %}" alt="slide">
-                        </figure>
-                        <p class="chats-list-item__title">Елесин Дмитрий</p>
-                        <div class="chats-list-item__unreaded">+12</div>
-                    </div>
+                    {% for el in chats1 %}
+                        <form method="post" style="margin-top: 10px;">
+                            {% csrf_token %}
+                            <input name="message_form" type="hidden">
+                            <label for="submit-chat-{{el.id}}" class="chats-list-item">
+                                <input name="switch_chat" type="hidden" value="{{el.id}}">
+                                <input id="submit-chat-{{el.id}}" type="submit" style="display: none;">
+                                <figure class="chats-list-item__image">
+                                    <img src="/media/{{el.user2.photo}}" alt="slide">
+                                </figure>
+                                <p class="chats-list-item__title">{{el.user2.name}}</p>
+                            </label>
+                        </form>
+                    {% endfor %}
+                    {% for el in chats2 %}
+                        <form method="post" style="margin-top: 10px;">
+                            {% csrf_token %}
+                            <input name="message_form" type="hidden">
+                            <label for="submit-chat-{{el.id}}" class="chats-list-item">
+                                <input name="switch_chat" type="hidden" value="{{el.id}}">
+                                <input id="submit-chat-{{el.id}}" type="submit" style="display: none;">
+                                <figure class="chats-list-item__image">
+                                    <img src="/media/{{el.user1.photo}}" alt="slide">
+                                </figure>
+                                <p class="chats-list-item__title">{{el.user1.name}}</p>
+                            </label>
+                        </form>
+                    {% endfor %}
+                    <!--
                     <div class="chats-list-item">
                         <figure class="chats-list-item__image">
                             <img src="{% static 'fastbarterApp/img/slide1.jpg' %}" alt="slide">
@@ -74,102 +78,90 @@
                         <p class="chats-list-item__title">Шавалиев Альберт</p>
                         <div class="chats-list-item__unreaded">+32</div>
                     </div>
+                    -->
                 </div>
             </div>
         </aside>
+        {% if current_chat %}
         <section class="chats-window">
             <div class="chats-window__header">
                 <figure class="chats-window__image">
-                    <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
+                    <img src="/media/{{current_chat.user2.photo}}" alt="slide">
                 </figure>
                 <div class="chats-window__info">
                     <div class="chats-window__menu">
-                        <h1 class="chats-window__title">Обмен книг и учебников</h1>
+                        <h1 class="chats-window__title">{{current_chat.user2.name}}</h1>
                     </div>
-                    <p class="chats-window__members">129 участников</p>
+                  <!--  <p class="chats-window__members">129 участников</p> -->
                 </div>
                 <div class="chats-window__btns">
                     <svg><use href="#mute-chat"></use></svg>
                     <svg><use href="#settings"></use></svg>
-                    <button class="chats-window__leave-chat">Покинуть  чат</button>
+                    <button class="chats-window__leave-chat">Удалить чат</button>
                 </div>
             </div>
             <div class="chats-window__body">
-                <div class="chats-message">
-                    <figure class="chats-message__avatar">
-                        <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
-                    </figure>
-                    <div class="chats-message__body">
-                        <div class="chats-message__content">
-                            <p class="chats-message__name">Рябов Максим</p>
-                            <p class="chats-message__paragraph">Обменяю учебники 9 класса на учебники 10-11 классов</p>
+                {% for el in messages %}
+                    {% if el.user.id == user.id %}
+                        <div class="chats-message chats-message_my">
+                            <div class="chats-message__body">
+                                <div class="chats-message__content">
+                                    <p class="chats-message__paragraph">{{el.text}}</p>
+                                </div>
+                                <div class="chats-message__info">
+                                    <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+                                    <svg><use href="#readed"></use></svg>
+                                </div>
+                            </div>
                         </div>
-                        <div class="chats-message__info">
-                            <span class="chats-message__time">20:00</span>
-                            <svg><use href="#readed"></use></svg>
+                    {% else %}
+                        <div class="chats-message">
+                            <figure class="chats-message__avatar">
+                                <img src="/media/{{el.user.photo}}" alt="фото">
+                            </figure>
+                            <div class="chats-message__body">
+                                <div class="chats-message__content">
+                                    <p class="chats-message__name">{{el.user.name}}</p>
+                                    <p class="chats-message__paragraph">{{el.text}}</p>
+                                </div>
+                                <div class="chats-message__info">
+                                    <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+                                    <svg><use href="#readed"></use></svg>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="chats-message">
-                    <figure class="chats-message__avatar">
-                        <img src="{% static 'fastbarterApp/img/slide1.png' %}" alt="slide">
-                    </figure>
-                    <div class="chats-message__body">
-                        <div class="chats-message__content">
-                            <p class="chats-message__name">Файзулин Ахмад</p>
-                            <p class="chats-message__paragraph">Есть учебники 7 класса на обмен?</p>
-                        </div>
-                        <div class="chats-message__info">
-                            <span class="chats-message__time">20:00</span>
-                            <svg><use href="#readed"></use></svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="chats-message chats-message_my">
-                    <div class="chats-message__body">
-                        <div class="chats-message__content">
-                            <p class="chats-message__paragraph">Обменяю учебники 9 класса на учебники 10-11 классов</p>
-                        </div>
-                        <div class="chats-message__info">
-                            <span class="chats-message__time">20:00</span>
-                            <svg><use href="#readed"></use></svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="chats-message">
-                    <figure class="chats-message__avatar">
-                        <img src="{% static 'fastbarterApp/img/product.png' %}" alt="slide">
-                    </figure>
-                    <div class="chats-message__body">
-                        <div class="chats-message__content">
-                            <p class="chats-message__name">Рябов Максим</p>
-                            <p class="chats-message__paragraph">Обменяю учебники 9 класса на учебники 10-11 классов</p>
-                        </div>
-                        <div class="chats-message__info">
-                            <span class="chats-message__time">20:00</span>
-                            <svg><use href="#readed"></use></svg>
-                        </div>
-                    </div>
-                </div>
+                    {% endif%}
+                {% endfor %}
             </div>
-            <form class="chats-new-message" action="">
+            <form class="chats-new-message" method="post">
+                {% csrf_token %}
+                {{form_message.user.as_hidden}}
+                {{form_message.chat.as_hidden}}
+                <input name="message_form" type="hidden" value=true>
                 <div class="chats-new-message__input-container">
-                    <input class="chats-new-message__input" type="text">
+                    <span class="chats-new-message__input">
+                        {{form_message.text}}
+                    </span>
+                <!--
                     <label class="chats-new-message__attach" for="attach-file">
                         <svg><use href="#attach"></use></svg>
                         <input id="attach-file" type="file" style="display: none;">
                     </label>
+                -->
                 </div>
                 <label class="chats-new-message__submit" for="submit">
                     <svg><use href="#send"></use></svg>
                     <input id="submit" type="submit" style="display: none;">
                 </label>
+                <!--
                 <label class="chats-new-message__voice" for="voice-message">
                     <svg><use href="#voice"></use></svg>
                     <input id="voice-message" type="text" style="display: none;">
                 </label>
+                -->
             </form>
         </section>
+        {% endif%}
     </div>
 </main>
 {% endblock %}

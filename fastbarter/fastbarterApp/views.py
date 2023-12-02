@@ -18,6 +18,7 @@ def index(request):
 def detail_catalog(request, catalog_id):
     detail_catalog = Catalog.objects.get(pk=catalog_id)
     favorite = ""
+    formChat = NewChatForm(initial={'user1': request.user.id, 'user2': detail_catalog.user.id, 'catalog': catalog_id})
 
     if request.user.is_authenticated & (request.method == "POST"):
         favorite = Favorite.objects.filter(user=request.user)
@@ -26,7 +27,7 @@ def detail_catalog(request, catalog_id):
         else:
             Favorite.objects.create(user=request.user, catalog_id=catalog_id)
 
-    return render(request, 'fastbarterApp/detail-catalog.html', {'detail_catalog': detail_catalog, "favorite": favorite})
+    return render(request, 'fastbarterApp/detail-catalog.html', {'detail_catalog': detail_catalog, "favorite": favorite, "form_chat": formChat })
 
 def catalog(request):
     # return HttpResponse('<h4>About</h4>')
@@ -34,6 +35,7 @@ def catalog(request):
     catalog = Catalog.objects.filter(is_published=True)
     favorite = ""
     form = ""
+    filterForm = FilterForm()
 
     if (request.method == "POST") & (not request.user.is_authenticated):
         return redirect('/account/login')
@@ -41,7 +43,9 @@ def catalog(request):
     if request.user.is_authenticated:
         favorite = Favorite.objects.filter(user=request.user)
         if request.method == "POST":
-            if request.POST["remove_favorite"]:
+            if request.POST["filter"]:
+                catalog = Catalog.objects.filter(is_published=True, price__gte=request.POST["price_from"], price__lte=request.POST["price_to"])
+            elif request.POST["remove_favorite"]:
                 Favorite.objects.filter(user=request.user, catalog_id=request.POST["remove_favorite"]).delete()
                 form = FavoriteForm()
             else:
@@ -54,7 +58,7 @@ def catalog(request):
         else:
             form = FavoriteForm()
 
-    return render(request, 'fastbarterApp/catalog.html', {'catalog': catalog, 'search': search, "form": form, "favorite": favorite})
+    return render(request, 'fastbarterApp/catalog.html', {'catalog': catalog, 'search': search, "form": form, "favorite": favorite, "filter_form": filterForm})
 
 def catalog_login(request):
     catalog = Catalog.objects.filter(is_published=True)
@@ -143,7 +147,31 @@ def services(request):
 
 @login_required
 def chats(request):
-    return render(request, 'fastbarterApp/chats.html')
+    chats1 = Chats.objects.filter(user1=request.user)
+    chats2 = Chats.objects.filter(user2=request.user)
+    chatsLength = len(chats1) + len(chats2)
+    if chatsLength == 0:
+        currentChat = {}
+    elif len(chats1) == 0:
+        currentChat = chats2[0]
+    else:
+        currentChat = chats1[0]
+    if request.method == "POST":
+        if request.POST["message_form"]:
+            form = NewMessageForm(request.POST)
+            form.save()
+        elif request.POST["switch_chat"]:
+            currentChat = Chats.objects.get(pk=request.POST["switch_chat"])
+        else:
+            form = NewChatForm(request.POST)
+            form.save()
+            #Chats.objects.create(user1=request.user, user2=request.POST["user"], catalog_id=request.POST["catalog"])
+    if currentChat:
+        messages = Messages.objects.filter(chat=currentChat)
+    else:
+        messages = []
+    formMessage = NewMessageForm(initial={'user': request.user, 'chat': currentChat })
+    return render(request, 'fastbarterApp/chats.html', {'chats1': chats1, 'chats2': chats2, 'chats_length': chatsLength, 'messages': messages, 'current_chat': currentChat, 'form_message': formMessage})
 
 def detail_group(request, group_id):
     detail_group = Groups.objects.get(pk=group_id)
