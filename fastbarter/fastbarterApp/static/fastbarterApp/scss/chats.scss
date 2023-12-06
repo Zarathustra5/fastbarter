@@ -11,14 +11,18 @@
     &-list {
         &__title {
             @include h1;
+            font-size: 30px;
             font-weight: 400;
+            @include tablet {
+                font-size: 20px;
+            }
             span {
                 color: #7A7A7A; 
                 padding-left: 10px;
             }
         }
         &__content {
-            padding: 20px 0 0 30px;
+            padding: 20px 0 0 10px;
         }
         &-item {
             display: flex;
@@ -65,7 +69,8 @@
             margin-top: 30px;
             .chats-list-item {
                 height: 50px;
-                width: 320px;
+                width: 100%;
+                max-width: 320px;
                 &__image {
                     width: 35px;
                     height: 35px;
@@ -79,7 +84,7 @@
     }
     &-window {
         width: 900px;
-        margin-left: 80px;
+        margin-left: 5%;
         display: flex;
         flex-direction: column;
         &__header {
@@ -222,13 +227,14 @@
         align-items: center;
         position: fixed;
         bottom: 20px;
-        width: 900px;
+        width: 69%;
+        max-width: 900px;
         padding: 0 30px;
         &__input {
             &-container {
                 flex: 1 0 auto;
                 position: relative;
-                width: 593px;
+                width: 80%;
             }
             width: 100%;
         }
