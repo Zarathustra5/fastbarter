@@ -101,6 +101,21 @@
                 </div>
             </div>
             <div class="chats-window__body">
+                <div class="chats-message chats-message_my">
+                    <div class="chats-message__body">
+                        <figure class="chats-window__image">
+                            <img src="/media/{{current_chat.catalog.photo}}" alt="slide">
+                        </figure>
+                        <div class="chats-message__content">
+                            <p class="chats-message__paragraph">Название объявления:</p>
+                            <p class="chats-message__paragraph chats-message__paragraph_title">{{current_chat.catalog.title}}</p>
+                        </div>
+                        <div class="chats-message__info">
+                            <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+                            <svg><use href="#readed"></use></svg>
+                        </div>
+                    </div>
+                </div>
                 {% for el in messages %}
                     {% if el.user.id == user.id %}
                         <div class="chats-message chats-message_my">

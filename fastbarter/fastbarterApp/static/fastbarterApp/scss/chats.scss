@@ -121,6 +121,8 @@
             width: 63px;
             height: 63px;
             border-radius: 50%;
+            flex: 0 0 63px;
+            margin-right: 10px;
             img {
                 border-radius: 50%;
                 width: 100%;
@@ -159,6 +161,11 @@
     &-message {
         display: flex;
         margin-top: 20px;
+        &__paragraph {
+            &_title {
+                font-size: 20px;
+            }
+        }
         &__avatar {
             width: 40px;
             height: 40px;
