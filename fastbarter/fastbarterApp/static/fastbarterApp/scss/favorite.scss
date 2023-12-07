@@ -4,7 +4,15 @@
   &__title {
     @include h1;
     padding-left: 300px;
+    @include gap {
+      padding-left: 0;
+    }
   }
+  &__toolbar {
+    @include tablet {
+      align-items: center;
+    }
+   }
   &-product {
     padding-bottom: 15px;
     border-radius: 10px;
@@ -13,6 +21,16 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    @include desktop {
+      width: calc(33% - 30px);
+    }
+    @include tablet {
+      width: calc(50% - 30px);
+    }
+    @include gap {
+      width: 100%;
+      max-width: 400px;
+    }
     &__info {
       display: flex;
       align-items: center;
@@ -89,8 +107,7 @@
   &__products {
     max-width: 1500px;
     margin: 50px auto;
-  }
-  &__products {
+
     display: flex;
     flex-wrap: wrap;
     gap: 40px;

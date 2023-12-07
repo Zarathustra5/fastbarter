@@ -3,7 +3,9 @@
     display: flex;
   }
 }
-
+.account-menu{
+max-width:400px;
+}
 .account-user {
   height: 240px;
   border-radius: 25px;
@@ -23,6 +25,9 @@
     }
     figcaption {
       margin-left: 10px;
+      @include gap {
+        font-size: 20px;
+      }
     }
   }
   &__stars {
@@ -30,7 +35,10 @@
     svg {
       width: 30px;
       height: 30px;
-      color: #FDD835; 
+      color: #FDD835;
+      @include gap {
+         width: 25px;
+      }
       &:last-child {
         color: #BDBDBD; 
       }

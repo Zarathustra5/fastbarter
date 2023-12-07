@@ -11,12 +11,18 @@
   margin-left: 60px;
   flex: 1 1 auto;
   max-width: 800px;
+   @include gap {
+    margin-left: 20px;
+   }
   &__title {
     @include h1;
     color: #4D4D4D; 
   }
   &-menu {
     width: 400px;
+      @include gap {
+        width: 260px;
+      }
   }
   .my-announcements {
     display: flex;
@@ -37,6 +43,10 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+        @include tablet {
+          width: 100%;
+          max-width: 400px;
+        }
       &__info {
         display: flex;
         align-items: center;
