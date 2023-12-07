@@ -182,7 +182,9 @@ def detail_group_post(request):
 
 def groups(request):
     groups = Groups.objects.filter()
-    participants = Participants.objects.filter(user=request.user)
+    participants = {}
+    if request.user.id:
+        participants = Participants.objects.filter(user=request.user)
     if request.method == "POST":
         if request.POST["join_group"]:
             Participants.objects.create(user=request.user, group_id=request.POST["join_group"])

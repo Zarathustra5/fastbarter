@@ -268,8 +268,10 @@ background-color: #eee;
 }
 
 </style>
+<a class="catalog-product__link" href="{% url 'detail_group' el.pk %}">Вступить</a>
                         {% if el.user.id == user.id %}
                         {% else %}
+                        <!--
                             <form method="post" action="">
                                 {% csrf_token %}
                                 <label for="submit-join-{{el.id}}" class="catalog-product__link">
@@ -278,6 +280,7 @@ background-color: #eee;
                                 <input type="hidden" name="join_group" value="{{el.id}}" />
                                 <input id="submit-join-{{el.id}}" type="submit" style="display: none;" />
                             </form>
+                        -->
                         {% endif %}
                     </div>
                 </div>
