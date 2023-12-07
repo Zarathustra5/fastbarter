@@ -13,6 +13,7 @@
             @include h1;
             font-size: 30px;
             font-weight: 400;
+            text-align: center;
             @include tablet {
                 font-size: 20px;
             }
@@ -35,6 +36,13 @@
             background: #FFF;
             cursor: pointer;
             margin-top: 15px;
+            @include gap {
+                flex-direction: column;
+            }
+            @include phone {
+                font-size: 10px;
+                height:70px;
+            }
             &:first-child {
                 margin-top: 0;
             }
@@ -71,6 +79,10 @@
                 height: 50px;
                 width: 100%;
                 max-width: 320px;
+            @include phone {
+                font-size: 10px;
+                height:70px;
+            }
                 &__image {
                     width: 35px;
                     height: 35px;
@@ -84,9 +96,12 @@
     }
     &-window {
         width: 900px;
-        margin-left: 5%;
+        margin-left: 11%;
         display: flex;
         flex-direction: column;
+            @include tablet {
+                margin-left: 2%;
+            }
         &__header {
             display: flex;
             align-items: center;
@@ -227,9 +242,15 @@
         align-items: center;
         position: fixed;
         bottom: 20px;
-        width: 69%;
-        max-width: 900px;
-        padding: 0 30px;
+        width: 53%;
+        max-width: 870px;
+        padding: 0 0 0 30px;
+        @include tablet {
+            width: 70%;
+        }
+        @include phone {
+             width: 65%;
+        }
         &__input {
             &-container {
                 flex: 1 0 auto;

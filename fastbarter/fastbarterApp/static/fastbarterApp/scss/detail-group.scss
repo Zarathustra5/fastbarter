@@ -58,16 +58,47 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
+    @include phone {
+        flex-direction: column;
+    }
     &__exchange {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      width: 44%;
+      @include gap {
+        justify-content: center;
+      }
+      @include phone {
+        width: 90%;
+      }
+    }
+    &__btn:first-child {
+      margin-right: 5px;
+      @include tablet {
+        margin-right: 0;
+      }
+      @include phone {
+        margin-right: 20px;
+      }
     }
     &__btns {
       display: flex;
       justify-content: space-between;
-      margin-left: 30px;
+      margin-left: 20px;
       margin-top: 50px;
+      @include tablet {
+        flex-direction: column;
+      }
+      @include phone {
+        flex-direction: row;
+        margin-left: auto;
+        margin-right: auto;
+        a {
+        width:50%;
+        font-size:18px;
+        }
+      }
     }
     &__title {
       @include h2;
@@ -79,13 +110,13 @@
       }
     }
     &__block {
-      flex: 0 0 500px;
       border: 1px solid $orange;
       border-radius: 25px;
+      padding: 15px;
     }
     &__sellers {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       flex-wrap: wrap;
     }
     &__image {

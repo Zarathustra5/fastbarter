@@ -89,8 +89,9 @@
   display:flex;
   align-items: center;
   margin-bottom:20px;
-  svg {
+  &__svg {
     margin:0px 5px 0 5px;
+    min-width:30px;
   }
   svg:last-child {
     margin:0px 250px 0 5px;
@@ -146,6 +147,59 @@
       @include txt18;
       margin:0 20px 0px 5px;
     }
-
   }
+}
+  .profile-form{
+   margin-top:50px;
+   display:flex;
+   align-items:center;
+}
+.attach{
+display:none;
+z-index:10;
+}
+.send-btn{
+  margin-left:20px;
+  width:60px;
+  height:60px;
+  border-radius: 30px;
+background: #FFF;
+box-shadow: 0px 1px 4px 2px rgba(0, 0, 0, 0.25);
+   background-color:white;
+  }
+  .send-btn svg{
+   color:#E04700;
+   margin:10px 10px 10px 11px;
+  }
+  .form-check-input {
+    resize: none;
+    padding: 20px;
+    width: 700px;
+    height: 110px;
+    background-color: white;
+    border-radius: 30px;
+    border: 1px solid #BA3B00;
+    @include tablet{
+        width: 540px;
+    }
+    @include gap{
+        width: 400px;
+    }
+    @include phone{
+        width: 280px;
+    }
+}
+
+.viewed{
+min-width:40px;
+margin:0 10px 0 70%;
+@include tablet{
+margin:0 10px 0 60%;
+}
+@include gap{
+margin:0 10px 0 53%;
+}
+@include phone{
+margin:0 10px 0 39%;
+}
 }
