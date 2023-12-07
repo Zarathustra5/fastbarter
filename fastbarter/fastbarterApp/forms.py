@@ -15,7 +15,7 @@ class NewProductForm(forms.ModelForm):
         model = Catalog
         fields = ('photo', 'title', 'short_desc', 'price', 'category', 'category_exchange')
         widgets = {
-            'short_desc': forms.Textarea(attrs={'cols': 30, 'rows': 10})
+            'short_desc': forms.Textarea(attrs={'cols': 88, 'rows': 10})
         }
 
 class FavoriteForm(forms.ModelForm):
@@ -37,3 +37,11 @@ class NewMessageForm(forms.ModelForm):
     class Meta:
         model = Messages
         fields = ('user', 'text', 'chat')
+
+class NewGroupForm(forms.ModelForm):
+    class Meta:
+        model = Groups
+        fields = ('photo', 'title', 'short_desc')
+        widgets = {
+            'short_desc': forms.Textarea(attrs={'cols': 88, 'rows': 10})
+        }

@@ -4,7 +4,7 @@
 
 {% block header %}
     {% include 'fastbarterApp/header.html' %}
-    <link rel="stylesheet" href="{% static 'fastbarterApp/css/new-groups.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/groups.css' %}">
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
 {% endblock %}
 
@@ -36,7 +36,7 @@
                 <label for="violence">
                     <span>Насилие и вражда</span>
                 <input class="form-checkbox" id="violence" type="checkbox" value="HTML">
-                </label>
+                </labeluser>
                 <label for="nudity">
                     <span>Откровенное изображение</span>
                 <input class="form-checkbox" id="nudity" type="checkbox" value="HTML">
@@ -58,7 +58,7 @@
     <div class="navigation"><p>
         <a href="{% url 'catalog' %}">Главная</a>
         <span>&nbsp;>&nbsp;</span>
-        <a href="{% url 'help' %}">Сообщества</a>
+        <a href="{% url 'groups' %}">Сообщества</a>
     </p></div>
     <section class="catalog">
     <div class="container">
@@ -80,7 +80,11 @@
                 </svg>
                 </button><input type="text" class="search__input" placeholder="Поиск сообществ...">
             </div>
-            <div class="catalog__filter catalog-filter">
+            <div class="catalog__new-group">
+                <a href="{% url 'new-group' %}">
+                    <span>Создать новое сообщество</span>
+                    <svg><use href="#plus"></use></svg>
+                </a>
             </div>
         </div>
         <p class="catalog__found">Найдено 23.350 сообществ</p>
@@ -264,7 +268,17 @@ background-color: #eee;
 }
 
 </style>
-                        <a href="{% url 'detail_group' el.pk %}" class="catalog-product__link">Вступить</a>
+                        {% if el.user.id == user.id %}
+                        {% else %}
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <label for="submit-join-{{el.id}}" class="catalog-product__link">
+                                    Вступить
+                                </label>
+                                <input type="hidden" name="join_group" value="{{el.id}}" />
+                                <input id="submit-join-{{el.id}}" type="submit" style="display: none;" />
+                            </form>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

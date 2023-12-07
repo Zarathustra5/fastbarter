@@ -180,6 +180,26 @@ def detail_group(request, group_id):
 def detail_group_post(request):
     return render(request, 'fastbarterApp/detail-group-post.html')
 
-def new_groups(request):
+def groups(request):
     groups = Groups.objects.filter()
-    return render(request, 'fastbarterApp/new-groups.html', {'groups': groups})
+    participants = Participants.objects.filter(user=request.user)
+    if request.method == "POST":
+        if request.POST["join_group"]:
+            Participants.objects.create(user=request.user, group_id=request.POST["join_group"])
+    return render(request, 'fastbarterApp/groups.html', {'groups': groups,'participants': participants})
+
+@login_required
+def new_group(request):
+    success = False
+    if request.method == "POST":
+        form = NewGroupForm(request.POST, request.FILES)
+        obj = form.save(commit=False)
+        obj.user = request.user
+        obj.save()
+        #form.save()
+        success = True
+
+    else:
+        form = NewGroupForm()
+
+    return render(request, 'fastbarterApp/new-group.html', {"form": form, "success": success})

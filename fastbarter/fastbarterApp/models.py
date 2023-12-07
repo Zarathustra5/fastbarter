@@ -37,8 +37,7 @@ class Groups(models.Model):
     photo = models.ImageField(upload_to='images/', height_field=None, width_field=None, max_length=None, verbose_name='Фото', blank=True, null=True)
     title = models.CharField(max_length=255, verbose_name='Название товара')
     short_desc = models.CharField(max_length=255, verbose_name='Краткое описание')
-    members_count = models.CharField(max_length=255, verbose_name='Количество участников')
-    is_joined = models.BooleanField(default=False, verbose_name='Вступил')
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE, blank=True, null=True,related_name="user")
 
     def __str__(self):
         return f'{self.title}'
@@ -95,3 +94,14 @@ class Messages(models.Model):
     class Meta:
         verbose_name = 'Сообщение'
         verbose_name_plural = 'Сообщения'
+
+class Participants(models.Model):
+    group = models.ForeignKey(Groups, verbose_name='Сообщество', on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.group}'
+    
+    class Meta:
+        verbose_name = 'Участник сообщества'
+        verbose_name_plural = 'Список участников сообществ'

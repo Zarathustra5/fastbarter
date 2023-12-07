@@ -25,6 +25,23 @@
       order: 1;
     }
   }
+  &__new-group {
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include btn;
+      span {
+        color: white;
+      }
+      svg {
+        width: 24px;
+        height: 24px;
+        stroke: white;
+        margin-left: 10px;
+      }
+    }
+  }
   &__toolbar {
     max-width: 1500px;
     display: flex;
@@ -192,6 +209,7 @@
     &__link {
       display: flex;
       height: 34px;
+      cursor: pointer;
       justify-content: center;
       align-items: center;
       border-radius: 25px;

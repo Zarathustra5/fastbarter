@@ -15,9 +15,9 @@
   <div class="navigation"><p>
     <a href="{% url 'catalog' %}">Главная</a>
     <span>&nbsp;>&nbsp;</span>
-    <a href="{% url 'new-groups' %}">Сообщества</a>
+    <a href="{% url 'groups' %}">Сообщества</a>
     <span>&nbsp;>&nbsp;</span>
-    <a href="{% url 'new-groups' %}">Группа</a>
+    <a href="{% url 'groups' %}">Группа</a>
 </p></div>
     <section class="product">
     <div class="container">
@@ -92,8 +92,7 @@
 </p>
             </div>
             <div class="product-about__wish">
-              <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандар
-</p>
+              <p>{{detail_group.short_desc}}</p>
               <p></p>
             </div>
             <div class="product-about__btns">

@@ -1,0 +1,55 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/new-product.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
+{% endblock %}
+
+{% block title %} Добавление товара {% endblock %}
+
+{% block content %}
+<main class="page">
+  <div class="navigation"><p>
+    <a href="{% url 'catalog' %}">Главная</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'new-product' %}">Создание сообщества</a>
+  </p></div>
+    <section class="new-product">
+    <div class="container">
+      <form method="post" enctype="multipart/form-data" action="" class="new-product__form">
+        {% csrf_token %}
+        {% if success %}
+          <p class="new-product__row new-product__message">Сообщество создано</p>
+        {% endif %}
+        <div class="new-product__row new-product__name">
+          <label class="new-product__title" for="name">Название :</label>
+          <span class="new-product__input">{{form.title}}</span>
+        </div>
+        <div class="new-product__row new-product__images">
+          <p class="new-product__title">фотографии сообщества:</p>
+          <label class="new-product__add-image" for="id_photo">
+            <svg><use href="#plus"></use></svg>
+            <span>добавить картинку</span>
+          </label>
+          {{form.photo}}
+        </div>
+        <div class="new-product__row new-product__desc">
+          <label class="new-product__title" for="desc">Описание сообщества:</label>
+          <span class="new-product__input">{{form.short_desc}}</span>
+        </div>
+        <div class="new-product__row new-product__submit">
+          <input class="new-product__submit-btn" type="submit" name="submit" value="Создать">
+        </div>
+      </form>
+    </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
+{% endblock %}

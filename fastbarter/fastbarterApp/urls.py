@@ -42,10 +42,11 @@ urlpatterns = [
     path('notifications', views.notifications, name="notifications"),
     path('services', views.services, name="services"),
     path('chats', views.chats, name="chats"),
-    path('new-groups', views.new_groups, name="new-groups"),
+    path('groups', views.groups, name="groups"),
     path('detail-group-post', views.detail_group_post, name="detail-group-post"),
-    path('new-groups/<int:group_id>/', views.detail_group, name="detail_group"),
+    path('groups/<int:group_id>/', views.detail_group, name="detail_group"),
     path('accounts/login/', LoginUser.as_view(), name='login'),
+    path('new-group', views.new_group, name="new-group"),
 ]
 
 if settings.DEBUG:
