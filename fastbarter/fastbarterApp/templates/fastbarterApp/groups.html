@@ -36,7 +36,7 @@
                 <label for="violence">
                     <span>Насилие и вражда</span>
                 <input class="form-checkbox" id="violence" type="checkbox" value="HTML">
-                </labeluser>
+                </label>
                 <label for="nudity">
                     <span>Откровенное изображение</span>
                 <input class="form-checkbox" id="nudity" type="checkbox" value="HTML">
@@ -89,8 +89,6 @@
         </div>
         <p class="catalog__found">Найдено 23.350 сообществ</p>
         <div class="catalog__products">
-            <style>
-</style>
             {% for el in groups %}
                 <div class="catalog-product">
                     <a href="{% url 'detail_group' el.pk %}">
@@ -99,7 +97,7 @@
                     <div class="catalog-product__row catalog-product__top">
                         <div class="catalog-product__header">
                           <h6 class="catalog-product__title">{{el.title}}</h6>
-                          <p class="catalog-product__participants"><span>{{el.members_count}}</p>
+                            <p class="catalog-product__participants"><span>{{el.members_count}}</span></p>
                         </div>
                         <div class="catalog-product__info">
                           <p class="catalog-product__desc">{{el.short_desc | safe }}</p>

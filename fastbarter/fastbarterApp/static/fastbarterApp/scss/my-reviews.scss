@@ -1,0 +1,218 @@
+@import "modules/modules.scss";
+@import "modules/account-menu.scss";
+
+.page {
+  & > .container {
+    &_reviews {
+      display: flex;
+
+      justify-content: center;
+      max-width: 1480px;
+    }
+  }
+}
+
+.my-reviews {
+  margin-left: 60px;
+      @include tablet{
+          margin-left: 20px;
+    }
+}
+.reviews {
+  max-width: 800px;
+  padding-bottom: 50px;
+  .review {
+    min-height: 250px;
+    width: 100%;
+    border-radius: 30px;
+    background: #FFF;
+    padding: 20px 30px 20px 30px;
+    @include tablet{
+        padding: 5px 30px 20px 30px;
+    }
+    @include gap{
+        padding: 5px 10px 20px 10px;
+    }
+    margin-top: 30px;
+    &__title {
+      @include h2;
+      margin: 40px 0 0 50px;
+
+          @include gap{
+       margin: 40px 0 0 20px;
+    }
+    }
+    &-form {
+      display: flex;
+      align-items: flex-end;
+      margin-top: 10px;
+      &__textarea {
+        position: relative;
+        border: 1px solid $dark-orange;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 10px;
+        background-color: #FFF;
+        overflow: hidden;
+        padding-bottom: 40px;
+        margin-left: 20px;
+        textarea {
+          resize: none;
+          padding: 10px;
+          @include txt16;
+          background-color: #FFF;
+        }
+        label {
+          position: absolute;
+          bottom: 10px; 
+          right: 20px;
+          cursor: pointer;
+          svg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+      &__submit-btn {
+        @include btn;
+        width: 163px;
+        height: 55px; 
+        margin-left: 20px;
+        svg {
+          width: 20px;
+          height: 20px;
+          margin-left: 5px;
+        }
+      }
+    }
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .reviewer {
+        margin: 20px 30px -49px 72px;
+        @include tablet{
+            margin: 20px 30px -49px 0;
+        }
+        display: flex;
+        align-items: center;
+        &__image {
+          width: 60px;
+          height: 60px;
+          img {
+            border-radius: 50%;
+            min-width:60px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        &__info {
+          margin:0 0 5px 20px;
+            @include gap{
+                margin:0 0 5px 5px;
+            }
+        }
+        &__name {
+          @include txt18;
+          font-weight: 700;
+        }
+        &__date {
+          @include txt13;
+          color: #939393; 
+          margin-top: 5px;
+        }
+      }
+      &__stars {
+        cursor: pointer;
+        margin-top: 5px;
+        display: flex;
+        svg {
+          width: 30px;
+          height: 30px;
+
+          color: #FDD835; 
+          &:last-child {
+            color: #BDBDBD; 
+          }
+        }
+      }
+    }
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    &__desc {
+      @include txt16;
+      color: #939393; 
+      margin: 20px 0 0 50px;
+      line-height: 25px;
+      @include gap{
+        margin: 20px 5px 0 20px; }
+    }
+    &__media {
+      video {
+        border-radius: 20px;
+        border: 0px solid #000;
+        background: rgba(0, 0, 0, 0.30);
+        max-height: 300px;
+        max-width: 200px;
+        @include gap{
+            max-width: 140px; }
+      }
+    }
+  }
+}
+
+.seller {
+  position:absolute;
+  margin:0 0 0 1000px;
+  width: 400px;
+  height: 324px;
+  border-radius: 25px;
+  background: #FFF;
+  padding: 40px 30px;
+  &__image {
+    @include h2;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    img {
+      width: 162px;
+      height: 162px;
+      object-fit: cover;
+    }
+    figcaption {
+      text-align: center;
+      margin-left: 10px;
+      font-size: 30px;
+    }
+  }
+  &__stars {
+    margin: 5px 10px 0 0;
+    svg {
+      width: 40px;
+      height: 40px;
+      color: #FDD835; 
+      &:last-child {
+        color: #BDBDBD; 
+      }
+    }
+  } 
+  &__reviews {
+    @include txt13;
+    color: black;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    &-score {
+      font-size: 30px;
+    }
+  }
+  &__registered {
+    @include txt18;
+    color: #515151; 
+    margin-top: 10px;
+    text-align: center;
+  }
+}

@@ -60,7 +60,7 @@
 
           <div class="product-about__seller product-seller">
             <p class="product-seller__label">Обменивает</p>
-               <div style=" margin: 0px auto 10px auto; width:250px; border-radius: 25px; background-color: #C43E00;">
+               <div class="product-seller__block">
             <figure class="product-seller__image">
               <img style="width: 83px; margin: 10px auto 0px auto;" src="/media/{{detail_catalog.user.photo}}" alt="slide">
               <span class="product-seller__name">{{detail_catalog.user.name}}</span>
@@ -79,7 +79,7 @@
             </a>
           </div>
                <p class="product-seller__label">Местоположение</p>
-<iframe width="300" height="200" style="border-radius:25px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.8632282981366!2d49.17507747714717!3d55.76087809136872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415eadc420a34b5b%3A0x92dbaf306bb1070d!2z0YPQuy4g0JrQsNGA0LHRi9GI0LXQstCwLCA0OCwg0JrQsNC30LDQvdGMLCDQoNC10YHQvy4g0KLQsNGC0LDRgNGB0YLQsNC9LCA0MjAwODc!5e0!3m2!1sru!2sru!4v1700154818414!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe class="product-seller__map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.8632282981366!2d49.17507747714717!3d55.76087809136872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415eadc420a34b5b%3A0x92dbaf306bb1070d!2z0YPQuy4g0JrQsNGA0LHRi9GI0LXQstCwLCA0OCwg0JrQsNC30LDQvdGMLCDQoNC10YHQvy4g0KLQsNGC0LDRgNGB0YLQsNC9LCA0MjAwODc!5e0!3m2!1sru!2sru!4v1700154818414!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           <form method="post" action="{% url 'chats' %}">
               {% csrf_token %}
               {{form_chat.user1.as_hidden}}
