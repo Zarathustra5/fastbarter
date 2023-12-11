@@ -23,29 +23,36 @@
           <div class="review__header review-header">
             <div class="reviewer">
               <figure class="reviewer__image">
-                <img src="{% static 'fastbarterApp/img/slide1.jpg' %}">
+                <img src="/media/{{user.photo}}">
               </figure>
               <div class="reviewer__info">
-                <h4 class="reviewer__name">Шавалиев Альберт</h4>
+                <h4 class="reviewer__name">{{user.name}}</h4>
               </div>
             </div>
             <div class="review-header__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
             </div>
           </div>
-          <h3 class="review__title">7 советских монет</h3>
-          <form action="" class="review-form">
+          <h3 class="review__title">{{detail_catalog}}</h3>
+          <form method="post" enctype="multipart/form-data" action="" class="review-form">
+            {% csrf_token %}
             <div class="review-form__textarea">
-              <textarea name="" id="" cols="30" rows="6" placeholder="Оставьте свой отзыв"></textarea>
-              <label for="file">
+              {{form.review}}
+              <label for="id_file">
                 <svg><use href="#attach"></use></svg>
               </label>
             </div>
-            <input type="file" id="file" style="display: none;">
+            <div style="display: none;">
+              {{form.file}}
+              {{form.rating}}
+              {{form.user.as_hidden}}
+              {{form.catalog.as_hidden}}
+              <input name="submit-catalog-review" />
+            </div>
             <label class="review-form__submit-btn" for="submit">
               <span>Отправить</span>
               <svg><use href="#send"></use></svg>
@@ -65,11 +72,11 @@
               </div>
             </div>
             <div class="review-header__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
             </div>
           </div>
           <div class="review__content">
@@ -97,11 +104,11 @@
               </div>
             </div>
             <div class="review-header__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
+              <svg class="review-header__star"><use href="#star"></use></svg>
             </div>
           </div>
           <div class="review__content">
@@ -121,19 +128,19 @@
       </section>
       <aside class="seller">
         <figure class="seller__image">
-          <img src="{% static 'fastbarterApp/img/seller.png' %}">
-          <figcaption class="seller__name">Ахтямов Чучмек</figcaption>
+          <img src="/media/{{detail_catalog.user.photo}}">
+          <figcaption class="seller__name">{{detail_catalog.user.name}}</figcaption>
         </figure>
-        <a href="{% url 'reviews' %}" class="seller__reviews">
+        <div class="seller__reviews">
           <div class="seller__stars">
-            <svg><use href="#star"></use></svg>
-            <svg><use href="#star"></use></svg>
-            <svg><use href="#star"></use></svg>
-            <svg><use href="#star"></use></svg>
-            <svg><use href="#star"></use></svg>
+            <svg class="review-header__star"><use href="#star"></use></svg>
+            <svg class="review-header__star"><use href="#star"></use></svg>
+            <svg class="review-header__star"><use href="#star"></use></svg>
+            <svg class="review-header__star"><use href="#star"></use></svg>
+            <svg class="review-header__star"><use href="#star"></use></svg>
           </div>
           <p class="seller__reviews-score">4.1</p>
-        </a>
+        </div>
         <p class="seller__registered">Зарегестрирован: 18.09.2023</p>
       </aside>
     </div>
@@ -143,4 +150,5 @@
 {% block footer %}
     {% include 'fastbarterApp/footer.html' %}
     <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
+    <script type="module" src="{% static 'fastbarterApp/js/reviews.js' %}"></script>
 {% endblock %}

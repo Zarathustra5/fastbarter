@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Catalog
 from .models import Groups
+from .models import Reviews
 from django.views.generic import ListView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -83,8 +84,26 @@ def new_product(request):
 
     return render(request, 'fastbarterApp/new-product.html', {"form": form, "success": success})
 
+@login_required
 def reviews(request):
-    return render(request, 'fastbarterApp/reviews.html')
+    success = False
+    detail_catalog = ''
+    userTo = ''
+    if request.method == "POST":
+        if request.POST["submit-catalog-review"]:
+            detail_catalog = Catalog.objects.get(pk=request.POST["id_product"])
+            userTo = detail_catalog.user
+            reviews = Reviews.objects.filter(user=userTo)
+            form = NewReviewForm(initial={'user': request.user,'catalog': request.POST["id_product"] })
+        else:
+            form = NewReviewForm(request.POST, request.FILES)
+            form.save()
+            success = True
+
+    else:
+        return redirect('/catalog')
+
+    return render(request, 'fastbarterApp/reviews.html', {"form": form, "success": success, "userTo": userTo, "detail_catalog": detail_catalog})
 
 @login_required
 def my_reviews(request):

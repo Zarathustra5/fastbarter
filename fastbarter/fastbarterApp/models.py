@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import *
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -60,8 +61,11 @@ class Favorite(models.Model):
 
 class Reviews(models.Model):
     catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)
-    userFrom = models.ForeignKey(CustomUser, verbose_name='Пользователь, оставивший отзыв', on_delete=models.CASCADE, blank=True, null=True, related_name="user_from")
-    user = models.ForeignKey(CustomUser, verbose_name='Пользователь, которому оставили отзыв', on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(CustomUser, verbose_name='Пользователь, оставивший отзыв', on_delete=models.CASCADE, blank=True, null=True, related_name="user_from")
+    review = models.CharField(max_length=255, verbose_name='Отзыв', default='')
+    rating = models.CharField(max_length=255, verbose_name='Рейтинг', default='')
+    file = models.FileField(upload_to='files/', max_length=None, verbose_name='Файл', blank=True, null=True, default=False)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
 
     def __str__(self):
         return f'{self.catalog}'

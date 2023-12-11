@@ -53,7 +53,7 @@
         }
         label {
           position: absolute;
-          bottom: 10px; 
+          bottom: 10px;
           right: 20px;
           cursor: pointer;
           svg {
@@ -65,7 +65,7 @@
       &__submit-btn {
         @include btn;
         width: 163px;
-        height: 55px; 
+        height: 55px;
         margin-left: 20px;
         svg {
           width: 20px;
@@ -100,20 +100,20 @@
         }
         &__date {
           @include txt13;
-          color: #939393; 
+          color: #939393;
           margin-top: 5px;
         }
       }
       &__stars {
         cursor: pointer;
         margin-top: 5px;
-        svg {
-          width: 30px;
-          height: 30px;
-          color: #FDD835; 
-          &:last-child {
-            color: #BDBDBD; 
-          }
+      }
+      &__star {
+        width: 30px;
+        height: 30px;
+        color: #BDBDBD;
+        &_active {
+          color: #FDD835;
         }
       }
     }
@@ -124,7 +124,7 @@
     }
     &__desc {
       @include txt16;
-      color: #939393; 
+      color: #939393;
       margin: 20px 0 0 50px;
       line-height: 25px;
     }
@@ -169,12 +169,12 @@
     svg {
       width: 40px;
       height: 40px;
-      color: #FDD835; 
+      color: #FDD835;
       &:last-child {
-        color: #BDBDBD; 
+        color: #BDBDBD;
       }
     }
-  } 
+  }
   &__reviews {
     @include txt13;
     color: black;
@@ -187,7 +187,7 @@
   }
   &__registered {
     @include txt18;
-    color: #515151; 
+    color: #515151;
     margin-top: 10px;
     text-align: center;
   }

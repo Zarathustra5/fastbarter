@@ -67,7 +67,12 @@
             </figure>
             <p class="product-seller__registered">Зарегестрирован:</p>
             <p class="product-seller__registered">{{detail_catalog.user.created_at}}</p>
-            <a href="{% url 'reviews' %}" class="product-seller__reviews">
+            <form method="post" action="{% url 'reviews' %}">
+                {% csrf_token %}
+                <input name="id_product" type="hidden" value="{{detail_catalog.id}}">
+                <input id="submit-catalog-review" name="submit-catalog-review" type="submit" style="display: none;" />
+            </form>
+            <label for="submit-catalog-review" class="product-seller__reviews">
               <div class="product-seller__stars">
                 <svg><use href="#star"></use></svg>
                 <svg><use href="#star"></use></svg>
@@ -76,7 +81,7 @@
                 <svg><use href="#star"></use></svg>
               </div>
               <p class="product-seller__reviews-count">65 отзывов</p>
-            </a>
+            </label>
           </div>
                <p class="product-seller__label">Местоположение</p>
 <iframe width="300" height="200" style="border-radius:25px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.8632282981366!2d49.17507747714717!3d55.76087809136872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415eadc420a34b5b%3A0x92dbaf306bb1070d!2z0YPQuy4g0JrQsNGA0LHRi9GI0LXQstCwLCA0OCwg0JrQsNC30LDQvdGMLCDQoNC10YHQvy4g0KLQsNGC0LDRgNGB0YLQsNC9LCA0MjAwODc!5e0!3m2!1sru!2sru!4v1700154818414!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

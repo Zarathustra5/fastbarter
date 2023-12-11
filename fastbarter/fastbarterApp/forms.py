@@ -45,3 +45,11 @@ class NewGroupForm(forms.ModelForm):
         widgets = {
             'short_desc': forms.Textarea(attrs={'cols': 88, 'rows': 10})
         }
+
+class NewReviewForm(forms.ModelForm):
+    class Meta:
+        model = Reviews
+        fields = ('review', 'file', 'rating', 'catalog', 'user')
+        widgets = {
+            'review': forms.Textarea(attrs={'cols': 88, 'rows': 10, 'placeholder': 'Оставьте свой отзыв'})
+        }
