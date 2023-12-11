@@ -5,6 +5,34 @@
 }
 .account-menu{
 max-width:400px;
+    @include phone {
+     transition: 0.7s;
+        z-index:10001;
+        display: none;
+        position: fixed;
+        margin-top: 20px;
+    }
+}
+.open-menu-btn{
+    z-index:10001;
+    position:fixed;
+    cursor: pointer;
+    display: none;
+    position: fixed;
+    top: 123px;
+    left: 30px;
+    background-color: #e04700;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    svg {
+    fill:white;
+    width: 28px;
+    height: 35px;
+    }
+    @include phone {
+        display: block;
+    }
 }
 .account-user {
   height: 240px;

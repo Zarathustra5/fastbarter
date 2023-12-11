@@ -6,14 +6,19 @@
     display: flex;
   }
 }
-
+.current, .done {
+display: block;
+  }
 .account {
-  margin-left: 60px;
+  margin-left: 20px;
   flex: 1 1 auto;
   max-width: 1400px;
+  @include gap{
+    margin-left: 15px;
+  }
   &__title {
     @include h1;
-    color: #4D4D4D; 
+    color: #4D4D4D;
   }
   &-menu {
     width: 400px;
@@ -22,19 +27,33 @@
      @include h1;
      font-size:21px;
      background: none;
+     @include tablet{
+        display:block;
+        margin-left:20px;
+}
     }
   .deal {
     background: white;
-    padding: 20px 20px 10px 20px;
+    padding: 20px 0px 10px 20px;
     border-radius: 25px;
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
     /*gap: 30px;*/
-    max-width: 1000px;
+    width: 960px;
     margin-top: 30px ;
-    margin-left: 50px ;
+    margin-left: 20px ;
     position: relative;
+	@media (max-width: 1400px) {
+		flex-direction: column;
+		padding: 20px 20px 10px 20px;
+		width: 340px;
+    }
+         @include gap{
+      width: 310px;
+      margin-left:auto;
+      margin-right: auto;
+    }
     .my-announcement {
       padding-bottom: 15px;
       border-radius: 10px;
@@ -45,6 +64,9 @@
       flex-direction: column;
       overflow: hidden;
       filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+         @include gap{
+      width: 270px;
+    }
       &__info {
         display: flex;
         align-items: center;
@@ -126,15 +148,22 @@ margin-top: 5px;
 color: $grey;
 position: absolute;
 bottom: 15px;
-left: 30px;
+left: 45px;
 }
 .arrows{
-    margin-top: auto;
+    margin-top: 30px;
     margin-bottom: auto;
     margin-left: 10px;
     margin-right: 10px;
     width: 60px;
     height: auto;
+	@media (max-width: 1500px) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60px;
+    }
 }
 .deal_link, .chat_link {
     display: flex;
@@ -171,6 +200,10 @@ left: 30px;
   border-radius: 25px;
   background: #FFF;
   padding: 0 10px 0px 30px;
+  	@media (max-width: 1500px) {
+        margin: auto;
+        padding: 7px 0 25px 0;
+    }
   &__image {
     @include h2;
     font-weight: 400;
@@ -183,7 +216,7 @@ left: 30px;
       object-fit: cover;
     }
     figcaption {
-      margin-left: 10px;
+      text-align:center;
       font-size: 30px;
     }
   }
@@ -224,10 +257,20 @@ left: 30px;
     text-align: center;
   }
 }
+
 .opened{
   color:#E04700;
 }
 .closed{
   color:#4D4D4D;
   text-decoration: underline;
+}
+.first{
+margin-left:100px;
+@include tablet{
+margin-left:20px;
+}
+}
+.last{
+margin-bottom:-25px;
 }
