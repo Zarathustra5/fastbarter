@@ -6,11 +6,12 @@
 .account-menu{
 max-width:400px;
     @include phone {
-     transition: 0.7s;
-        z-index:10001;
-        display: none;
-        position: fixed;
-        margin-top: 20px;
+    max-width:300px;
+    top: 142px;
+    z-index:10001;
+    display: none;
+    position: fixed;
+    margin-top: 20px;
     }
 }
 .open-menu-btn{
@@ -19,8 +20,8 @@ max-width:400px;
     cursor: pointer;
     display: none;
     position: fixed;
-    top: 123px;
-    left: 30px;
+    top: 169px;
+    right: 29px;
     background-color: #e04700;
     width: 35px;
     height: 35px;
@@ -39,6 +40,10 @@ max-width:400px;
   border-radius: 25px;
   background: #FFF;
   padding: 40px 30px;
+    @include phone {
+      height: 220px;
+      padding: 10px 30px 10px 30px;
+    }
   &__image {
     @include h1;
     font-weight: 400;
@@ -99,6 +104,7 @@ max-width:400px;
   border-radius: 25px;
   background: #FFF;
   padding: 20px 0;
+    @include phone { padding: 8px 0; }
   &__item {
     padding: 0 20px;
     color: black;
@@ -108,6 +114,7 @@ max-width:400px;
     margin: 20px 0;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
+    @include phone { margin: 13px 0; }
     &:hover {
       border-left: 1px solid $orange;
       border-right: 1px solid $orange;

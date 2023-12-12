@@ -37,6 +37,9 @@
     width:165px;
     height:47px;
     display: flex;
+    align-items: center;
+    justify-content:center;
+    @include phone { min-width:47px; width:47px; transform:scale(0.7); }
       p{
         color: #BA3B00;
         text-align: center;
@@ -46,14 +49,16 @@
         font-style: normal;
         font-weight: 500;
         line-height: 20px; /* 133.333% */
-        letter-spacing: 0.1px;}
+        letter-spacing: 0.1px;
+        @include phone { display:none; }
+        }
       svg {
-       margin: auto 0 auto 5px;
+       margin: auto 0 auto -2px;
        width: 30px;
        height: 30px;
       }
     }
-    svg {
+    .product__favorite {
       margin: auto 0 auto 10px;
       width: 30px;
       height: 30px;
@@ -62,6 +67,7 @@
       @include h1;
       color: #4D4D4D; 
       text-align: left;
+      max-width:70%;
     }
     &__price {
       @include h1;
@@ -90,6 +96,8 @@
         flex-direction: column; }
     &__image {
       height: 100%;
+    @include phone {
+        margin-bottom: 15px; }
       img {
         /*object-fit: contain;*/
         object-fit: cover;
@@ -146,6 +154,9 @@
     border-radius:25px;
         @include gap{
             width:250px;
+        }
+        @include phone{
+            width:330px;
         }
     }
     &__name {
