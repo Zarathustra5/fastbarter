@@ -36,6 +36,7 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 10px;
     padding: 10px;
+    font-size: 16px;
     @include txt16;
     background-color: #FFF;
   }
@@ -83,3 +84,5 @@
     }
   }
 }
+input {
+font-size: 16px;}

@@ -177,6 +177,7 @@
       color: white;
     }
     &__stars {
+    width:200px;
       svg {
         margin-right:10px;
         width: 25px;
@@ -188,7 +189,11 @@
     }
     &__reviews {
       @include txt13;
-      color: var(--black-06, rgba(0, 0, 0, 0.60)); 
+      color: var(--black-06, rgba(0, 0, 0, 0.60));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
       &:hover {
         p {
           text-decoration: underline;
