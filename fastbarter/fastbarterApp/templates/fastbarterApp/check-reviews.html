@@ -19,11 +19,6 @@
   </p></div>
     <div class="container container_reviews">
       <section class="reviews">
-        <div style="display: none;">
-          {% for review in reviews %}
-            <div class="review-rating">{{review.rating}}</div>
-          {% endfor %}
-        </div>
         {% for review in reviews %}
           <div class="review">
             <div class="review__header review-header">
@@ -60,6 +55,11 @@
             </div>
           </div>
         {% endfor %}
+        <div style="display: none;">
+          {% for review in reviews %}
+            <div class="review-rating">{{review.rating}}</div>
+          {% endfor %}
+        </div>
         <!--
         <section class="pagination-button">
             <div class="container">
@@ -83,7 +83,7 @@
           </div>
           <p class="seller__reviews-score person__reviews-score">0</p>
         </div>
-        <p class="seller__registered">Зарегестрирован: {{detail_catalog.user.created_at}}</p>
+        <p class="seller__registered">Зарегистрирован: {{detail_catalog.user.created_at}}</p>
       </aside>
     </div>
 </main>

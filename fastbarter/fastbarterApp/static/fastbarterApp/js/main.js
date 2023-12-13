@@ -57,3 +57,13 @@ if (personScore) {
     }
   }
 }
+const idPhoto = document.querySelector("input#id_photo[type='file']");
+const filePreview = document.querySelector("img.file-preview");
+if (idPhoto) {
+  idPhoto.onchange = e => {
+    let src = URL.createObjectURL(e.target.files[0]);
+    filePreview.src = src;
+    console.log(e.target);
+    console.log(filePreview);
+  }
+}

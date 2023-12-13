@@ -105,21 +105,6 @@
         {% for deal in finishedDeals2 %}
           <div class="deal">
             <div class="my-announcement">
-                <a href="{{deal.catalog2.link}}">
-                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
-                </a>
-                <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
-                    <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
-                    </div>
-                </div>
-                <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
-                </div>
-            </div>
-            <svg class="arrows"><use href="#exchange"></use></svg>
-            <div class="my-announcement">
                 <a href="{{deal.catalog.link}}">
                     <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
@@ -133,10 +118,25 @@
                   <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
                 </div>
             </div>
+            <svg class="arrows"><use href="#exchange"></use></svg>
+            <div class="my-announcement">
+                <a href="{{deal.catalog2.link}}">
+                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
+                </a>
+                <div class="my-announcement__row">
+                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
+                    <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
+                    </div>
+                </div>
+                <div class="my-announcement__row">
+                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
+                </div>
+            </div>
             <div class="seller">
               <figure class="seller__image">
-                <figcaption class="seller__name">{{deal.catalog.user.name}}</figcaption>
-                <img src="/media/{{deal.catalog.user.photo}}">
+                <figcaption class="seller__name">{{deal.catalog2.user.name}}</figcaption>
+                <img src="/media/{{deal.catalog2.user.photo}}">
               </figure>
               <div class="seller__reviews">
                 <div class="seller__reviews-row">
