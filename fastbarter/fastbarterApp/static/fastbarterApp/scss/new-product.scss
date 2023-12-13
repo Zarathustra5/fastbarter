@@ -36,6 +36,7 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 10px;
     padding: 10px;
+    font-size: 16px;
     @include txt16;
     background-color: #FFF;
   }
@@ -54,7 +55,7 @@
   &__add-image {
     @include btn-white;
     @include txt13;
-    width: 200px;
+    width: 230px;
     height: 40px;
     margin: auto;
     margin-top: 20px;
@@ -64,15 +65,17 @@
     }
     span {
       padding-left: 10px;
+      font-size:16px;
     }
   }
   &__desc {
     display: flex;
     flex-direction: column;
     textarea {
-      margin: 10px 0 0 0;
+      margin: 10px;
       width:100%;
       resize:none;
+      font-size: 16px;
     }
   }
   &__submit {
@@ -83,3 +86,5 @@
     }
   }
 }
+input {
+font-size: 16px;}
