@@ -7,8 +7,24 @@
     }
     &__panel {
         max-width: 420px;
+        min-width:250px;
+         @include tablet {
+                }
+        @include gap {
+        min-width:100px;
+         background: rgba(0, 0, 0, 0.4);
+         border-radius:15px;
+            max-width:320px;
+            padding:10px;
+            top: 142px;
+            z-index:10001;
+            display: none;
+            position: fixed;
+            margin-top: 20px;
+        }
     }
     &-list {
+
         &__title {
             @include h1;
             font-size: 30px;
@@ -17,9 +33,15 @@
             @include tablet {
                 font-size: 20px;
             }
+            @include gap {
+                color:white;
+            }
             span {
                 color: #7A7A7A; 
                 padding-left: 10px;
+                @include gap {
+                    color:white;
+                }
             }
         }
         &__content {
@@ -35,11 +57,9 @@
             border: 1px solid $orange;
             background: #FFF;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 10px;
+
             @include gap {
-                flex-direction: column;
-            }
-            @include phone {
                 font-size: 10px;
                 height:70px;
             }
@@ -76,16 +96,19 @@
         &_personal {
             margin-top: 30px;
             .chats-list-item {
-                height: 50px;
+                height: 45px;
                 width: 100%;
                 max-width: 320px;
-            @include phone {
+            @include gap {
                 font-size: 10px;
-                height:70px;
             }
                 &__image {
                     width: 35px;
                     height: 35px;
+                    @include gap {
+                        width: 30px;
+                        height: 30px;
+                    }
                 }
                 &__unreaded {
                     height: 23px;
@@ -101,6 +124,9 @@
         flex-direction: column;
             @include tablet {
                 margin-left: 2%;
+            }
+            @include gap {
+                margin-left: 0;
             }
         &__header {
             display: flex;
@@ -242,14 +268,14 @@
         align-items: center;
         position: fixed;
         bottom: 20px;
-        width: 53%;
+        width: 60%;
         max-width: 870px;
         padding: 0 0 0 30px;
         @include tablet {
-            width: 70%;
+            width: 57%;
         }
-        @include phone {
-             width: 65%;
+        @include gap {
+            width: 90%;
         }
         &__input {
             &-container {
@@ -293,5 +319,26 @@
                 color: $orange;
             }
         }
+    }
+}
+.open-chat-btn{
+    z-index:10001;
+    position:fixed;
+    cursor: pointer;
+    display: none;
+    position: fixed;
+    top: 119px;
+    right: 29px;
+    background-color: #e04700;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    svg {
+    fill:white;
+    width: 28px;
+    height: 35px;
+    }
+    @include gap {
+        display: block;
     }
 }

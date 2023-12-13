@@ -1,6 +1,8 @@
 .popup {
     opacity: 0;
     visibility: hidden;
+/*opacity: 1;
+    visibility: active;*/
     position: fixed;
     top: 0;
     left: 0;
@@ -13,6 +15,8 @@
         position: absolute;
         right: 20px;
         top: 20px;
+        @include phone { top: 76px; }
+
         cursor: pointer;
         svg {
             width: 50px;
@@ -52,6 +56,7 @@
             width: 622px;
             max-width: 100%;
             position: relative;
+            @include phone { padding: 80px 10px 50px 10px;}
         }
     }
     &-auth {
@@ -104,7 +109,10 @@
             border-radius: 10px;
             background: transparent;
             padding: 0 10px;
-
+            @include gap {
+            width:300px;}
+            @include phone {
+            width:250px;}
           }
         }
         &__submit {
@@ -129,7 +137,17 @@
         &__header {
             display: flex;
             justify-content: space-between;
+            align-items:center;
             margin-top: 50px;
+            @include gap {
+            flex-direction: column;
+            }
+        }
+        &__search {
+            @include gap {
+            margin-bottom:10px;
+            @include gap{transform:scale(0.85);}
+            }
         }
         &__reset {
             @include h2;
@@ -137,15 +155,26 @@
         }
         &__submit {
             @include btn;
+            @include gap {
+            width:250px;
+            transform:scale(0.85);
+
+            }
         }
         &__fields {
             padding-top: 60px;
+            @include gap {
+            padding-top: 10px;
+            }
         }
         &-prices {
+            div {
+            margin-top: 10px;}
             display: flex;
-            padding-top: 10px;
             align-items: center;
+            flex-wrap: wrap;
             input {
+            margin-top: 10px;
             @include txt16;
             color: var(--base-60, #A0A0A0); 
             border-radius: 4px;
@@ -161,6 +190,7 @@
             }
             }
             .popup-filters__checkbox {
+            margin-top: 10px;
             display: flex;
             align-items: center;
             @include txt18;
@@ -277,12 +307,14 @@
         background: #D4D4D4;
         color: $orange;
         margin-right: 10px;
+        @include phone { margin-right: 0; margin-bottom:10px;}
         &:hover {
           color: white
         }
       }
       &__submit {
         @include btn;
+        @include phone { margin-bottom:20px;}
       }
       &__body {
         display: none;
@@ -310,10 +342,14 @@
     margin-top: 30px ;
     margin-left: 0px ;
     align-items: center;
+    @include phone { flex-direction: column; }
     .arrows {
       width: 60px;
-      height: auto;
-      margin: 0 10px;
+      height: 60px;
+      margin: 10px;
+      @include phone {
+       width: 50px;
+       height: 50px; }
     }
     .my-announcement {
       padding-bottom: 15px;
@@ -333,10 +369,12 @@
           }
         }
       }
+      @include phone {width:320px;}
       &__info {
         display: flex;
         align-items: center;
         margin-left: 5px;
+
       }
       &__favorite {
         width: 25px;
@@ -408,19 +446,31 @@
   &__footer {
     display: flex;
     justify-content: flex-end;
-    margin-top: 30px;
-    margin-right: 20px;
-  }
+   margin:30px 20px 0 0;
+      @include phone {
+      margin:20px auto 0 auto;
+       width:300px;
+        justify-content: center;
+        flex-direction: column;
+      }
     }
+  }
 }
 
 .reviewer {
   margin:20px 30px -40px 72px;
   display: none;
   align-items: center;
+  @include gap {
+    margin:20px 30px -40px 10px;
+  }
+  @include phone {
+    margin:10px 30px -40px 90px;
+  }
   &__image {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
     img {
       border-radius: 50%;
       width: 100%;
@@ -430,11 +480,15 @@
   }
   &__info {
     margin-left: 20px;
-    margin-right: 240px;
   }
   &__name {
     @include txt18;
     font-weight: 700;
+  }
+  &__your {
+    position: absolute;
+    right: 20%;
+    @include phone {display:none;}
   }
   &__date {
     @include txt13;
