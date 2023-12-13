@@ -55,7 +55,7 @@
   &__add-image {
     @include btn-white;
     @include txt13;
-    width: 200px;
+    width: 230px;
     height: 40px;
     margin: auto;
     margin-top: 20px;
@@ -65,13 +65,14 @@
     }
     span {
       padding-left: 10px;
+      font-size:16px;
     }
   }
   &__desc {
     display: flex;
     flex-direction: column;
     textarea {
-      margin: 10px 0 0 0;
+      margin: 10px;
       width:100%;
       resize:none;
     }
