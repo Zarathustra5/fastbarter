@@ -136,7 +136,7 @@ def edit_profile(request):
         form.save()
 
     else:
-        form = EditProfileForm(initial={'name': request.user.name, 'phone_number': request.user.phone_number, 'email': request.user.email })
+        form = EditProfileForm(initial={'name': request.user.name, 'phone_number': request.user.phone_number, 'email': request.user.email, 'city': request.user.city })
 
     return render(request, "fastbarterApp/account/edit-profile.html", {"form": form, "reviews": reviews})
 
@@ -256,3 +256,19 @@ def new_group(request):
         form = NewGroupForm()
 
     return render(request, 'fastbarterApp/new-group.html', {"form": form, "success": success})
+
+def check_reviews(request):
+    success = False
+    detail_catalog = ''
+    userTo = ''
+    reviews = ''
+    rating = ["1", "2", "3", "4", "5"]
+    if request.method == "POST":
+        detail_catalog = Catalog.objects.get(pk=request.POST["catalog"])
+        userTo = detail_catalog.user
+        reviews = Reviews.objects.filter(userTo=userTo)
+
+    else:
+        return redirect('/catalog')
+
+    return render(request, 'fastbarterApp/check-reviews.html', {"success": success, "userTo": userTo, "detail_catalog": detail_catalog, "reviews": reviews, "rating": rating})

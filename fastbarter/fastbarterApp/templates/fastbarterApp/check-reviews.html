@@ -1,0 +1,96 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/reviews.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
+{% endblock %}
+
+{% block title %} Каталог товаров {% endblock %}
+
+{% block content %}
+<main class="page">
+  <div class="navigation"><p>
+    <a href="{% url 'catalog' %}">Главная</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'reviews' %}">Отзывы</a>
+  </p></div>
+    <div class="container container_reviews">
+      <section class="reviews">
+        <div style="display: none;">
+          {% for review in reviews %}
+            <div class="review-rating">{{review.rating}}</div>
+          {% endfor %}
+        </div>
+        {% for review in reviews %}
+          <div class="review">
+            <div class="review__header review-header">
+              <div class="reviewer">
+                <figure class="reviewer__image">
+                  <img src="/media/{{review.user.photo}}">
+                </figure>
+                <div class="reviewer__info">
+                  <h4 class="reviewer__name">{{review.user.name}}</h4>
+                  <p class="reviewer__date">{{review.created_at}}</p>
+                </div>
+              </div>
+              <div class="review-header__stars">
+                {% for i in rating %}
+                  <svg class="review-header__star {% if i <= review.rating %}review-header__star_active{% endif %}"><use href="#star"></use></svg>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="review__content">
+              <div class="review__text">
+                <h3 class="review__title">{{review.catalog}}</h3>
+                <p class="review__desc">{{review.review}}</p>
+              </div>
+              <div class="review__media">
+               {% if '.mp4' in review.file.url %}
+                  <video controls>
+                    <source src="/media/{{review.file}}" type="video/mp4">
+                    Ваш браузер не поддреживает данный формат видео
+                  </video>
+                {% else %}
+                  <img src="/media/{{review.file}}">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        <!--
+        <section class="pagination-button">
+            <div class="container">
+                <button class="pagination-button__btn">Показать  еще</button>
+            </div>
+        </section>
+        -->
+      </section>
+      <aside class="seller person">
+        <figure class="seller__image">
+          <img src="/media/{{detail_catalog.user.photo}}">
+          <figcaption class="seller__name">{{detail_catalog.user.name}}</figcaption>
+        </figure>
+        <div class="seller__reviews">
+          <div class="seller__stars person__stars">
+            <svg class="seller__star person__star"><use href="#star"></use></svg>
+            <svg class="seller__star person__star"><use href="#star"></use></svg>
+            <svg class="seller__star person__star"><use href="#star"></use></svg>
+            <svg class="seller__star person__star"><use href="#star"></use></svg>
+            <svg class="seller__star person__star"><use href="#star"></use></svg>
+          </div>
+          <p class="seller__reviews-score person__reviews-score">0</p>
+        </div>
+        <p class="seller__registered">Зарегестрирован: {{detail_catalog.user.created_at}}</p>
+      </aside>
+    </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
+    <script type="module" src="{% static 'fastbarterApp/js/reviews.js' %}"></script>
+{% endblock %}

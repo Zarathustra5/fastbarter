@@ -67,6 +67,12 @@
             </figure>
             <p class="product-seller__registered">Зарегестрирован:</p>
             <p class="product-seller__registered">{{detail_catalog.user.created_at}}</p>
+            <form method="post" action="{% url 'check-reviews' %}">
+                {% csrf_token %}
+                <input name="catalog" type="hidden" value="{{detail_catalog.id}}">
+                <input name="submit-new-review" type="hidden" />
+                <input id="submit-catalog-review" name="submit-catalog-review" type="submit" style="display: none;" />
+            </form>
             <label for="submit-catalog-review" class="product-seller__reviews">
               <div class="product-seller__stars person__stars">
                 <svg class="person__star"><use href="#star"></use></svg>

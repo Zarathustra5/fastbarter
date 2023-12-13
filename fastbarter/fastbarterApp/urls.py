@@ -31,6 +31,7 @@ urlpatterns = [
     path('new-product', views.new_product, name="new-product"),
     path('reviews', views.reviews, name="reviews"),
     path('my-reviews', views.my_reviews, name="my-reviews"),
+    path('check-reviews', views.check_reviews, name="check-reviews"),
     path('account', views.account, name="account"),
     path('edit-profile', views.edit_profile, name="edit-profile"),
 
