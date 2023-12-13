@@ -43,224 +43,244 @@
       document.getElementById('open_done').classList.add('closed');
       document.getElementById('open_done').classList.remove('opened');  }
       </script>
-        <div class="deal">
-          <div class="my-announcement">
-              <a href="{% url 'new-product' %}">
-                  <img src="{% static 'fastbarterApp/img/som.webp' %}" alt="Товар" class="my-announcement__image">
-              </a>
-              <div class="my-announcement__row">
-                  <h6 class="my-announcement__title">Говорящий сом</h6>
-                  <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>100₽</p>
-                  </div>
-              </div>
-              <div class="my-announcement__row">
-                  <p class="my-announcement__desc">Говорящий сом для большого аквариума</p>
-              </div>
-          </div>
-           <svg class="arrows"><use href="#exchange"></use></svg>
-
+        {% for deal in finishedDeals1 %}
+          <div class="deal">
             <div class="my-announcement">
-              <a href="{% url 'new-product' %}">
-                  <img src="{% static 'fastbarterApp/img/sailentblock.webp' %}" alt="Товар" class="my-announcement__image">
-              </a>
-              <div class="my-announcement__row">
-                  <h6 class="my-announcement__title">Сайлентблок передней балки</h6>
-                  <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>614₽</p>
-                  </div>
-              </div>
-              <div class="my-announcement__row">
-                  <p class="my-announcement__desc">Бренд: АSVА, aртикул: 0501GHFС2, Сайлентблок пeрeдней балки.</p>
-              </div>
-          </div>
-      <div class="seller">
-        <figure class="seller__image">
-          <figcaption class="seller__name">Ахтямов Чучмек</figcaption>
-          <img src="{% static 'fastbarterApp/img/seller.png' %}">
-        </figure>
-        <a href="{% url 'reviews' %}" class="seller__reviews">
-          <div class="seller__reviews-row">
-            <div class="seller__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
+                <a href="{{deal.catalog2.link}}">
+                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
+                </a>
+                <div class="my-announcement__row">
+                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
+                    <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
+                    </div>
+                </div>
+                <div class="my-announcement__row">
+                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
+                </div>
             </div>
-            <p class="seller__reviews-score">4.1</p>
-          </div>
-          <p class="seller__reviews-count">65 отзывов</p>
-        </a>
-        <a href="/catalog/1/" class="chat_link">Перейти в чат</a>
-      </div>
-          <span class="data">Дата и время обмена: 15.10.2023 19:38</span>
-        </div>
-        <div class="deal">
-          <div class="my-announcement">
-              <a href="{% url 'new-product' %}">
-                  <img src="{% static 'fastbarterApp/img/som.webp' %}" alt="Товар" class="my-announcement__image">
-              </a>
-              <div class="my-announcement__row">
-                  <h6 class="my-announcement__title">Говорящий сом</h6>
-                  <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>100₽</p>
-                  </div>
-              </div>
-              <div class="my-announcement__row">
-                  <p class="my-announcement__desc">Говорящий сом для большого аквариума</p>
-              </div>
-          </div>
-           <svg class="arrows"><use href="#exchange"></use></svg>
-
+            <svg class="arrows"><use href="#exchange"></use></svg>
             <div class="my-announcement">
-              <a href="{% url 'new-product' %}">
-                  <img src="{% static 'fastbarterApp/img/sailentblock.webp' %}" alt="Товар" class="my-announcement__image">
-              </a>
-              <div class="my-announcement__row">
-                  <h6 class="my-announcement__title">Сайлентблок передней балки</h6>
-                  <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>614₽</p>
-                  </div>
-              </div>
-              <div class="my-announcement__row">
-                  <p class="my-announcement__desc">Бренд: АSVА, aртикул: 0501GHFС2, Сайлентблок пeрeдней балки.</p>
-              </div>
-          </div>
-      <div class="seller">
-        <figure class="seller__image">
-          <figcaption class="seller__name">Ахтямов Чучмек</figcaption>
-          <img src="{% static 'fastbarterApp/img/seller.png' %}">
-        </figure>
-        <a href="{% url 'reviews' %}" class="seller__reviews">
-          <div class="seller__reviews-row">
-            <div class="seller__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
+                <a href="{{deal.catalog.link}}">
+                    <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
+                </a>
+                <div class="my-announcement__row">
+                    <h6 class="my-announcement__title">{{deal.catalog.title}}</h6>
+                    <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog.price}}₽</p>
+                    </div>
+                </div>
+                <div class="my-announcement__row">
+                  <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
+                </div>
             </div>
-            <p class="seller__reviews-score">4.1</p>
+            <div class="seller">
+              <figure class="seller__image">
+                <figcaption class="seller__name">{{deal.catalog.user.name}}</figcaption>
+                <img src="/media/{{deal.catalog.user.photo}}">
+              </figure>
+              <div class="seller__reviews">
+                <div class="seller__reviews-row">
+                  <div class="seller__stars">
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                  </div>
+                  <p class="seller__reviews-score">4.1</p>
+                </div>
+                <p class="seller__reviews-count">Отзывов: 2</p>
+              </div>
+              <form method="post" action="{% url 'reviews' %}">
+                  {% csrf_token %}
+                  <input name="catalog" type="hidden" value="{{deal.catalog.id}}">
+                  <input name="submit-new-review" type="hidden" />
+                  <input id="submit-catalog-review" name="submit-catalog-review" type="submit" style="display: none;" />
+              </form>
+              <label for="submit-catalog-review" class="chat_link">Оставить отзыв</label>
+            </div>
           </div>
-          <p class="seller__reviews-count">65 отзывов</p>
-        </a>
-            <a href="/catalog/1/" class="chat_link">Перейти в чат</a>
-      </div>
-            <span class="data">Дата и время обмена: 15.10.2023 19:38</span>
-        
-      </div>
+        {% endfor %}
+        {% for deal in finishedDeals2 %}
+          <div class="deal">
+            <div class="my-announcement">
+                <a href="{{deal.catalog2.link}}">
+                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
+                </a>
+                <div class="my-announcement__row">
+                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
+                    <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
+                    </div>
+                </div>
+                <div class="my-announcement__row">
+                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
+                </div>
+            </div>
+            <svg class="arrows"><use href="#exchange"></use></svg>
+            <div class="my-announcement">
+                <a href="{{deal.catalog.link}}">
+                    <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
+                </a>
+                <div class="my-announcement__row">
+                    <h6 class="my-announcement__title">{{deal.catalog.title}}</h6>
+                    <div class="my-announcement__info">
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog.price}}₽</p>
+                    </div>
+                </div>
+                <div class="my-announcement__row">
+                  <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
+                </div>
+            </div>
+            <div class="seller">
+              <figure class="seller__image">
+                <figcaption class="seller__name">{{deal.catalog.user.name}}</figcaption>
+                <img src="/media/{{deal.catalog.user.photo}}">
+              </figure>
+              <div class="seller__reviews">
+                <div class="seller__reviews-row">
+                  <div class="seller__stars">
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                  </div>
+                  <p class="seller__reviews-score">4.1</p>
+                </div>
+                <p class="seller__reviews-count">Отзывов: 2</p>
+              </div>
+              <form method="post" action="{% url 'reviews' %}">
+                  {% csrf_token %}
+                  <input name="catalog" type="hidden" value="{{deal.catalog2.id}}">
+                  <input name="submit-new-review" type="hidden" />
+                  <input id="submit-catalog-review" name="submit-catalog-review" type="submit" style="display: none;" />
+              </form>
+              <label for="submit-catalog-review" class="chat_link">Оставить отзыв</label>
+            </div>
+          </div>
+        {% endfor %}
 
         </div>
         <div class="current" id="current">
+        {% for deal in currentDeals1 %}
           <div class="deal">
             <div class="my-announcement">
-                <a href="{% url 'new-product' %}">
-                    <img src="/media/images/1.YnSNhba4zp27LAyYxZxKdpEnzJszJEyV-yHMnz0sxpc7.webp" alt="Товар" class="catalog-product__image">
+                <a href="{{deal.catalog2.link}}">
+                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">iPhone XP</h6>
+                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
                     <div class="my-announcement__info">
-                        <p class="my-announcement__price"><span>≈</span>10000₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                    <p class="my-announcement__desc">б/у смартфон iPhone Xr (A2106)</p>
+                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
                 </div>
             </div>
-             <svg class="arrows"><use href="#exchange"></use></svg>
-  
-              <div class="my-announcement">
-                <a href="{% url 'new-product' %}">
-                    <img src="{% static 'fastbarterApp/img/chainik.jpg' %}" alt="Товар" class="my-announcement__image">
+            <svg class="arrows"><use href="#exchange"></use></svg>
+            <div class="my-announcement">
+                <a href="{{deal.catalog.link}}">
+                    <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">Винтаж. Редкий эмалированный чайник</h6>
+                    <h6 class="my-announcement__title">{{deal.catalog.title}}</h6>
                     <div class="my-announcement__info">
-                        <p class="my-announcement__price"><span>≈</span>9000₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                    <p class="my-announcement__desc">Бренд: АSVА, aртикул: 0501GHFС2, Сайлентблок пeрeдней балки.</p>
+                  <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
                 </div>
             </div>
-        <div class="seller">
-          <figure class="seller__image">
-            <figcaption class="seller__name">Ахтямов Чучмек</figcaption>
-            <img src="{% static 'fastbarterApp/img/seller.png' %}">
-          </figure>
-          <a href="{% url 'reviews' %}" class="seller__reviews">
-            <div class="seller__reviews-row">
-              <div class="seller__stars">
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
+            <div class="seller">
+              <figure class="seller__image">
+                <figcaption class="seller__name">{{deal.catalog.user.name}}</figcaption>
+                <img src="/media/{{deal.catalog.user.photo}}">
+              </figure>
+              <div class="seller__reviews">
+                <div class="seller__reviews-row">
+                  <div class="seller__stars">
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                  </div>
+                  <p class="seller__reviews-score">4.1</p>
+                </div>
+                <p class="seller__reviews-count">Отзывов: 2</p>
               </div>
-              <p class="seller__reviews-score">4.1</p>
+              <label for="submit-finish-deal" class="chat_link">Завершить сделку</label>
+              <form method="post">
+                  {% csrf_token %}
+                  <input name="deal" type="hidden" value="{{deal.id}}">
+                  <input id="submit-finish-deal" name="submit-finish-deal" type="submit" style="display: none;" />
+              </form>
             </div>
-            <p class="seller__reviews-count">65 отзывов</p>
-          </a>
-          <a href="/catalog/1/" class="chat_link">Перейти в чат</a>
-        </div>
-            <span class="data">Дата и время обмена: 15.20.2023 17:43</span>
           </div>
+        {% endfor %}
+        {% for deal in currentDeals2 %}
           <div class="deal">
             <div class="my-announcement">
-                <a href="{% url 'new-product' %}">
-                    <img src="{% static 'fastbarterApp/img/pistol.jpg' %}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.catalog2.link}}">
+                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">Игрушечный пистолет</h6>
+                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
                     <div class="my-announcement__info">
-                        <p class="my-announcement__price"><span>≈</span>1000₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                    <p class="my-announcement__desc">Игрушечный пистолет Desert Eagle Граффити</p>
+                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
                 </div>
             </div>
-             <svg class="arrows"><use href="#exchange"></use></svg>
-  
-              <div class="my-announcement">
-                <a href="{% url 'new-product' %}">
-                    <img src="{% static 'fastbarterApp/img/tennis.jpg' %}" alt="Товар" class="my-announcement__image">
+            <svg class="arrows"><use href="#exchange"></use></svg>
+            <div class="my-announcement">
+                <a href="{{deal.catalog.link}}">
+                    <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">Теннисная ракетка</h6>
+                    <h6 class="my-announcement__title">{{deal.catalog.title}}</h6>
                     <div class="my-announcement__info">
-                        <p class="my-announcement__price"><span>≈</span>1000₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                    <p class="my-announcement__desc">Советская теннисная ракетка Юность</p>
+                  <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
                 </div>
             </div>
-        <div class="seller">
-          <figure class="seller__image">
-            <figcaption class="seller__name">Савельвев Дмитрий</figcaption>
-            <img src="{% static 'fastbarterApp/img/seller.png' %}">
-          </figure>
-          <a href="{% url 'reviews' %}" class="seller__reviews">
-            <div class="seller__reviews-row">
-              <div class="seller__stars">
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
+            <div class="seller">
+              <figure class="seller__image">
+                <figcaption class="seller__name">{{deal.catalog.user.name}}</figcaption>
+                <img src="/media/{{deal.catalog.user.photo}}">
+              </figure>
+              <div class="seller__reviews">
+                <div class="seller__reviews-row">
+                  <div class="seller__stars">
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                    <svg><use href="#star"></use></svg>
+                  </div>
+                  <p class="seller__reviews-score">4.1</p>
+                </div>
+                <p class="seller__reviews-count">Отзывов: 2</p>
               </div>
-              <p class="seller__reviews-score">4.2</p>
+              <label for="submit-finish-deal" class="chat_link">Завершить сделку</label>
+              <form method="post" action="{% url 'reviews' %}">
+                  {% csrf_token %}
+                  <input name="deal" type="hidden" value="{{deal.id}}">
+                  <input id="submit-finish-deal" name="submit-finish-deal" type="submit" style="display: none;" />
+              </form>
             </div>
-            <p class="seller__reviews-count">11 отзывов</p>
-          </a>
-              <a href="/catalog/1/" class="chat_link">Перейти в чат</a>
-        </div>
-              <span class="data">Дата и время обмена: 15.14.2023 15:53</span>
-          
-        </div>
           </div>
+        {% endfor %}
+        </div>
       </section>
     </div>
 </main>

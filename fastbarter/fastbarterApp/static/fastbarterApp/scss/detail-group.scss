@@ -113,11 +113,13 @@
       border: 1px solid $orange;
       border-radius: 25px;
       padding: 15px;
+      width: 100%;
     }
     &__sellers {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      justify-content: flex-start;
     }
     &__image {
       img {
@@ -160,12 +162,23 @@
     color: #878787; 
     text-align: center;
     flex: 0 0 25%;
+    &__image {
+      width: 110px;
+      height: 110px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
     &__label {
       @include txt18;
     }
     &__name {
       padding-top: 5px;
       @include h2;
+      line-height: 23px;
+      padding-bottom: 10px;
     }
     &__registered {
       @include txt13;

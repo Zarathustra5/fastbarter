@@ -1,4 +1,4 @@
-const stars = document.querySelectorAll(".review-header__star");
+const stars = document.querySelectorAll(".review-header__stars_create .review-header__star");
 stars.forEach(el => {
     el.onclick = e => {
         let count = 0;

@@ -63,12 +63,8 @@ max-width:400px;
     svg {
       width: 30px;
       height: 30px;
-      color: #FDD835;
       @include gap {
          width: 25px;
-      }
-      &:last-child {
-        color: #BDBDBD; 
       }
     }
   } 

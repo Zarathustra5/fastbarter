@@ -132,3 +132,10 @@ if (burger) {
     document.body.classList.toggle("locked");
   }
 }
+
+let filterBtns = document.querySelectorAll(".popup-filters-categories__icon-block");
+filterBtns.forEach(el => {
+  el.onclick = () => {
+    el.querySelector(".category-icon").classList.toggle("category-icon_active");
+  }
+});

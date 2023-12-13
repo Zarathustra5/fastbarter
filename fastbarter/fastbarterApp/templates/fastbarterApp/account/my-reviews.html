@@ -22,71 +22,56 @@
     <div class="container">
       {% include 'fastbarterApp/modules/account-menu.html' %}
       <section class="reviews my-reviews">
-        <div class="review">
-          <div class="review__header review-header">
-            <div class="reviewer">
-              <figure class="reviewer__image">
-                <img src="{% static 'fastbarterApp/img/slide1.jpg' %}">
-              </figure>
-              <div class="reviewer__info">
-                <h4 class="reviewer__name">Шавалиев Альберт</h4>
-                <p class="reviewer__date">Сегодня 13:00</p>
+        {% for review in reviews %}
+          <div class="review">
+            <div class="review__header review-header">
+              <div class="reviewer">
+                <figure class="reviewer__image">
+                  <img src="/media/{{review.user.photo}}">
+                </figure>
+                <div class="reviewer__info">
+                  <h4 class="reviewer__name">{{review.user.name}}</h4>
+                  <p class="reviewer__date">{{review.created_at}}</p>
+                </div>
+              </div>
+              <div class="review-header__stars">
+                {% for i in rating %}
+                  <svg class="review-header__star {% if i <= review.rating %}review-header__star_active{% endif %}"><use href="#star"></use></svg>
+                {% endfor %}
               </div>
             </div>
-            <div class="review-header__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-            </div>
-          </div>
-          <div class="review__content">
-            <div class="review__text">
-              <h3 class="review__title">Airpods</h3>
-              <p class="review__desc">Обмен прошел хорошо. Аирподсы не фальшивые, человек почтительный.</p>
-            </div>
-            <div class="review__media">
-              <video controls>
-                <source src="{% static 'fastbarterApp/img/video-review.mp4' %}" type="video/mp4">
-                Ваш браузер не поддреживает данный формат видео
-              </video>
-            </div>
-          </div>
-        </div>
-        <div class="review">
-          <div class="review__header review-header">
-            <div class="reviewer">
-              <figure class="reviewer__image">
-                <img src="{% static 'fastbarterApp/img/slide1.jpg' %}">
-              </figure>
-              <div class="reviewer__info">
-                <h4 class="reviewer__name">Шавалиев Альберт</h4>
-                <p class="reviewer__date">Вчера в 18:00</p>
+            <div class="review__content">
+              <div class="review__text">
+                <h3 class="review__title">{{review.catalog}}</h3>
+                <p class="review__desc">{{review.review}}</p>
+              </div>
+              <div class="review__media">
+               {% if '.mp4' in review.file.url %}
+                  <video controls>
+                    <source src="/media/{{review.file}}" type="video/mp4">
+                    Ваш браузер не поддреживает данный формат видео
+                  </video>
+                {% else %}
+                  <img src="/media/{{review.file}}">
+                {% endif %}
               </div>
             </div>
-            <div class="review-header__stars">
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-              <svg><use href="#star"></use></svg>
-            </div>
           </div>
-          <div class="review__content">
-            <div class="review__text">
-              <h3 class="review__title">Airpods</h3>
-              <p class="review__desc">Обмен прошел хорошо. Аирподсы не фальшивые, человек почтительный.</p>
-            </div>
-            <div class="review__media">
-            </div>
-          </div>
-        </div>
+        {% endfor %}
+        {% if not reviews %}
+          <section class="pagination-button">
+              <div class="container">
+                  Отзывы не найдены
+              </div>
+          </section>
+        {% endif %}
+        <!--
         <section class="pagination-button">
             <div class="container">
                 <button class="pagination-button__btn">Показать  еще</button>
             </div>
         </section>
+        -->
       </section>
     </div>
 </main>

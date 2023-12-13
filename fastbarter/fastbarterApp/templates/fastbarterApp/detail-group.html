@@ -34,9 +34,16 @@
         <div class="product-about">
           <div class="product-about__block">
             <div class="product-about__title">
-              <h3>Участники <span>124</span></h3>
+              <h3>Участники <span>1</span></h3>
             </div>
             <div class="product-about__sellers">
+              <div class="product-about__seller product-seller">
+                <p class="product-seller__name">{{detail_group.user.name}}</p>
+                <figure class="product-seller__image">
+                  <img src="/media/{{detail_group.user.photo}}" alt="slide">
+                </figure>
+              </div>
+              <!--
               <div class="product-about__seller product-seller">
                 <p class="product-seller__name">Ахтямов</p>
                 <figure class="product-seller__image">
@@ -85,6 +92,7 @@
                   <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
                 </figure>
               </div>
+              -->
             </div>
           </div>
           <div class="product-about__exchange">
@@ -103,9 +111,13 @@
         </div>
     </div>
     </section>
+    <!--
     <h3 class="product-content__title">Записи сообщества</h3>
+    -->
+    <h3 class="product-content__title">Записей не найдено</h3>
     <section class="product">
     <div class="container">
+          <!--
         <div class="product-content">
 
           <div class="article">
@@ -165,6 +177,7 @@
             </div>
           </div>
         </div>
+          -->
     </div>
     </section>
 </main>

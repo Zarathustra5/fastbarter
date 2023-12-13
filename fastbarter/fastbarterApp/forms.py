@@ -31,7 +31,12 @@ class FilterForm(forms.ModelForm):
 class NewChatForm(forms.ModelForm):
     class Meta:
         model = Chats
-        fields = ('user1', 'user2', 'catalog')
+        fields = ('user1', 'user2', 'catalog', 'catalog2')
+
+class NewDealForm(forms.ModelForm):
+    class Meta:
+        model = Deals
+        fields = ('user1', 'user2', 'catalog', 'catalog2')
 
 class NewMessageForm(forms.ModelForm):
     class Meta:
@@ -49,7 +54,7 @@ class NewGroupForm(forms.ModelForm):
 class NewReviewForm(forms.ModelForm):
     class Meta:
         model = Reviews
-        fields = ('review', 'file', 'rating', 'catalog', 'user')
+        fields = ('review', 'file', 'rating', 'catalog', 'user', 'userTo')
         widgets = {
             'review': forms.Textarea(attrs={'cols': 88, 'rows': 10, 'placeholder': 'Оставьте свой отзыв'})
         }

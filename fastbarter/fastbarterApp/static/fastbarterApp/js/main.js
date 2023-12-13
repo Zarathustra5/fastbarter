@@ -37,3 +37,23 @@ if (productAboutBtn) {
         popupDeals.classList.add("popup_active");
     }
 }
+
+// Reviews rating
+const reviewRatings = document.querySelectorAll(".review-rating");
+let userRating = 0;
+let ratingCount = 0;
+reviewRatings.forEach(el => {
+  ratingCount += Number(el.textContent);
+  console.log(reviewRatings.length);
+});
+let totalScore = ratingCount / reviewRatings.length;
+const personScore = document.querySelector(".person__reviews-score");
+if (personScore) {
+  if (totalScore) {
+    personScore.textContent =  totalScore.toFixed(1);
+    const personStar = document.querySelectorAll(".person__star");
+    for (let i = 0; i < Math.round(totalScore); i++) {
+      personStar[i].classList.add("person__star_active");
+    }
+  }
+}

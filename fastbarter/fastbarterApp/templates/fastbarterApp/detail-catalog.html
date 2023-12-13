@@ -51,14 +51,14 @@
           <div class="product-about__image">
             <img src="/media/{{detail_catalog.photo}}" alt="slide"><br><br>
               <span class="product-content__category">Категория товара на обмен:</span>
-            <a href="#." class="product-content__link">{{detail_catalog.category}}</a><br><br>
+            <a href="#." class="product-content__link">{{detail_catalog.category_exchange}}</a><br><br>
           <span class="product-content__category">Категория товара:</span>
-            <a href="#." class="product-content__link">{{detail_catalog.category_exchange}}</a>
+            <a href="#." class="product-content__link">{{detail_catalog.category}}</a>
           <h3 class="product-content__title">Описание товара</h3>
           <p class="product-content__paragraph">{{detail_catalog.short_desc | safe}}</p>
           </div>
 
-          <div class="product-about__seller product-seller">
+          <div class="product-about__seller product-seller person">
             <p class="product-seller__label">Обменивает</p>
                <div class="product-seller__block">
             <figure class="product-seller__image">
@@ -67,33 +67,21 @@
             </figure>
             <p class="product-seller__registered">Зарегестрирован:</p>
             <p class="product-seller__registered">{{detail_catalog.user.created_at}}</p>
-            <form method="post" action="{% url 'reviews' %}">
-                {% csrf_token %}
-                <input name="id_product" type="hidden" value="{{detail_catalog.id}}">
-                <input id="submit-catalog-review" name="submit-catalog-review" type="submit" style="display: none;" />
-            </form>
             <label for="submit-catalog-review" class="product-seller__reviews">
-              <div class="product-seller__stars">
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
-                <svg><use href="#star"></use></svg>
+              <div class="product-seller__stars person__stars">
+                <svg class="person__star"><use href="#star"></use></svg>
+                <svg class="person__star"><use href="#star"></use></svg>
+                <svg class="person__star"><use href="#star"></use></svg>
+                <svg class="person__star"><use href="#star"></use></svg>
+                <svg class="person__star"><use href="#star"></use></svg>
               </div>
-              <p class="product-seller__reviews-count">65 отзывов</p>
+              <p class="person__reviews-score" style="color: white;">0</p>
+              <p class="product-seller__reviews-count">Отзывов: {{reviews|length}}</p>
             </label>
           </div>
                <p class="product-seller__label">Местоположение</p>
 <iframe class="product-seller__map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.8632282981366!2d49.17507747714717!3d55.76087809136872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415eadc420a34b5b%3A0x92dbaf306bb1070d!2z0YPQuy4g0JrQsNGA0LHRi9GI0LXQstCwLCA0OCwg0JrQsNC30LDQvdGMLCDQoNC10YHQvy4g0KLQsNGC0LDRgNGB0YLQsNC9LCA0MjAwODc!5e0!3m2!1sru!2sru!4v1700154818414!5m2!1sru!2sru" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <form method="post" action="{% url 'chats' %}">
-              {% csrf_token %}
-              {{form_chat.user1.as_hidden}}
-              {{form_chat.user2.as_hidden}}
-              {{form_chat.catalog.as_hidden}}
-              <input name="message_form" type="hidden">
-              <input name="switch_chat" type="hidden">
-              <input class="product-about__btn" id="submit-product" type="submit" value="Предложить обмен" />
-          </form>
+          <button class="product-about__btn">Предложить обмен</button>
           </div>
 
         </div>
@@ -143,6 +131,103 @@ line-height: 20px; /* 95.238% */}
     </div>
     </section>
 </main>
+<div style="display: none;">
+  {% for review in reviews %}
+    <div class="review-rating">{{review.rating}}</div>
+  {% endfor %}
+</div>
+<section class="popup popup-deals {% if userCatalog %} popup-deals_exchange{% endif %}">
+    <div class="container">
+      <div class="popup-deals__window">
+        <div class="popup-deals__header">
+          <h3 class="popup-deals__title">Обмен товаров</h3>
+          
+          <div class="popup__close popup__cross">
+            <svg><use href="#close"></use></svg>
+          </div>
+
+          </div>
+          <div class="popup-deals__no-products">
+            {% if user.id %}
+              У вас нет подходящих товаров на обмен
+            {% else %}
+              Авторизуйтесь в системе перед тем, как начать обмен
+            {% endif %}
+          </div>
+          <div class="reviewer ">
+            <figure class="reviewer__image">
+              <img src="/media/{{detail_catalog.user.photo}}" alt="">
+            </figure>
+            <div class="reviewer__info">
+              <h4 class="reviewer__name">{{detail_catalog.user.name}}</h4>
+            </div>
+              <h4 class="reviewer__name">Ваш товар</h4>
+        </div>
+        <div class="popup-deals__body">
+        <div class="my-announcements">
+          <div class="my-announcement">
+              <a href="{{detail_catalog.link}}">
+                  <img src="/media/{{detail_catalog.photo}}" class="my-announcement__image" alt="">
+              </a>
+              <div class="my-announcement__row">
+                  <h6 class="my-announcement__title">{{detail_catalog.title}}</h6>
+                  <div class="my-announcement__info">
+                    <p class="my-announcement__price"><span>≈</span>{{detail_catalog.price}}₽</p>
+                  </div>
+              </div>
+              <div class="my-announcement__row">
+                <p class="my-announcement__desc">{{detail_catalog.short_desc}}</p>
+              </div>
+          </div>
+           <svg class="arrows"><use href="#exchange"></use></svg>
+            <div class="my-announcement-container">
+              {% for product in userCatalog %}
+                <div class="my-announcement" data-id="{{product.id}}">
+                  <a href="{{product.link}}">
+                      <img src="/media/{{product.photo}}" class="my-announcement__image" alt="">
+                  </a>
+                  <div class="my-announcement__row">
+                      <h6 class="my-announcement__title">{{product.title}}</h6>
+                      <div class="my-announcement__info">
+                          <p class="my-announcement__price"><span>≈</span>{{product.price}}₽</p>
+                      </div>
+                  </div>
+                  <div class="my-announcement__row">
+                      <p class="my-announcement__desc">{{product.short_desc}}</p>
+                  </div>
+              </div>
+              {% endfor %}
+            </div>
+        </div>
+        <form method="post" action="{% url 'chats' %}">
+          <div class="popup-deals__footer">
+            <!--
+            <input class="popup-deal" type="submit" id="change" style="display: none;">
+            -->
+            <label>Изменить товар</label>
+            <select id="id_catalog2" name="catalog2" class="popup-deals__change popup-deals__select-product">
+              {% for product in userCatalog %}
+                  <option value="{{product.id}}">{{product}}</option>
+              {% endfor %}
+              {{count}}
+            </select>
+          </div>
+          <div class="popup-deals__footer">
+
+            <div class="popup__close popup-deals__cancel">Отмена</div>
+                {% csrf_token %}
+                {{form_chat.user1.as_hidden}}
+                {{form_chat.user2.as_hidden}}
+                {{form_chat.catalog.as_hidden}}
+                <input name="message_form" type="hidden">
+                <input name="switch_chat" type="hidden">
+                <input name="create_new_chat" type="hidden" value="true">
+                <input class="popup-deals__submit" id="submit-product" type="submit" value="Предложить обмен" />
+          </div>
+        </form>
+      </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block footer %}

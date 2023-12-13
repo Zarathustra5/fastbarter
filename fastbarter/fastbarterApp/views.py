@@ -4,7 +4,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Catalog
 from .models import Groups
-from .models import Reviews
 from django.views.generic import ListView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -19,7 +18,16 @@ def index(request):
 def detail_catalog(request, catalog_id):
     detail_catalog = Catalog.objects.get(pk=catalog_id)
     favorite = ""
-    formChat = NewChatForm(initial={'user1': request.user.id, 'user2': detail_catalog.user.id, 'catalog': catalog_id})
+    if request.user.is_authenticated:
+        formChat = NewChatForm(initial={'user1': request.user.id, 'user2': detail_catalog.user.id, 'catalog': catalog_id})
+        if detail_catalog.category_exchange:
+            userCatalog = Catalog.objects.filter(user=request.user, category=detail_catalog.category_exchange)
+        else:
+            userCatalog = Catalog.objects.filter(user=request.user)
+    else:
+        formChat = NewChatForm()
+        userCatalog = {}
+    reviews = Reviews.objects.filter(userTo=detail_catalog.user.id)
 
     if request.user.is_authenticated & (request.method == "POST"):
         favorite = Favorite.objects.filter(user=request.user)
@@ -28,7 +36,7 @@ def detail_catalog(request, catalog_id):
         else:
             Favorite.objects.create(user=request.user, catalog_id=catalog_id)
 
-    return render(request, 'fastbarterApp/detail-catalog.html', {'detail_catalog': detail_catalog, "favorite": favorite, "form_chat": formChat })
+    return render(request, 'fastbarterApp/detail-catalog.html', {'detail_catalog': detail_catalog, "favorite": favorite, "form_chat": formChat, "reviews": reviews, "userCatalog": userCatalog })
 
 def catalog(request):
     # return HttpResponse('<h4>About</h4>')
@@ -89,33 +97,38 @@ def reviews(request):
     success = False
     detail_catalog = ''
     userTo = ''
+    reviews = ''
+    rating = ["1", "2", "3", "4", "5"]
     if request.method == "POST":
-        if request.POST["submit-catalog-review"]:
-            detail_catalog = Catalog.objects.get(pk=request.POST["id_product"])
-            userTo = detail_catalog.user
-            reviews = Reviews.objects.filter(user=userTo)
-            form = NewReviewForm(initial={'user': request.user,'catalog': request.POST["id_product"] })
-        else:
+        if request.POST["submit-new-review"]:
             form = NewReviewForm(request.POST, request.FILES)
             form.save()
             success = True
+        detail_catalog = Catalog.objects.get(pk=request.POST["catalog"])
+        userTo = detail_catalog.user
+        reviews = Reviews.objects.filter(userTo=userTo)
+        form = NewReviewForm(initial={'user': request.user, 'userTo': userTo, 'catalog': request.POST["catalog"] })
 
     else:
         return redirect('/catalog')
 
-    return render(request, 'fastbarterApp/reviews.html', {"form": form, "success": success, "userTo": userTo, "detail_catalog": detail_catalog})
+    return render(request, 'fastbarterApp/reviews.html', {"form": form, "success": success, "userTo": userTo, "detail_catalog": detail_catalog, "reviews": reviews, "rating": rating})
 
 @login_required
 def my_reviews(request):
-    return render(request, 'fastbarterApp/account/my-reviews.html')
+    rating = ["1", "2", "3", "4", "5"]
+    reviews = Reviews.objects.filter(userTo=request.user)
+    return render(request, 'fastbarterApp/account/my-reviews.html', {"reviews": reviews, "rating": rating})
 
 @login_required
 def account(request):
+    reviews = Reviews.objects.filter(userTo=request.user)
     catalog = Catalog.objects.filter(user=request.user)
-    return render(request, 'fastbarterApp/account/index.html', {'catalog': catalog})
+    return render(request, 'fastbarterApp/account/index.html', {'catalog': catalog, "reviews": reviews})
 
 @login_required
 def edit_profile(request):
+    reviews = Reviews.objects.filter(userTo=request.user)
     if request.method == "POST":
         #form = EditProfileForm(request.POST)
         #CustomUsers.objects.filter(pk=request.user.id).update(name=request.POST["name"], phone_number=request.POST["phone_number"])
@@ -125,19 +138,31 @@ def edit_profile(request):
     else:
         form = EditProfileForm(initial={'name': request.user.name, 'phone_number': request.user.phone_number, 'email': request.user.email })
 
-    return render(request, "fastbarterApp/account/edit-profile.html", {"form": form})
+    return render(request, "fastbarterApp/account/edit-profile.html", {"form": form, "reviews": reviews})
 
 @login_required
 def settings(request):
-    return render(request, 'fastbarterApp/account/settings.html')
+    reviews = Reviews.objects.filter(userTo=request.user)
+    return render(request, 'fastbarterApp/account/settings.html', {"reviews": reviews})
 
 @login_required
 def analytics(request):
-    return render(request, 'fastbarterApp/account/analytics.html')
+    reviews = Reviews.objects.filter(userTo=request.user)
+    return render(request, 'fastbarterApp/account/analytics.html', {"reviews": reviews})
 
 @login_required
 def deals(request):
-    return render(request, 'fastbarterApp/account/deals.html')
+    if request.method == "POST":
+        if request.POST["submit-finish-deal"]:
+            deal = Deals.objects.get(pk=request.POST["deal"])
+            deal.status = True
+            deal.save()
+    currentDeals1 = Deals.objects.filter(user1=request.user, status=False)
+    currentDeals2 = Deals.objects.filter(user2=request.user, status=False)
+    finishedDeals1 = Deals.objects.filter(user1=request.user, status=True)
+    finishedDeals2 = Deals.objects.filter(user2=request.user, status=True)
+    reviews = Reviews.objects.filter(userTo=request.user)
+    return render(request, 'fastbarterApp/account/deals.html', {"reviews": reviews,"currentDeals1": currentDeals1,"currentDeals2": currentDeals2,"finishedDeals1": finishedDeals1,"finishedDeals2": finishedDeals2 })
 
 @login_required
 def favorite(request):
@@ -162,34 +187,41 @@ def notifications(request):
 
 @login_required
 def services(request):
-    return render(request, 'fastbarterApp/account/services.html')
+    reviews = Reviews.objects.filter(userTo=request.user)
+    return render(request, 'fastbarterApp/account/services.html', {"reviews": reviews})
 
 @login_required
 def chats(request):
+    currentChat = ""
+    if request.method == "POST":
+        if request.POST["create_new_chat"]:
+            form = NewChatForm(request.POST)
+            formDeal = NewDealForm(request.POST)
+            form.save()
+            formDeal.save()
+            currentChat = Chats.objects.filter(user1=request.user).last()
     chats1 = Chats.objects.filter(user1=request.user)
     chats2 = Chats.objects.filter(user2=request.user)
     chatsLength = len(chats1) + len(chats2)
-    if chatsLength == 0:
-        currentChat = {}
-    elif len(chats1) == 0:
-        currentChat = chats2[0]
-    else:
-        currentChat = chats1[0]
     if request.method == "POST":
         if request.POST["message_form"]:
+            currentChat = Chats.objects.get(pk=request.POST["chat"])
             form = NewMessageForm(request.POST)
             form.save()
         elif request.POST["switch_chat"]:
             currentChat = Chats.objects.get(pk=request.POST["switch_chat"])
-        else:
-            form = NewChatForm(request.POST)
-            form.save()
-            #Chats.objects.create(user1=request.user, user2=request.POST["user"], catalog_id=request.POST["catalog"])
     if currentChat:
         messages = Messages.objects.filter(chat=currentChat)
     else:
         messages = []
     formMessage = NewMessageForm(initial={'user': request.user, 'chat': currentChat })
+    if not currentChat:
+        if chatsLength == 0:
+            currentChat = {}
+        elif len(chats1) == 0:
+            currentChat = chats2[0]
+        else:
+            currentChat = chats1[0]
     return render(request, 'fastbarterApp/chats.html', {'chats1': chats1, 'chats2': chats2, 'chats_length': chatsLength, 'messages': messages, 'current_chat': currentChat, 'form_message': formMessage})
 
 def detail_group(request, group_id):

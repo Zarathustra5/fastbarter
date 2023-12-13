@@ -62,6 +62,7 @@ class Favorite(models.Model):
 class Reviews(models.Model):
     catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(CustomUser, verbose_name='Пользователь, оставивший отзыв', on_delete=models.CASCADE, blank=True, null=True, related_name="user_from")
+    userTo = models.ForeignKey(CustomUser, verbose_name='Пользователь, которому оставили отзыв', on_delete=models.CASCADE, blank=True, null=True, related_name="user_to")
     review = models.CharField(max_length=255, verbose_name='Отзыв', default='')
     rating = models.CharField(max_length=255, verbose_name='Рейтинг', default='')
     file = models.FileField(upload_to='files/', max_length=None, verbose_name='Файл', blank=True, null=True, default=False)
@@ -78,6 +79,7 @@ class Chats(models.Model):
     user1 = models.ForeignKey(CustomUser, verbose_name='Пользователь 1', on_delete=models.CASCADE, blank=True, null=True)
     user2 = models.ForeignKey(CustomUser, verbose_name='Пользователь 2', on_delete=models.CASCADE, blank=True, null=True, related_name="user2")
     catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)
+    catalog2 = models.ForeignKey(Catalog, verbose_name='Товар 2', on_delete=models.CASCADE, blank=True, null=True,related_name="catalog2")
 
     def __str__(self):
         return f'{self.catalog}'
@@ -109,3 +111,17 @@ class Participants(models.Model):
     class Meta:
         verbose_name = 'Участник сообщества'
         verbose_name_plural = 'Список участников сообществ'
+
+class Deals(models.Model):
+    user1 = models.ForeignKey(CustomUser, verbose_name='Пользователь 1', on_delete=models.CASCADE, blank=True, null=True)
+    user2 = models.ForeignKey(CustomUser, verbose_name='Пользователь 2', on_delete=models.CASCADE, blank=True, null=True, related_name="deals_user2")
+    catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)
+    catalog2 = models.ForeignKey(Catalog, verbose_name='Товар 2', on_delete=models.CASCADE, blank=True, null=True,related_name="deals_catalog2")
+    status = models.BooleanField(default=False, verbose_name='Завершено')
+
+    def __str__(self):
+        return f'{self.catalog}'
+    
+    class Meta:
+        verbose_name = 'Сделка'
+        verbose_name_plural = 'Сделки'

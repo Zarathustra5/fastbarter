@@ -23,7 +23,7 @@
       </style>
 
 <aside class="account-menu" id="account-menu">
-  <div class="account-user">
+  <div class="account-user person">
 
     <figure class="account-user__image">
       {% if user.photo %}
@@ -33,17 +33,17 @@
       {% endif %}
       <figcaption class="account-user__name">{% if user.name %}{{ user.name }}{% else %}Новый <br> пользователь{% endif %}</figcaption>
     </figure>
-    <a href="{% url 'reviews' %}" class="account-user__reviews">
-      <div class="account-user__stars">
-        <svg><use href="#star"></use></svg>
-        <svg><use href="#star"></use></svg>
-        <svg><use href="#star"></use></svg>
-        <svg><use href="#star"></use></svg>
-        <svg><use href="#star"></use></svg>
+    <div class="account-user__reviews">
+      <div class="account-user__stars person__stars">
+        <svg class="person__star"><use href="#star"></use></svg>
+        <svg class="person__star"><use href="#star"></use></svg>
+        <svg class="person__star"><use href="#star"></use></svg>
+        <svg class="person__star"><use href="#star"></use></svg>
+        <svg class="person__star"><use href="#star"></use></svg>
       </div>
-      <p class="account-user__reviews-score">4.1</p>
-    </a>
-    <p class="account-user__registered">Зарегестрирован: 18.11.2023</p>
+      <p class="account-user__reviews-score person__reviews-score">0</p>
+    </div>
+    <p class="account-user__registered">Зарегестрирован: {{user.created_at}}</p>
     <a href="{% url 'logout' %}" class="account-user__exit" style="display: block;">Выйти из акаунта</p>
   </div>
   <nav class="account-nav">
@@ -77,3 +77,8 @@
     </a>
   </nav>
 </aside>
+<div style="display: none;">
+  {% for review in reviews %}
+    <div class="review-rating">{{review.rating}}</div>
+  {% endfor %}
+</div>

@@ -126,14 +126,13 @@
         cursor: pointer;
         margin-top: 5px;
         display: flex;
-        svg {
-          width: 30px;
-          height: 30px;
-
+      }
+      &__star {
+        width: 30px;
+        height: 30px;
+        color: #BDBDBD; 
+        &_active {
           color: #FDD835; 
-          &:last-child {
-            color: #BDBDBD; 
-          }
         }
       }
     }
@@ -151,6 +150,7 @@
         margin: 20px 5px 0 20px; }
     }
     &__media {
+      img,
       video {
         border-radius: 20px;
         border: 0px solid #000;
@@ -193,10 +193,7 @@
     svg {
       width: 40px;
       height: 40px;
-      color: #FDD835; 
-      &:last-child {
-        color: #BDBDBD; 
-      }
+      color: #BDBDBD; 
     }
   } 
   &__reviews {

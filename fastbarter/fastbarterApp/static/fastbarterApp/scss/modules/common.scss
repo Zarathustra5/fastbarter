@@ -125,5 +125,14 @@
     }
   }
 
+  .person {
+    &__star {
+      color: #BDBDBD;
+      &_active {
+        color: #FDD835;
+      }
+    }
+  }
+
   /*Подвал страницы-----------------------------------------*/
   @import "footer.scss";

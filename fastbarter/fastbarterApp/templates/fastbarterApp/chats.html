@@ -6,6 +6,7 @@
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/chats.css' %}">
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
+    <meta http-equiv="refresh" content="10" >
 {% endblock %}
 
 {% block title %} Каталог товаров {% endblock %}
@@ -48,6 +49,7 @@
                             <input name="message_form" type="hidden">
                             <label for="submit-chat-{{el.id}}" class="chats-list-item">
                                 <input name="switch_chat" type="hidden" value="{{el.id}}">
+                                <input name="create_new_chat" type="hidden">
                                 <input id="submit-chat-{{el.id}}" type="submit" style="display: none;">
                                 <figure class="chats-list-item__image">
                                     <img src="/media/{{el.user2.photo}}" alt="slide">
@@ -62,6 +64,7 @@
                             <input name="message_form" type="hidden">
                             <label for="submit-chat-{{el.id}}" class="chats-list-item">
                                 <input name="switch_chat" type="hidden" value="{{el.id}}">
+                                <input name="create_new_chat" type="hidden">
                                 <input id="submit-chat-{{el.id}}" type="submit" style="display: none;">
                                 <figure class="chats-list-item__image">
                                     <img src="/media/{{el.user1.photo}}" alt="slide">
@@ -101,7 +104,7 @@
                 </div>
             </div>
             <div class="chats-window__body">
-                <div class="chats-message chats-message_my">
+                <div class="chats-message">
                     <div class="chats-message__body">
                         <figure class="chats-window__image">
                             <img src="/media/{{current_chat.catalog.photo}}" alt="slide">
@@ -109,6 +112,21 @@
                         <div class="chats-message__content">
                             <p class="chats-message__paragraph">Название объявления:</p>
                             <p class="chats-message__paragraph chats-message__paragraph_title">{{current_chat.catalog.title}}</p>
+                        </div>
+                        <div class="chats-message__info">
+                            <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+                            <svg><use href="#readed"></use></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="chats-message chats-message_my">
+                    <div class="chats-message__body">
+                        <figure class="chats-window__image">
+                            <img src="/media/{{current_chat.catalog2.photo}}" alt="slide">
+                        </figure>
+                        <div class="chats-message__content">
+                            <p class="chats-message__paragraph">Название объявления:</p>
+                            <p class="chats-message__paragraph chats-message__paragraph_title">{{current_chat.catalog2.title}}</p>
                         </div>
                         <div class="chats-message__info">
                             <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
@@ -153,6 +171,7 @@
                 {{form_message.user.as_hidden}}
                 {{form_message.chat.as_hidden}}
                 <input name="message_form" type="hidden" value=true>
+                <input name="create_new_chat" type="hidden">
                 <div class="chats-new-message__input-container">
                     <span class="chats-new-message__input">
                         {{form_message.text}}
