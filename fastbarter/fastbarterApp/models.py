@@ -16,7 +16,7 @@ class Category(models.Model):
     
 
 class Catalog(models.Model):
-    photo = models.ImageField(upload_to='images/', height_field=None, width_field=None, max_length=None, verbose_name='Фото', blank=True, null=True)
+    photo = models.ImageField(upload_to='images/', height_field=None, width_field=None, max_length=None, verbose_name='Фото', blank=True, null=True, default="images/default.png")
     title = models.CharField(max_length=255, verbose_name='Название товара')
     short_desc = models.CharField(max_length=255, verbose_name='Краткое описание')
     price = models.CharField(max_length=255, verbose_name='Примерная цена')

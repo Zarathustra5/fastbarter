@@ -6,12 +6,13 @@
     {% include 'fastbarterApp/header.html' %}
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/chats.css' %}">
     <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
+    <script src="{% static 'fastbarterApp/js/libs/jquery-3.7.1.min.js' %}"></script>
 {% endblock %}
 
 {% block title %} Каталог товаров {% endblock %}
 
 {% block content %}
-<main class="page chats">
+<main class="page chats" data-id="{{user.id}}">
           <button class="open-chat-btn" type="submit" onclick="open_chat()" id="open-chat">
 <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:#ffffff;} </style> <g> <circle class="st0" cx="48" cy="64" r="48"></circle> <rect x="160" y="16" class="st0" width="352" height="96"></rect> <circle class="st0" cx="48" cy="256" r="48"></circle> <rect x="160" y="208" class="st0" width="352" height="96"></rect> <circle class="st0" cx="48" cy="448" r="48"></circle> <rect x="160" y="400" class="st0" width="352" height="96"></rect> </g> </g></svg>      </button>
       <button style="display:none;" class="open-chat-btn" type="submit" onclick="close_chat()" id="close-chat">
@@ -102,7 +103,7 @@
             </div>
         </aside>
         {% if current_chat %}
-        <section class="chats-window">
+        <section class="chats-window" data-chat="{{current_chat.id}}">
             <div class="chats-window__header">
                 <figure class="chats-window__image">
                     <img src="/media/{{current_chat.user2.photo}}" alt="slide">
@@ -150,37 +151,39 @@
                         </div>
                     </div>
                 </div>
-                {% for el in messages %}
-                    {% if el.user.id == user.id %}
-                        <div class="chats-message chats-message_my">
-                            <div class="chats-message__body">
-                                <div class="chats-message__content">
-                                    <p class="chats-message__paragraph">{{el.text}}</p>
-                                </div>
-                                <div class="chats-message__info">
-                                    <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
-                                    <svg><use href="#readed"></use></svg>
-                                </div>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="chats-message">
-                            <figure class="chats-message__avatar">
-                                <img src="/media/{{el.user.photo}}" alt="фото">
-                            </figure>
-                            <div class="chats-message__body">
-                                <div class="chats-message__content">
-                                    <p class="chats-message__name">{{el.user.name}}</p>
-                                    <p class="chats-message__paragraph">{{el.text}}</p>
-                                </div>
-                                <div class="chats-message__info">
-                                    <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
-                                    <svg><use href="#readed"></use></svg>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif%}
-                {% endfor %}
+                <div id="rendered-messages">
+                  {% for el in messages %}
+                      {% if el.user.id == user.id %}
+                          <div class="chats-message chats-message_my">
+                              <div class="chats-message__body">
+                                  <div class="chats-message__content">
+                                      <p class="chats-message__paragraph">{{el.text}}</p>
+                                  </div>
+                                  <div class="chats-message__info">
+                                      <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+                                      <svg><use href="#readed"></use></svg>
+                                  </div>
+                              </div>
+                          </div>
+                      {% else %}
+                          <div class="chats-message">
+                              <figure class="chats-message__avatar">
+                                  <img src="/media/{{el.user.photo}}" alt="фото">
+                              </figure>
+                              <div class="chats-message__body">
+                                  <div class="chats-message__content">
+                                      <p class="chats-message__name">{{el.user.name}}</p>
+                                      <p class="chats-message__paragraph">{{el.text}}</p>
+                                  </div>
+                                  <div class="chats-message__info">
+                                      <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+                                      <svg><use href="#readed"></use></svg>
+                                  </div>
+                              </div>
+                          </div>
+                      {% endif%}
+                  {% endfor %}
+                </div>
             </div>
             <form class="chats-new-message" method="post">
                 {% csrf_token %}
@@ -218,4 +221,6 @@
 
 {% block footer %}
     {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
+    <script type="module" src="{% static 'fastbarterApp/js/chats.js' %}"></script>
 {% endblock %}

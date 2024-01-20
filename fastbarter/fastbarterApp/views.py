@@ -10,6 +10,13 @@ from django.shortcuts import render
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.http import JsonResponse
+import json
+#from rest_framework import generics
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import CatalogSerializer
+from django.forms import model_to_dict
 
 
 def index(request):
@@ -272,3 +279,26 @@ def check_reviews(request):
         return redirect('/catalog')
 
     return render(request, 'fastbarterApp/check-reviews.html', {"success": success, "userTo": userTo, "detail_catalog": detail_catalog, "reviews": reviews, "rating": rating})
+
+def update_chat(request):
+    #messages = Messages.objects.filter(chat=currentChat)
+    #results = [ob.as_json() for message in Messages.objects.all()]
+    results = [ json.dumps({'id': message.id, 'created_at': str(message.created_at), 'text': message.text, 'chat': str(message.chat.id), 'user': str(message.user.id)}) for message in Messages.objects.all()]
+    return JsonResponse({'latest_results_list':results})
+
+class CatalogAPIView(APIView):
+    def get(self, request):
+        queryset = Catalog.objects.all()
+        return Response({'posts': CatalogSerializer(queryset, many=True).data})
+
+    def post(self, request):
+        serializer = CatalogSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        category = Category.objects.get(pk=request.data['category_id'])
+        post_new = Catalog.objects.create(
+            title=request.data['title'],
+            short_desc=request.data['short_desc'],
+            category=category,
+        )
+        return Response({'new_post': CatalogSerializer(post_new).data})

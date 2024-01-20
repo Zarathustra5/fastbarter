@@ -48,6 +48,8 @@ urlpatterns = [
     path('groups/<int:group_id>/', views.detail_group, name="detail_group"),
     path('accounts/login/', LoginUser.as_view(), name='login'),
     path('new-group', views.new_group, name="new-group"),
+    path('update-chat', views.update_chat, name="update-chat"),
+    path('api/v1/catalog', views.CatalogAPIView.as_view()),
 ]
 
 if settings.DEBUG:
