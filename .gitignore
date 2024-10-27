@@ -18,5 +18,4 @@ venv
 env
 *.xml
 /fastbarter/nbproject/private/
-/fastbarter/fastbarterApp/migrations/
 /fastbarter/media/
