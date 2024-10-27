@@ -90,16 +90,9 @@
                 <h3 class="review__title">{{review.catalog}}</h3>
                 <p class="review__desc">{{review.review}}</p>
               </div>
-              <div class="review__media">
-               {% if '.mp4' in review.file.url %}
-                  <video controls>
-                    <source src="/media/{{review.file}}" type="video/mp4">
-                    Ваш браузер не поддреживает данный формат видео
-                  </video>
-                {% else %}
-                  <img src="/media/{{review.file}}">
-                {% endif %}
-              </div>
+				<div class="review__media">
+					{{ review.mediaFileHTML | safe }}
+				</div>
             </div>
           </div>
         {% endfor %}

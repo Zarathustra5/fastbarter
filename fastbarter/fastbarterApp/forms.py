@@ -31,17 +31,22 @@ class FilterForm(forms.ModelForm):
 class NewChatForm(forms.ModelForm):
     class Meta:
         model = Chats
-        fields = ('user1', 'user2', 'catalog', 'catalog2')
+        fields = ('deal', 'is_deleted_user_owner', 'is_deleted_user_customer')
 
 class NewDealForm(forms.ModelForm):
     class Meta:
         model = Deals
-        fields = ('user1', 'user2', 'catalog', 'catalog2')
+        fields = ('user_owner', 'user_customer', 'owner_product', 'customer_product')
 
 class NewMessageForm(forms.ModelForm):
     class Meta:
         model = Messages
-        fields = ('user', 'text', 'chat')
+        fields = ('user', 'text', 'chat', 'file')
+
+class NewGroupMessageForm(forms.ModelForm):
+    class Meta:
+        model = GroupMessages
+        fields = ('user', 'text', 'group', 'file')
 
 class NewGroupForm(forms.ModelForm):
     class Meta:

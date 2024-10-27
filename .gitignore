@@ -14,6 +14,9 @@ node_modules
 **/nbproject
 **/__pycache__
 venv
+.venv
 env
 *.xml
 /fastbarter/nbproject/private/
+/fastbarter/fastbarterApp/migrations/
+/fastbarter/media/

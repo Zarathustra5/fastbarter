@@ -37,8 +37,22 @@
     <div class="container">
         <aside class="chats__panel" id="account-chat">
             <div class="chats-list chats-list_groups">
-                <h2 class="chats-list__title">Чаты сообществ <span>0</span></h2>
+                <h2 class="chats-list__title">Чаты сообществ <span>{{groups_length}}</span></h2>
                 <div class="chats-list__content">
+                    {% for el in user_groups %}
+                        <form method="post" action="" style="margin-top: 10px;">
+                            {% csrf_token %}
+                            <label for="submit-chat-{{el.id}}" class="chats-list-item">
+                                <input name="query_type" type="hidden" value="switch_group_chat">
+                                <input name="switch_group_chat" type="hidden" value="{{el.id}}">
+                                <input id="submit-chat-{{el.id}}" type="submit" style="display: none;">
+                                <figure class="chats-list-item__image">
+                                    <img src="/media/{{el.photo}}" alt="slide">
+                                </figure>
+                                <p class="chats-list-item__title">{{el.title}}</p>
+                            </label>
+                        </form>
+                    {% endfor %}
                     <!--
                     <div class="chats-list-item chats-list-item_active">
                         <figure class="chats-list-item__image">
@@ -59,33 +73,31 @@
             <div class="chats-list chats-list_personal">
                 <h2 class="chats-list__title">Личные чаты <span>{{chats_length}}</span></h2>
                 <div class="chats-list__content">
-                    {% for el in chats1 %}
-                        <form method="post" style="margin-top: 10px;">
+                    {% for el in owner_chats %}
+                        <form method="post" action="" style="margin-top: 10px;">
                             {% csrf_token %}
-                            <input name="message_form" type="hidden">
                             <label for="submit-chat-{{el.id}}" class="chats-list-item">
+                                <input name="query_type" type="hidden" value="switch_chat">
                                 <input name="switch_chat" type="hidden" value="{{el.id}}">
-                                <input name="create_new_chat" type="hidden">
                                 <input id="submit-chat-{{el.id}}" type="submit" style="display: none;">
                                 <figure class="chats-list-item__image">
-                                    <img src="/media/{{el.user2.photo}}" alt="slide">
+                                    <img src="/media/{{el.deal.user_customer.photo}}" alt="slide">
                                 </figure>
-                                <p class="chats-list-item__title">{{el.user2.name}}</p>
+                                <p class="chats-list-item__title">{{el.deal.user_customer.name}}</p>
                             </label>
                         </form>
                     {% endfor %}
-                    {% for el in chats2 %}
-                        <form method="post" style="margin-top: 10px;">
+                    {% for el in customer_chats %}
+                        <form method="post" action="" style="margin-top: 10px;">
                             {% csrf_token %}
-                            <input name="message_form" type="hidden">
                             <label for="submit-chat-{{el.id}}" class="chats-list-item">
+                                <input name="query_type" type="hidden" value="switch_chat">
                                 <input name="switch_chat" type="hidden" value="{{el.id}}">
-                                <input name="create_new_chat" type="hidden">
                                 <input id="submit-chat-{{el.id}}" type="submit" style="display: none;">
                                 <figure class="chats-list-item__image">
-                                    <img src="/media/{{el.user1.photo}}" alt="slide">
+                                    <img src="/media/{{el.deal.user_owner.photo}}" alt="slide">
                                 </figure>
-                                <p class="chats-list-item__title">{{el.user1.name}}</p>
+                                <p class="chats-list-item__title">{{el.deal.user_owner.name}}</p>
                             </label>
                         </form>
                     {% endfor %}
@@ -101,117 +113,11 @@
                 </div>
             </div>
         </aside>
-        {% if current_chat %}
-        <section class="chats-window">
-            <div class="chats-window__header">
-                <figure class="chats-window__image">
-                    <img src="/media/{{current_chat.user2.photo}}" alt="slide">
-                </figure>
-                <div class="chats-window__info">
-                    <div class="chats-window__menu">
-                        <h1 class="chats-window__title">{{current_chat.user2.name}}</h1>
-                    </div>
-                  <!--  <p class="chats-window__members">129 участников</p> -->
-                </div>
-                <div class="chats-window__btns">
-                    <!--<svg><use href="#mute-chat"></use></svg>
-                    <svg><use href="#settings"></use></svg>-->
-                    <button class="chats-window__leave-chat">Удалить чат</button>
-                </div>
-            </div>
-            <div class="chats-window__body">
-                <div class="chats-message">
-                    <div class="chats-message__body">
-                        <figure class="chats-window__image">
-                            <img src="/media/{{current_chat.catalog.photo}}" alt="slide">
-                        </figure>
-                        <div class="chats-message__content">
-                            <p class="chats-message__paragraph">Название объявления:</p>
-                            <p class="chats-message__paragraph chats-message__paragraph_title">{{current_chat.catalog.title}}</p>
-                        </div>
-                        <div class="chats-message__info">
-                            <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
-                            <svg><use href="#readed"></use></svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="chats-message chats-message_my">
-                    <div class="chats-message__body">
-                        <figure class="chats-window__image">
-                            <img src="/media/{{current_chat.catalog2.photo}}" alt="slide">
-                        </figure>
-                        <div class="chats-message__content">
-                            <p class="chats-message__paragraph">Название объявления:</p>
-                            <p class="chats-message__paragraph chats-message__paragraph_title">{{current_chat.catalog2.title}}</p>
-                        </div>
-                        <div class="chats-message__info">
-                            <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
-                            <svg><use href="#readed"></use></svg>
-                        </div>
-                    </div>
-                </div>
-                {% for el in messages %}
-                    {% if el.user.id == user.id %}
-                        <div class="chats-message chats-message_my">
-                            <div class="chats-message__body">
-                                <div class="chats-message__content">
-                                    <p class="chats-message__paragraph">{{el.text}}</p>
-                                </div>
-                                <div class="chats-message__info">
-                                    <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
-                                    <svg><use href="#readed"></use></svg>
-                                </div>
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="chats-message">
-                            <figure class="chats-message__avatar">
-                                <img src="/media/{{el.user.photo}}" alt="фото">
-                            </figure>
-                            <div class="chats-message__body">
-                                <div class="chats-message__content">
-                                    <p class="chats-message__name">{{el.user.name}}</p>
-                                    <p class="chats-message__paragraph">{{el.text}}</p>
-                                </div>
-                                <div class="chats-message__info">
-                                    <span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
-                                    <svg><use href="#readed"></use></svg>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif%}
-                {% endfor %}
-            </div>
-            <form class="chats-new-message" method="post">
-                {% csrf_token %}
-                {{form_message.user.as_hidden}}
-                {{form_message.chat.as_hidden}}
-                <input name="message_form" type="hidden" value=true>
-                <input name="create_new_chat" type="hidden">
-                <div class="chats-new-message__input-container">
-                    <span class="chats-new-message__input">
-                        {{form_message.text}}
-                    </span>
-                <!--
-                    <label class="chats-new-message__attach" for="attach-file">
-                        <svg><use href="#attach"></use></svg>
-                        <input id="attach-file" type="file" style="display: none;">
-                    </label>
-                -->
-                </div>
-                <label class="chats-new-message__submit" for="submit">
-                    <svg><use href="#send"></use></svg>
-                    <input id="submit" type="submit" style="display: none;">
-                </label>
-                <!--
-                <label class="chats-new-message__voice" for="voice-message">
-                    <svg><use href="#voice"></use></svg>
-                    <input id="voice-message" type="text" style="display: none;">
-                </label>
-                -->
-            </form>
-        </section>
-        {% endif%}
+		{% if current_chat %}
+			{% include 'fastbarterApp/modules/chat-window.html' %}
+		{% elif current_group_chat %}
+			{% include 'fastbarterApp/modules/group-chat-window.html' %}
+		{% endif %}
     </div>
 </main>
 {% endblock %}

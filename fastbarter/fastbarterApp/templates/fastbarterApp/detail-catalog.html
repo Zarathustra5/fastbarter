@@ -211,7 +211,7 @@ line-height: 20px; /* 95.238% */}
             <input class="popup-deal" type="submit" id="change" style="display: none;">
             -->
             <label>Изменить товар</label>
-            <select id="id_catalog2" name="catalog2" class="popup-deals__change popup-deals__select-product">
+            <select id="id_catalog2" name="customer_product" class="popup-deals__change popup-deals__select-product">
               {% for product in userCatalog %}
                   <option value="{{product.id}}">{{product}}</option>
               {% endfor %}
@@ -222,12 +222,10 @@ line-height: 20px; /* 95.238% */}
 
             <div class="popup__close popup-deals__cancel">Отмена</div>
                 {% csrf_token %}
-                {{form_chat.user1.as_hidden}}
-                {{form_chat.user2.as_hidden}}
-                {{form_chat.catalog.as_hidden}}
-                <input name="message_form" type="hidden">
-                <input name="switch_chat" type="hidden">
-                <input name="create_new_chat" type="hidden" value="true">
+                {{form_deal.user_owner.as_hidden}}
+                {{form_deal.user_customer.as_hidden}}
+                {{form_deal.owner_product.as_hidden}}
+                <input name="query_type" type="hidden" value="create_new_chat">
                 <input class="popup-deals__submit" id="submit-product" type="submit" value="Предложить обмен" />
           </div>
         </form>

@@ -75,53 +75,67 @@ class Reviews(models.Model):
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
 
-class Chats(models.Model):
-    user1 = models.ForeignKey(CustomUser, verbose_name='Пользователь 1', on_delete=models.CASCADE, blank=True, null=True)
-    user2 = models.ForeignKey(CustomUser, verbose_name='Пользователь 2', on_delete=models.CASCADE, blank=True, null=True, related_name="user2")
-    catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)
-    catalog2 = models.ForeignKey(Catalog, verbose_name='Товар 2', on_delete=models.CASCADE, blank=True, null=True,related_name="catalog2")
+class Deals(models.Model):
+    user_owner = models.ForeignKey(CustomUser, verbose_name='Пользователь-владелец объявления', on_delete=models.CASCADE, blank=True, null=True)
+    user_customer = models.ForeignKey(CustomUser, verbose_name='Пользователь, предложивший обмен', on_delete=models.CASCADE, blank=True, null=True, related_name="user_customer")
+    owner_product = models.ForeignKey(Catalog, verbose_name='Товар владельца объявления', on_delete=models.CASCADE, blank=True, null=True)
+    customer_product = models.ForeignKey(Catalog, verbose_name='Товар пользователя, предложившего обмен', on_delete=models.CASCADE, blank=True, null=True,related_name="customer_product")
+    status = models.BooleanField(default=False, verbose_name='Завершено')
 
     def __str__(self):
-        return f'{self.catalog}'
+        return f'{self.owner_product}'
     
     class Meta:
-        verbose_name = 'Чат'
-        verbose_name_plural = 'Чаты'
+        verbose_name = 'Сделка'
+        verbose_name_plural = 'Сделки'
+
+class Chats(models.Model):
+    deal = models.ForeignKey(Deals, verbose_name='Сделка', on_delete=models.CASCADE, blank=True, null=True)
+    is_deleted_user_owner = models.BooleanField(default=False, verbose_name='Удален у пользователя-владельца объявления')
+    is_deleted_user_customer = models.BooleanField(default=False, verbose_name='Удален у пользователя, предложившего обмен')
+
+    def __str__(self):
+        return f'{self.deal}'
+    
+    class Meta:
+        verbose_name = 'Личный чат'
+        verbose_name_plural = 'Личные чаты'
 
 class Messages(models.Model):
     user = models.ForeignKey(CustomUser, verbose_name='Отправитель', on_delete=models.CASCADE, blank=True, null=True)
     text = models.CharField(max_length=255, verbose_name='Текст')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата отправки')
     chat = models.ForeignKey(Chats, verbose_name='Чат', on_delete=models.CASCADE, blank=True, null=True)
+    file = models.FileField(upload_to='files/', max_length=None, verbose_name='Файл', blank=True, null=True, default=False)
 
     def __str__(self):
         return f'{self.text}'
     
     class Meta:
-        verbose_name = 'Сообщение'
-        verbose_name_plural = 'Сообщения'
+        verbose_name = 'Сообщение личного чата'
+        verbose_name_plural = 'Сообщения личных чатов'
+
+class GroupMessages(models.Model):
+    user = models.ForeignKey(CustomUser, verbose_name='Отправитель', on_delete=models.CASCADE, blank=True, null=True)
+    text = models.CharField(max_length=255, verbose_name='Текст')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата отправки')
+    group = models.ForeignKey(Groups, verbose_name='Сообщество', on_delete=models.CASCADE, blank=True, null=True)
+    file = models.FileField(upload_to='files/', max_length=None, verbose_name='Файл', blank=True, null=True, default=False)
+
+    def __str__(self):
+        return f'{self.text}'
+    
+    class Meta:
+        verbose_name = 'Сообщение чата собщества'
+        verbose_name_plural = 'Сообщения чатов сообществ'
 
 class Participants(models.Model):
     group = models.ForeignKey(Groups, verbose_name='Сообщество', on_delete=models.CASCADE, blank=True, null=True)
     user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.group}'
+        return f'{self.user}'
     
     class Meta:
         verbose_name = 'Участник сообщества'
         verbose_name_plural = 'Список участников сообществ'
-
-class Deals(models.Model):
-    user1 = models.ForeignKey(CustomUser, verbose_name='Пользователь 1', on_delete=models.CASCADE, blank=True, null=True)
-    user2 = models.ForeignKey(CustomUser, verbose_name='Пользователь 2', on_delete=models.CASCADE, blank=True, null=True, related_name="deals_user2")
-    catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)
-    catalog2 = models.ForeignKey(Catalog, verbose_name='Товар 2', on_delete=models.CASCADE, blank=True, null=True,related_name="deals_catalog2")
-    status = models.BooleanField(default=False, verbose_name='Завершено')
-
-    def __str__(self):
-        return f'{self.catalog}'
-    
-    class Meta:
-        verbose_name = 'Сделка'
-        verbose_name_plural = 'Сделки'

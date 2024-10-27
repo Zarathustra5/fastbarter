@@ -1,0 +1,119 @@
+{% load static %}
+
+<section class="chats-window">
+	<div class="chats-window__header">
+		<figure class="chats-window__image">
+			<img src="/media/{{current_chat.deal.user_customer.photo}}" alt="slide">
+		</figure>
+		<div class="chats-window__info">
+			<div class="chats-window__menu">
+				<h1 class="chats-window__title">{{current_chat.deal.user_customer.name}}</h1>
+			</div>
+			<!--  <p class="chats-window__members">129 участников</p> -->
+		</div>
+		<div class="chats-window__btns">
+			<!--<svg><use href="#mute-chat"></use></svg>
+			<svg><use href="#settings"></use></svg>-->
+			<form method="post" action="">
+				{% csrf_token %}
+				<label class="chats-window__leave-chat">
+					Удалить чат
+					<input type="submit" style="display: none;" />
+				</label>
+				<input type="hidden" name="delete_chat" value="{{current_chat.id}}" />
+				<input type="hidden" name="query_type" value="delete_chat" />
+			</form>
+		</div>
+	</div>
+	<div class="chats-window__body">
+		<div class="chats-message">
+			<div class="chats-message__body">
+				<figure class="chats-window__image">
+					<img src="/media/{{current_chat.deal.owner_product.photo}}" alt="slide">
+				</figure>
+				<div class="chats-message__content">
+					<p class="chats-message__paragraph">Название объявления:</p>
+					<p class="chats-message__paragraph chats-message__paragraph_title">{{current_chat.deal.owner_product.title}}</p>
+				</div>
+				<div class="chats-message__info">
+					<span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+					<svg><use href="#readed"></use></svg>
+				</div>
+			</div>
+		</div>
+		<div class="chats-message chats-message_my">
+			<div class="chats-message__body">
+				<figure class="chats-window__image">
+					<img src="/media/{{current_chat.deal.customer_product.photo}}" alt="slide">
+				</figure>
+				<div class="chats-message__content">
+					<p class="chats-message__paragraph">Название объявления:</p>
+					<p class="chats-message__paragraph chats-message__paragraph_title">{{current_chat.deal.customer_product.title}}</p>
+				</div>
+				<div class="chats-message__info">
+					<span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+					<svg><use href="#readed"></use></svg>
+				</div>
+			</div>
+		</div>
+		{% for el in messages %}
+			{% if el.user.id == user.id %}
+				<div class="chats-message chats-message_my">
+					<div class="chats-message__body">
+						<div class="chats-message__content">
+							<p class="chats-message__paragraph">{{el.text}}</p>
+							<div class="chats-message__media">
+								{{ el.mediaFileHTML | safe }}
+							</div>
+						</div>
+						<div class="chats-message__info">
+							<span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+							<svg><use href="#readed"></use></svg>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div class="chats-message">
+					<figure class="chats-message__avatar">
+						<img src="/media/{{el.user.photo}}" alt="фото">
+					</figure>
+					<div class="chats-message__body">
+						<div class="chats-message__content">
+							<p class="chats-message__name">{{el.user.name}}</p>
+							<p class="chats-message__paragraph">{{el.text}}</p>
+						</div>
+						<div class="chats-message__info">
+							<span class="chats-message__time">{{el.created_at|date:"H:i"}}</span>
+							<svg><use href="#readed"></use></svg>
+						</div>
+					</div>
+				</div>
+			{% endif%}
+		{% endfor %}
+	</div>
+	<form class="chats-new-message" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form_message.user.as_hidden}}
+		{{form_message.chat.as_hidden}}
+		<input name="query_type" value="message_form" type="hidden">
+		<div class="chats-new-message__input-container">
+			<span class="chats-new-message__input">
+				{{form_message.text}}
+			</span>
+			<label class="chats-new-message__attach" for="id_file">
+				<svg><use href="#attach"></use></svg>
+				<div style="display: none;">{{form_message.file}}</div>
+			</label>
+		</div>
+		<label class="chats-new-message__submit" for="submit">
+			<svg><use href="#send"></use></svg>
+			<input id="submit" type="submit" style="display: none;">
+		</label>
+		<!--
+		<label class="chats-new-message__voice" for="voice-message">
+			<svg><use href="#voice"></use></svg>
+			<input id="voice-message" type="text" style="display: none;">
+		</label>
+		-->
+	</form>
+</section>

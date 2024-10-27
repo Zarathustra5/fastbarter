@@ -46,38 +46,38 @@
         {% for deal in finishedDeals1 %}
           <div class="deal">
             <div class="my-announcement">
-                <a href="{{deal.catalog2.link}}">
-                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.customer_product.link}}">
+                    <img src="/media/{{deal.customer_product.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
+                    <h6 class="my-announcement__title">{{deal.customer_product.title}}</h6>
                     <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.customer_product.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
+                  <p class="my-announcement__desc">{{deal.customer_product.short_desc}}</p>
                 </div>
             </div>
             <svg class="arrows"><use href="#exchange"></use></svg>
             <div class="my-announcement">
-                <a href="{{deal.catalog.link}}">
-                    <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.owner_product.link}}">
+                    <img src="/media/{{deal.owner_product.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog.title}}</h6>
+                    <h6 class="my-announcement__title">{{deal.owner_product.title}}</h6>
                     <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog.price}}₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.owner_product.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
+                  <p class="my-announcement__desc">{{deal.owner_product.short_desc}}</p>
                 </div>
             </div>
             <div class="seller">
               <figure class="seller__image">
-                <figcaption class="seller__name">{{deal.catalog.user.name}}</figcaption>
-                <img src="/media/{{deal.catalog.user.photo}}">
+                <figcaption class="seller__name">{{deal.owner_product.user.name}}</figcaption>
+                <img src="/media/{{deal.owner_product.user.photo}}">
               </figure>
               <div class="seller__reviews">
                 <div class="seller__reviews-row">
@@ -94,49 +94,49 @@
               </div>
               <form method="post" action="{% url 'reviews' %}">
                   {% csrf_token %}
-                  <input name="catalog" type="hidden" value="{{deal.catalog.id}}">
+                  <input name="catalog" type="hidden" value="{{deal.owner_product.id}}">
                   <input name="submit-new-review" type="hidden" />
-                  <input id="submit-catalog-review" name="submit-catalog-review" type="submit" style="display: none;" />
+                  <input id="submit-owner_product-review" name="submit-catalog-review" type="submit" style="display: none;" />
               </form>
-              <label for="submit-catalog-review" class="chat_link">Оставить отзыв</label>
+              <label for="submit-owner_product-review" class="chat_link">Оставить отзыв</label>
             </div>
           </div>
         {% endfor %}
         {% for deal in finishedDeals2 %}
           <div class="deal">
             <div class="my-announcement">
-                <a href="{{deal.catalog.link}}">
-                    <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.owner_product.link}}">
+                    <img src="/media/{{deal.owner_product.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog.title}}</h6>
+                    <h6 class="my-announcement__title">{{deal.owner_product.title}}</h6>
                     <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog.price}}₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.owner_product.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
+                  <p class="my-announcement__desc">{{deal.owner_product.short_desc}}</p>
                 </div>
             </div>
             <svg class="arrows"><use href="#exchange"></use></svg>
             <div class="my-announcement">
-                <a href="{{deal.catalog2.link}}">
-                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.customer_product.link}}">
+                    <img src="/media/{{deal.customer_product.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
+                    <h6 class="my-announcement__title">{{deal.customer_product.title}}</h6>
                     <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.customer_product.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
+                  <p class="my-announcement__desc">{{deal.customer_product.short_desc}}</p>
                 </div>
             </div>
             <div class="seller">
               <figure class="seller__image">
-                <figcaption class="seller__name">{{deal.catalog2.user.name}}</figcaption>
-                <img src="/media/{{deal.catalog2.user.photo}}">
+                <figcaption class="seller__name">{{deal.customer_product.user.name}}</figcaption>
+                <img src="/media/{{deal.customer_product.user.photo}}">
               </figure>
               <div class="seller__reviews">
                 <div class="seller__reviews-row">
@@ -153,11 +153,11 @@
               </div>
               <form method="post" action="{% url 'reviews' %}">
                   {% csrf_token %}
-                  <input name="catalog" type="hidden" value="{{deal.catalog2.id}}">
+                  <input name="catalog" type="hidden" value="{{deal.customer_product.id}}">
                   <input name="submit-new-review" type="hidden" />
-                  <input id="submit-catalog-review" name="submit-catalog-review" type="submit" style="display: none;" />
+                  <input id="submit-owner_product-review" name="submit-catalog-review" type="submit" style="display: none;" />
               </form>
-              <label for="submit-catalog-review" class="chat_link">Оставить отзыв</label>
+              <label for="submit-owner_product-review" class="chat_link">Оставить отзыв</label>
             </div>
           </div>
         {% endfor %}
@@ -167,38 +167,38 @@
         {% for deal in currentDeals1 %}
           <div class="deal">
             <div class="my-announcement">
-                <a href="{{deal.catalog2.link}}">
-                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.customer_product.link}}">
+                    <img src="/media/{{deal.customer_product.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
+                    <h6 class="my-announcement__title">{{deal.customer_product.title}}</h6>
                     <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.customer_product.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
+                  <p class="my-announcement__desc">{{deal.customer_product.short_desc}}</p>
                 </div>
             </div>
             <svg class="arrows"><use href="#exchange"></use></svg>
             <div class="my-announcement">
-                <a href="{{deal.catalog.link}}">
-                    <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.owner_product.link}}">
+                    <img src="/media/{{deal.owner_product.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog.title}}</h6>
+                    <h6 class="my-announcement__title">{{deal.owner_product.title}}</h6>
                     <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog.price}}₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.owner_product.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
+                  <p class="my-announcement__desc">{{deal.owner_product.short_desc}}</p>
                 </div>
             </div>
             <div class="seller">
               <figure class="seller__image">
-                <figcaption class="seller__name">{{deal.catalog.user.name}}</figcaption>
-                <img src="/media/{{deal.catalog.user.photo}}">
+                <figcaption class="seller__name">{{deal.owner_product.user.name}}</figcaption>
+                <img src="/media/{{deal.owner_product.user.photo}}">
               </figure>
               <div class="seller__reviews">
                 <div class="seller__reviews-row">
@@ -225,38 +225,38 @@
         {% for deal in currentDeals2 %}
           <div class="deal">
             <div class="my-announcement">
-                <a href="{{deal.catalog2.link}}">
-                    <img src="/media/{{deal.catalog2.photo}}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.customer_product.link}}">
+                    <img src="/media/{{deal.customer_product.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog2.title}}</h6>
+                    <h6 class="my-announcement__title">{{deal.customer_product.title}}</h6>
                     <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog2.price}}₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.customer_product.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog2.short_desc}}</p>
+                  <p class="my-announcement__desc">{{deal.customer_product.short_desc}}</p>
                 </div>
             </div>
             <svg class="arrows"><use href="#exchange"></use></svg>
             <div class="my-announcement">
-                <a href="{{deal.catalog.link}}">
-                    <img src="/media/{{deal.catalog.photo}}" alt="Товар" class="my-announcement__image">
+                <a href="{{deal.owner_product.link}}">
+                    <img src="/media/{{deal.owner_product.photo}}" alt="Товар" class="my-announcement__image">
                 </a>
                 <div class="my-announcement__row">
-                    <h6 class="my-announcement__title">{{deal.catalog.title}}</h6>
+                    <h6 class="my-announcement__title">{{deal.owner_product.title}}</h6>
                     <div class="my-announcement__info">
-                      <p class="my-announcement__price"><span>≈</span>{{deal.catalog.price}}₽</p>
+                      <p class="my-announcement__price"><span>≈</span>{{deal.owner_product.price}}₽</p>
                     </div>
                 </div>
                 <div class="my-announcement__row">
-                  <p class="my-announcement__desc">{{deal.catalog.short_desc}}</p>
+                  <p class="my-announcement__desc">{{deal.owner_product.short_desc}}</p>
                 </div>
             </div>
             <div class="seller">
               <figure class="seller__image">
-                <figcaption class="seller__name">{{deal.catalog.user.name}}</figcaption>
-                <img src="/media/{{deal.catalog.user.photo}}">
+                <figcaption class="seller__name">{{deal.owner_product.user.name}}</figcaption>
+                <img src="/media/{{deal.owner_product.user.photo}}">
               </figure>
               <div class="seller__reviews">
                 <div class="seller__reviews-row">

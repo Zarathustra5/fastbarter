@@ -10,7 +10,7 @@ from django.shortcuts import render
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
-
+from .functions import *
 
 def index(request):
     return render(request, 'fastbarterApp/index.html')
@@ -19,13 +19,13 @@ def detail_catalog(request, catalog_id):
     detail_catalog = Catalog.objects.get(pk=catalog_id)
     favorite = ""
     if request.user.is_authenticated:
-        formChat = NewChatForm(initial={'user1': request.user.id, 'user2': detail_catalog.user.id, 'catalog': catalog_id})
+        formDeal = NewDealForm(initial={'user_owner': request.user.id, 'user_customer': detail_catalog.user.id, 'owner_product': catalog_id})
         if detail_catalog.category_exchange:
             userCatalog = Catalog.objects.filter(user=request.user, category=detail_catalog.category_exchange)
         else:
             userCatalog = Catalog.objects.filter(user=request.user)
     else:
-        formChat = NewChatForm()
+        formDeal = NewDealForm()
         userCatalog = {}
     reviews = Reviews.objects.filter(userTo=detail_catalog.user.id)
 
@@ -36,7 +36,7 @@ def detail_catalog(request, catalog_id):
         else:
             Favorite.objects.create(user=request.user, catalog_id=catalog_id)
 
-    return render(request, 'fastbarterApp/detail-catalog.html', {'detail_catalog': detail_catalog, "favorite": favorite, "form_chat": formChat, "reviews": reviews, "userCatalog": userCatalog })
+    return render(request, 'fastbarterApp/detail-catalog.html', {'detail_catalog': detail_catalog, "favorite": favorite, "form_deal": formDeal, "reviews": reviews, "userCatalog": userCatalog })
 
 def catalog(request):
     # return HttpResponse('<h4>About</h4>')
@@ -112,6 +112,8 @@ def reviews(request):
     else:
         return redirect('/catalog')
 
+    createMediaFileHTML(reviews)
+
     return render(request, 'fastbarterApp/reviews.html', {"form": form, "success": success, "userTo": userTo, "detail_catalog": detail_catalog, "reviews": reviews, "rating": rating})
 
 @login_required
@@ -157,10 +159,10 @@ def deals(request):
             deal = Deals.objects.get(pk=request.POST["deal"])
             deal.status = True
             deal.save()
-    currentDeals1 = Deals.objects.filter(user1=request.user, status=False)
-    currentDeals2 = Deals.objects.filter(user2=request.user, status=False)
-    finishedDeals1 = Deals.objects.filter(user1=request.user, status=True)
-    finishedDeals2 = Deals.objects.filter(user2=request.user, status=True)
+    currentDeals1 = Deals.objects.filter(user_owner=request.user, status=False)
+    currentDeals2 = Deals.objects.filter(user_customer=request.user, status=False)
+    finishedDeals1 = Deals.objects.filter(user_owner=request.user, status=True)
+    finishedDeals2 = Deals.objects.filter(user_customer=request.user, status=True)
     reviews = Reviews.objects.filter(userTo=request.user)
     return render(request, 'fastbarterApp/account/deals.html', {"reviews": reviews,"currentDeals1": currentDeals1,"currentDeals2": currentDeals2,"finishedDeals1": finishedDeals1,"finishedDeals2": finishedDeals2 })
 
@@ -192,41 +194,108 @@ def services(request):
 
 @login_required
 def chats(request):
+    # Личные чаты
     currentChat = ""
+    currentGroupChat = ""
     if request.method == "POST":
-        if request.POST["create_new_chat"]:
-            form = NewChatForm(request.POST)
-            formDeal = NewDealForm(request.POST)
-            form.save()
-            formDeal.save()
-            currentChat = Chats.objects.filter(user1=request.user).last()
-    chats1 = Chats.objects.filter(user1=request.user)
-    chats2 = Chats.objects.filter(user2=request.user)
-    chatsLength = len(chats1) + len(chats2)
-    if request.method == "POST":
-        if request.POST["message_form"]:
-            currentChat = Chats.objects.get(pk=request.POST["chat"])
-            form = NewMessageForm(request.POST)
-            form.save()
-        elif request.POST["switch_chat"]:
+        if request.POST["query_type"] == "create_new_chat":
+            try:
+                Deals.objects.get(user_owner=request.POST["user_owner"], user_customer=request.POST["user_customer"], owner_product=request.POST["owner_product"], customer_product=request.POST["customer_product"])
+            except Deals.DoesNotExist:
+                formDeal = NewDealForm(request.POST)
+                createdDeal = formDeal.save()
+                formChat = NewChatForm()
+                obj = formChat.save(commit=False)
+                obj.deal = createdDeal
+                currentChat = obj.save()
+        elif request.POST["query_type"] == "switch_chat":
             currentChat = Chats.objects.get(pk=request.POST["switch_chat"])
-    if currentChat:
+        elif request.POST["query_type"] == "switch_group_chat":
+            currentGroupChat = Groups.objects.get(pk=request.POST["switch_group_chat"])
+        elif request.POST["query_type"] == "message_form":
+            currentChat = Chats.objects.get(pk=request.POST["chat"])
+            form = NewMessageForm(request.POST, request.FILES)
+            form.save()
+        elif request.POST["query_type"] == "group_message_form":
+            currentGroupChat = Groups.objects.get(pk=request.POST["group"])
+            form = NewGroupMessageForm(request.POST, request.FILES)
+            form.save()
+        elif request.POST["query_type"] == "delete_chat":
+            Chats.objects.filter(pk=request.POST["delete_chat"]).update(is_deleted_user_owner=True)
+    owner_deals = Deals.objects.filter(user_owner=request.user)
+    owner_chats = []
+    for deal in owner_deals:
+        try:
+            chats = Chats.objects.get(deal=deal, is_deleted_user_owner=False)
+        except Chats.DoesNotExist:
+            chats = None
+        if chats:
+            owner_chats.append(chats)
+    customer_deals = Deals.objects.filter(user_customer=request.user)
+    customer_chats = []
+    for deal in customer_deals:
+        try:
+            chats = Chats.objects.get(deal=deal, is_deleted_user_customer=False)
+        except Chats.DoesNotExist:
+            chats = None
+        if chats:
+            customer_chats.append(chats)
+    chatsLength = len(owner_chats) + len(customer_chats)
+    formGroupMessage = NewGroupMessageForm()
+    if currentGroupChat:
+        messages = GroupMessages.objects.filter(group=currentGroupChat)
+        formGroupMessage = NewGroupMessageForm(initial={'user': request.user, 'group': currentGroupChat.id })
+    elif currentChat:
         messages = Messages.objects.filter(chat=currentChat)
     else:
         messages = []
     formMessage = NewMessageForm(initial={'user': request.user, 'chat': currentChat })
-    if not currentChat:
+    createMediaFileHTML(messages)
+    if not currentChat and not currentGroupChat:
         if chatsLength == 0:
             currentChat = {}
-        elif len(chats1) == 0:
-            currentChat = chats2[0]
+        elif len(owner_chats) == 0:
+            currentChat = customer_chats[0]
         else:
-            currentChat = chats1[0]
-    return render(request, 'fastbarterApp/chats.html', {'chats1': chats1, 'chats2': chats2, 'chats_length': chatsLength, 'messages': messages, 'current_chat': currentChat, 'form_message': formMessage})
+            currentChat = owner_chats[0]
+
+    # Беседы сообществ
+    user_groups= []
+    subscribtions = Participants.objects.filter(user=request.user)
+    for subscribtion in subscribtions:
+        try:
+            group = Groups.objects.get(pk=subscribtion.group.id)
+        except Groups.DoesNotExist:
+            group = None
+        if chats:
+            user_groups.append(group)
+    groups_length = len(user_groups)
+
+    return render(request, 'fastbarterApp/chats.html', {'owner_chats': owner_chats, 'customer_chats': customer_chats, 'chats_length': chatsLength, 'messages': messages, 'current_chat': currentChat, 'form_message': formMessage, 'user_groups': user_groups, 'groups_length': groups_length, 'current_group_chat': currentGroupChat, 'form_group_message': formGroupMessage})
 
 def detail_group(request, group_id):
     detail_group = Groups.objects.get(pk=group_id)
-    return render(request, 'fastbarterApp/detail-group.html', {'detail_group': detail_group})
+    if request.method == "POST":
+        if not request.user.is_authenticated:
+            return redirect('/account/login')
+        elif request.POST["query_type"] == "join_group":
+            Participants.objects.create(user=request.user, group_id=group_id)
+        elif request.POST["query_type"] == "leave_group":
+            Participants.objects.filter(user=request.user, group_id=group_id).delete()
+        return HttpResponseRedirect('./')
+    participants = {}
+    participants = Participants.objects.filter(group=group_id)
+    participants_count = len(participants) + 1
+    is_user_participant = False
+    if request.user.id == detail_group.user.id:
+        is_user_admin = True
+    else:
+        is_user_admin = False
+        for participant in participants:
+            if request.user.id == participant.user.id:
+                is_user_participant = True
+                break
+    return render(request, 'fastbarterApp/detail-group.html', {'detail_group': detail_group,'participants': participants[:7],'participants_count': participants_count,'is_user_participant': is_user_participant,'is_user_admin': is_user_admin})
 
 def detail_group_post(request):
     return render(request, 'fastbarterApp/detail-group-post.html')
@@ -236,9 +305,6 @@ def groups(request):
     participants = {}
     if request.user.id:
         participants = Participants.objects.filter(user=request.user)
-    if request.method == "POST":
-        if request.POST["join_group"]:
-            Participants.objects.create(user=request.user, group_id=request.POST["join_group"])
     return render(request, 'fastbarterApp/groups.html', {'groups': groups,'participants': participants})
 
 @login_required

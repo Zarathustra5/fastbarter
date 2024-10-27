@@ -34,7 +34,7 @@
         <div class="product-about">
           <div class="product-about__block">
             <div class="product-about__title">
-              <h3>Участники <span>1</span></h3>
+              <h3>Участники <span>{{participants_count}}</span></h3>
             </div>
             <div class="product-about__sellers">
               <div class="product-about__seller product-seller">
@@ -42,7 +42,16 @@
                 <figure class="product-seller__image">
                   <img src="/media/{{detail_group.user.photo}}" alt="slide">
                 </figure>
+                <p>Админ</p>
               </div>
+			{% for participant in participants %}
+              <div class="product-about__seller product-seller">
+                <p class="product-seller__name">{{participant.user.name}}</p>
+                <figure class="product-seller__image">
+                  <img src="/media/{{participant.user.photo}}" alt="slide">
+                </figure>
+              </div>
+			{% endfor %}
               <!--
               <div class="product-about__seller product-seller">
                 <p class="product-seller__name">Ахтямов</p>
@@ -104,8 +113,38 @@
               <p></p>
             </div>
             <div class="product-about__btns">
-              <a href="#." class="product-about__btn product-about__btn_leave">Покинуть группу</a>
-              <a href="#." class="product-about__btn">Перейти в чат</a>
+				{% if is_user_admin or is_user_participant %}
+					{% if is_user_admin %}
+						<a href="#." class="product-about__btn product-about__btn_leave">Настроить группу</a>
+					{% else %}
+						<form method="post" action="">
+							{% csrf_token %}
+							<label class="product-about__btn product-about__btn_leave">
+								Покинуть группу
+								<input type="submit" style="display: none;" />
+							</label>
+							<input type="hidden" name="query_type" value="leave_group" />
+						</form>
+					{% endif %}
+					<form method="post" action="{% url 'chats' %}">
+						{% csrf_token %}
+						<label for="submit-chat-{{detail_group.id}}" class="product-about__btn">
+							Перейти в чат
+							<input name="query_type" type="hidden" value="switch_group_chat">
+							<input name="switch_group_chat" type="hidden" value="{{detail_group.id}}">
+							<input id="submit-chat-{{detail_group.id}}" type="submit" style="display: none;">
+						</label>
+					</form>
+				{% else %}
+					<form method="post" action="">
+						{% csrf_token %}
+						<label class="product-about__btn">
+							Вступить в группу
+							<input type="submit" style="display: none;" />
+						</label>
+						<input type="hidden" name="query_type" value="join_group" />
+					</form>
+				{% endif %}
             </div>
           </div>
         </div>

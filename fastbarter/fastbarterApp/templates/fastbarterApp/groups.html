@@ -267,7 +267,7 @@ background-color: #eee;
 }
 
 </style>
-<a class="catalog-product__link" href="{% url 'detail_group' el.pk %}">Вступить</a>
+<a class="catalog-product__link" href="{% url 'detail_group' el.pk %}">Перейти</a>
                         {% if el.user.id == user.id %}
                         {% else %}
                         <!--
@@ -378,4 +378,4 @@ background-color: #eee;
     {% include 'fastbarterApp/footer.html' %}
     <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
     <script type="module" src="{% static 'fastbarterApp/js/catalog.js' %}"></script>
-{% endblock %}
+{% endblock %} 
