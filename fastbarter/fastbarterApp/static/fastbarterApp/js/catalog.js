@@ -136,6 +136,17 @@ if (burger) {
 let filterBtns = document.querySelectorAll(".popup-filters-categories__icon-block");
 filterBtns.forEach(el => {
   el.onclick = () => {
-    el.querySelector(".category-icon").classList.toggle("category-icon_active");
+	let categoryIcon = el.querySelector(".category-icon");
+    categoryIcon.classList.toggle("category-icon_active");
+	let options = document.querySelectorAll(".popup-filters__categories-select option");
+	options.forEach(option => {
+		if (el.getAttribute("data-id") == option.value) {
+			if (categoryIcon.classList.contains("category-icon_active")) {
+				option.selected = true;
+			} else {
+				option.selected = false;
+			}
+		}
+	});
   }
 });

@@ -45,6 +45,7 @@ def catalog(request):
     favorite = ""
     form = ""
     filterForm = FilterForm()
+    categories = Category.objects.filter()
 
     if (request.method == "POST") & (not request.user.is_authenticated):
         return redirect('/account/login')
@@ -53,8 +54,18 @@ def catalog(request):
         favorite = Favorite.objects.filter(user=request.user)
         if request.method == "POST":
             if request.POST["filter"]:
-                catalog = Catalog.objects.filter(is_published=True, price__gte=request.POST["price_from"], price__lte=request.POST["price_to"])
-            elif request.POST["remove_favorite"]:
+                arr_category = request.POST.getlist("category")
+                price_from = request.POST.get("price_from")
+                price_to = request.POST.get("price_to")
+                if not(price_from):
+                    price_from = 0
+                if not(price_to):
+                    price_to = 99999999999
+                if arr_category:
+                    catalog = Catalog.objects.filter(is_published=True, price__range=(price_from, price_to), category__in=arr_category)
+                else:
+                    catalog = Catalog.objects.filter(is_published=True, price__range=(price_from, price_to))
+            elif request.POST.get("remove_favorite"):
                 Favorite.objects.filter(user=request.user, catalog_id=request.POST["remove_favorite"]).delete()
                 form = FavoriteForm()
             else:
@@ -67,7 +78,7 @@ def catalog(request):
         else:
             form = FavoriteForm()
 
-    return render(request, 'fastbarterApp/catalog.html', {'catalog': catalog, 'search': search, "form": form, "favorite": favorite, "filter_form": filterForm})
+    return render(request, 'fastbarterApp/catalog.html', {'catalog': catalog, 'search': search, "form": form, "favorite": favorite, "filter_form": filterForm, "categories": categories})
 
 def catalog_login(request):
     catalog = Catalog.objects.filter(is_published=True)

@@ -1,0 +1,96 @@
+{% load static %}
+
+<section class="popup popup-filters"><!-- popup_active-->
+	<div class="container">
+		<form method="post" enctype="multipart/form-data" action="" class="container">
+		{% csrf_token %}
+		<div class="popup-filters__header">
+			<div class="popup-filters__reset">Сбросить фильтры</div>
+			<div class="popup-filters__search search popup-filters-search">
+				<button class="search__send">
+				<svg>
+					<use href="#search"></use>
+				</svg>
+				</button><input type="text" class="search__input" placeholder="Поиск товаров...">
+			</div>
+			<input type="text" name="remove_favorite" style="display:none;" />
+			<input type="text" name="filter" value=true style="display:none;" />
+			<input type="submit" class="popup-filters__submit popup__close" value="Применить фильтры">
+		</div>
+		<div class="popup-filters__fields">
+			<p class="popup-filters__subtitle">Примерная стоимость</p>
+			<div class="popup-filters-prices">
+				<input type="number" name="price_from" placeholder="От ...">
+				<input type="number" name="price_to" placeholder="До ...">
+				<label class="popup-filters__checkbox" for="free">
+					<input id="free" type="checkbox" value="">
+					<span>Даром</span>
+				</label>
+				<div class="popup-filters__location">
+					<svg><use href="#location"></use></svg>
+					<p>г. Казань</p>
+				</div>
+			</div>
+			<select class="popup-filters__categories-select" multiple="multiple" name="category" style="display: none;">
+				<option value="">Выберите категорию</option>
+				{% for el in categories %}
+				   <option value="{{ el.id }}">{{ el.name }}</option>
+				{% endfor %}
+			</select>
+			<div class="popup-filters__checkbox">
+			</div>
+		</div>
+		</form>
+
+		<div class="popup-filters-categories">
+			<div class="popup-filters-categories__blocks">
+				{% for el in categories %}
+					<div class="popup-filters-categories__icon-block" data-id="{{el.id}}">
+						<div class="category-icon">
+							<svg><use href="#category{{forloop.counter}}"></use></svg>
+						</div>
+						<p class="category-title">{{el.name}}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!--
+		<div class="popup-filters-categories">
+			<div class="popup-filters-categories__blocks2">
+				<ul class="popup-filters-categories__block">
+					<li>Телефоны</li>
+					<li>Мобильные телефоны</li>
+					<li>Аксессуары</li>
+					<li>Рации</li>
+					<li>Стационарные телефоны</li>
+				</ul>
+				<ul class="popup-filters-categories__block">
+					<li>Ноутбуки</li>
+				</ul>
+				<ul class="popup-filters-categories__block">
+					<li>Телефоны</li>
+					<li>Мобильные телефоны</li>
+					<li>Аксессуары</li>
+					<li>Рации</li>
+					<li>Стационарные телефоны</li>
+				</ul>
+				<ul class="popup-filters-categories__block">
+					<li>Телефоны</li>
+					<li>Мобильные телефоны</li>
+					<li>Аксессуары</li>
+					<li>Рации</li>
+					<li>Стационарные телефоны</li>
+				</ul>
+				<ul class="popup-filters-categories__block">
+					<li>Телефоны</li>
+					<li>Мобильные телефоны</li>
+					<li>Аксессуары</li>
+					<li>Рации</li>
+					<li>Стационарные телефоны</li>
+				</ul>
+			</div>
+		</div>
+		-->
+	</div>
+</section>
