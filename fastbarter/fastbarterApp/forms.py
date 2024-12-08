@@ -56,6 +56,14 @@ class NewGroupForm(forms.ModelForm):
             'short_desc': forms.Textarea(attrs={'cols': 88, 'rows': 10})
         }
 
+class NewPostForm(forms.ModelForm):
+    class Meta:
+        model = Posts
+        fields = ('file', 'title', 'short_desc', 'group')
+        widgets = {
+            'short_desc': forms.Textarea(attrs={'cols': 88, 'rows': 10})
+        }
+
 class NewReviewForm(forms.ModelForm):
     class Meta:
         model = Reviews

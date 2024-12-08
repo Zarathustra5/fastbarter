@@ -48,6 +48,20 @@ class Groups(models.Model):
         verbose_name = 'Сообщество'
         verbose_name_plural = 'Список сообществ'
 
+class Posts(models.Model):
+    title = models.CharField(max_length=255, verbose_name='Заголовок записи')
+    short_desc = models.CharField(max_length=255, verbose_name='Текст')
+    file = models.FileField(upload_to='files/', max_length=None, verbose_name='Файл', blank=True, null=True, default=False)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
+    group = models.ForeignKey(Groups, verbose_name='Сообщество', on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.title}'
+    
+    class Meta:
+        verbose_name = 'Запись сообщества'
+        verbose_name_plural = 'Записи сообществ'
+
 
 class Favorite(models.Model):
     catalog = models.ForeignKey(Catalog, verbose_name='Товар', on_delete=models.CASCADE, blank=True, null=True)

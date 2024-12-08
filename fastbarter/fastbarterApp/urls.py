@@ -48,6 +48,7 @@ urlpatterns = [
     path('groups/<int:group_id>/', views.detail_group, name="detail_group"),
     path('accounts/login/', LoginUser.as_view(), name='login'),
     path('new-group', views.new_group, name="new-group"),
+    path('new-post', views.new_post, name="new-post"),
 ]
 
 if settings.DEBUG:

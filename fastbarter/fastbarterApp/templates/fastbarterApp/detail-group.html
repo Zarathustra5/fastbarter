@@ -52,56 +52,6 @@
                 </figure>
               </div>
 			{% endfor %}
-              <!--
-              <div class="product-about__seller product-seller">
-                <p class="product-seller__name">Ахтямов</p>
-                <figure class="product-seller__image">
-                  <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-                </figure>
-              </div>
-              <div class="product-about__seller product-seller">
-                <p class="product-seller__name">Ахтямов</p>
-                <figure class="product-seller__image">
-                  <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-                </figure>
-              </div>
-              <div class="product-about__seller product-seller">
-                <p class="product-seller__name">Иван</p>
-                <figure class="product-seller__image">
-                  <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-                </figure>
-              </div>
-              <div class="product-about__seller product-seller">
-                <p class="product-seller__name">Ахтямов</p>
-                <figure class="product-seller__image">
-                  <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-                </figure>
-              </div>
-              <div class="product-about__seller product-seller">
-                <p class="product-seller__name">Ахтямов</p>
-                <figure class="product-seller__image">
-                  <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-                </figure>
-              </div>
-              <div class="product-about__seller product-seller">
-                <p class="product-seller__name">Ахтямов</p>
-                <figure class="product-seller__image">
-                  <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-                </figure>
-              </div>
-              <div class="product-about__seller product-seller">
-                <p class="product-seller__name">Ахтямов</p>
-                <figure class="product-seller__image">
-                  <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-                </figure>
-              </div>
-              <div class="product-about__seller product-seller">
-                <p class="product-seller__name">Ахтямов</p>
-                <figure class="product-seller__image">
-                  <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-                </figure>
-              </div>
-              -->
             </div>
           </div>
           <div class="product-about__exchange">
@@ -146,79 +96,59 @@
 					</form>
 				{% endif %}
             </div>
+			<form method="post" action="{% url 'new-post' %}">
+				{% csrf_token %}
+				<label for="submit-post-{{detail_group.id}}" class="product-about__btn">
+					Добавить запись
+					<input name="group_id" type="hidden" value="{{detail_group.id}}">
+					<input id="submit-post-{{detail_group.id}}" type="submit" style="display: none;">
+				</label>
+			</form>
           </div>
         </div>
     </div>
     </section>
-    <!--
-    <h3 class="product-content__title">Записи сообщества</h3>
-    -->
-    <h3 class="product-content__title">Записей не найдено</h3>
-    <section class="product">
-    <div class="container">
-          <!--
-        <div class="product-content">
-
-          <div class="article">
-            <div class="article-header">
-              <figure class="article-header__image">
-                <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-              </figure>
-              <div class="article-header__text">
-                <h3>Нумизматы</h3>
-                <p>Сегодня 13:50</p>
-              </div>
-            </div>
-            <p class="product-content__paragraph">{{detail_group.short_desc | safe}}</p>
-            <figure class="product-content__image">
-              <img src="{% static 'fastbarterApp/img/slide1.png' %}" alt="slide">
-            </figure>
-            <div class="social">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.13834 4.66778C5.05185 6.27804 2.7907 10.1081 2.7907 14.6753C2.7907 19.3413 4.46367 22.9378 6.86194 26.0201C8.83855 28.5604 11.2313 30.6658 13.5649 32.7191C14.1191 33.2069 14.67 33.6916 15.2113 34.1786C16.1899 35.0591 17.0629 35.8319 17.9044 36.3931C18.7462 36.9547 19.424 37.211 20 37.211C20.576 37.211 21.2538 36.9547 22.0956 36.3931C22.9371 35.8319 23.81 35.0591 24.7888 34.1786C25.33 33.6916 25.8809 33.2069 26.4352 32.7191C28.7687 30.6658 31.1615 28.5604 33.1381 26.0201C35.5364 22.9378 37.2093 19.3413 37.2093 14.6753C37.2093 10.1081 34.9481 6.27804 31.8616 4.66778C28.8631 3.10343 24.834 3.51771 21.0054 8.05794C20.7423 8.36985 20.3793 8.54609 20 8.54609C19.6207 8.54609 19.2577 8.36985 18.9946 8.05794C15.1659 3.51771 11.1369 3.10343 8.13834 4.66778ZM20 4.74131C15.6985 0.34883 10.8818 -0.265627 6.97816 1.77093C2.85527 3.92188 0 8.91642 0 14.6753C0 20.3353 2.06605 24.6533 4.77529 28.1351C6.94487 30.9233 9.60041 33.2572 11.9457 35.3182C12.4774 35.7854 12.9931 36.2387 13.4836 36.68C14.4366 37.5374 15.4596 38.4517 16.4964 39.1431C17.5328 39.8343 18.7155 40.3962 20 40.3962C21.2845 40.3962 22.4672 39.8343 23.5036 39.1431C24.5405 38.4517 25.5634 37.5374 26.5165 36.68C27.0069 36.2387 27.5226 35.7854 28.0543 35.3182C30.3996 33.2572 33.0551 30.9233 35.2247 28.1351C37.934 24.6533 40 20.3353 40 14.6753C40 8.91642 37.1447 3.92188 33.0218 1.77093C29.1181 -0.265627 24.3016 0.34883 20 4.74131Z" fill="#4D4D4D"/>
-                </svg><span>44</span>
-                <a href="{% url 'detail-group-post' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="43" viewBox="0 0 44 43" fill="none">
-                  <path d="M10.8889 14.0739H33.4791M10.8889 24.0093H22M42 41.3962L34.6127 37.2675C34.0527 36.9546 33.7727 36.7981 33.4791 36.6878C33.2187 36.5899 32.9504 36.5191 32.6782 36.4764C32.3716 36.4285 32.0584 36.4285 31.4324 36.4285H9.11111C6.62198 36.4285 5.37742 36.4285 4.42671 35.887C3.59042 35.4108 2.91051 34.6508 2.48442 33.7161C2 32.6535 2 31.2623 2 28.4802V9.60296C2 6.82078 2 5.42971 2.48442 4.36707C2.91051 3.43233 3.59042 2.67237 4.42671 2.19612C5.37742 1.65466 6.622 1.65466 9.11111 1.65466H34.8889C37.378 1.65466 38.6227 1.65466 39.5733 2.19612C40.4096 2.67237 41.0896 3.43233 41.5156 4.36707C42 5.42971 42 6.82081 42 9.60296V41.3962Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg><span>15</span> </a>
-                <svg xmlns="http://www.w3.org/2000/svg" style="margin:0 10px 0 620px;" width="52" height="35" viewBox="0 0 52 35" fill="none">
-                  <path d="M33.5429 17.3747C33.5429 21.1028 30.1648 24.1249 25.9975 24.1249C21.8304 24.1249 18.4521 21.1028 18.4521 17.3747C18.4521 13.6466 21.8304 10.6245 25.9975 10.6245C30.1648 10.6245 33.5429 13.6466 33.5429 17.3747Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M26 1.62427C14.7381 1.62427 5.20499 8.24594 2 17.3747C5.20494 26.5035 14.7381 33.1252 26 33.1252C37.2618 33.1252 46.795 26.5035 50 17.3747C46.795 8.24601 37.2618 1.62427 26 1.62427Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg><span>234</span>
-            </div>
-          </div>
-          <div class="article">
-            <div class="article-header">
-              <figure class="article-header__image">
-                <img src="{% static 'fastbarterApp/img/seller.png' %}" alt="slide">
-              </figure>
-              <div class="article-header__text">
-                <h3>Нумизматы</h3>
-                <p>Сегодня 13:50</p>
-              </div>
-            </div>
-            <p class="product-content__paragraph">{{detail_group.short_desc | safe}}</p>
-            <figure class="product-content__image">
-              <img src="{% static 'fastbarterApp/img/slide2.jpg' %}" alt="slide">
-            </figure>
-            <div class="social">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.13834 4.66778C5.05185 6.27804 2.7907 10.1081 2.7907 14.6753C2.7907 19.3413 4.46367 22.9378 6.86194 26.0201C8.83855 28.5604 11.2313 30.6658 13.5649 32.7191C14.1191 33.2069 14.67 33.6916 15.2113 34.1786C16.1899 35.0591 17.0629 35.8319 17.9044 36.3931C18.7462 36.9547 19.424 37.211 20 37.211C20.576 37.211 21.2538 36.9547 22.0956 36.3931C22.9371 35.8319 23.81 35.0591 24.7888 34.1786C25.33 33.6916 25.8809 33.2069 26.4352 32.7191C28.7687 30.6658 31.1615 28.5604 33.1381 26.0201C35.5364 22.9378 37.2093 19.3413 37.2093 14.6753C37.2093 10.1081 34.9481 6.27804 31.8616 4.66778C28.8631 3.10343 24.834 3.51771 21.0054 8.05794C20.7423 8.36985 20.3793 8.54609 20 8.54609C19.6207 8.54609 19.2577 8.36985 18.9946 8.05794C15.1659 3.51771 11.1369 3.10343 8.13834 4.66778ZM20 4.74131C15.6985 0.34883 10.8818 -0.265627 6.97816 1.77093C2.85527 3.92188 0 8.91642 0 14.6753C0 20.3353 2.06605 24.6533 4.77529 28.1351C6.94487 30.9233 9.60041 33.2572 11.9457 35.3182C12.4774 35.7854 12.9931 36.2387 13.4836 36.68C14.4366 37.5374 15.4596 38.4517 16.4964 39.1431C17.5328 39.8343 18.7155 40.3962 20 40.3962C21.2845 40.3962 22.4672 39.8343 23.5036 39.1431C24.5405 38.4517 25.5634 37.5374 26.5165 36.68C27.0069 36.2387 27.5226 35.7854 28.0543 35.3182C30.3996 33.2572 33.0551 30.9233 35.2247 28.1351C37.934 24.6533 40 20.3353 40 14.6753C40 8.91642 37.1447 3.92188 33.0218 1.77093C29.1181 -0.265627 24.3016 0.34883 20 4.74131Z" fill="#4D4D4D"/>
-                </svg><span>44</span>
-                <a href="{% url 'detail-group-post' %}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="44" height="43" viewBox="0 0 44 43" fill="none">
-                  <path d="M10.8889 14.0739H33.4791M10.8889 24.0093H22M42 41.3962L34.6127 37.2675C34.0527 36.9546 33.7727 36.7981 33.4791 36.6878C33.2187 36.5899 32.9504 36.5191 32.6782 36.4764C32.3716 36.4285 32.0584 36.4285 31.4324 36.4285H9.11111C6.62198 36.4285 5.37742 36.4285 4.42671 35.887C3.59042 35.4108 2.91051 34.6508 2.48442 33.7161C2 32.6535 2 31.2623 2 28.4802V9.60296C2 6.82078 2 5.42971 2.48442 4.36707C2.91051 3.43233 3.59042 2.67237 4.42671 2.19612C5.37742 1.65466 6.622 1.65466 9.11111 1.65466H34.8889C37.378 1.65466 38.6227 1.65466 39.5733 2.19612C40.4096 2.67237 41.0896 3.43233 41.5156 4.36707C42 5.42971 42 6.82081 42 9.60296V41.3962Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg><span>15</span> </a>
-                <svg xmlns="http://www.w3.org/2000/svg" style="margin:0 10px 0 620px;" width="52" height="35" viewBox="0 0 52 35" fill="none">
-                  <path d="M33.5429 17.3747C33.5429 21.1028 30.1648 24.1249 25.9975 24.1249C21.8304 24.1249 18.4521 21.1028 18.4521 17.3747C18.4521 13.6466 21.8304 10.6245 25.9975 10.6245C30.1648 10.6245 33.5429 13.6466 33.5429 17.3747Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M26 1.62427C14.7381 1.62427 5.20499 8.24594 2 17.3747C5.20494 26.5035 14.7381 33.1252 26 33.1252C37.2618 33.1252 46.795 26.5035 50 17.3747C46.795 8.24601 37.2618 1.62427 26 1.62427Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg><span>234</span>
-            </div>
-          </div>
-        </div>
-          -->
-    </div>
-    </section>
+	{% if posts %}
+		<h3 class="product-content__title">Записи сообщества</h3>
+		<section class="product">
+		<div class="container">
+			<div class="product-content">
+				{% for post in posts %}
+					<div class="article">
+						<div class="article-header">
+						<figure class="article-header__image">
+							<img src="/media/{{detail_group.photo}}" alt="slide">
+						</figure>
+						<div class="article-header__text">
+							<h3>{{detail_group.title}}</h3>
+							<p>{{post.created_at}}</p>
+						</div>
+						</div>
+						<p class="product-content__paragraph">{{post.short_desc | safe}}</p>
+						<figure class="product-content__image">
+							{{ post.mediaFileHTML | safe }}
+						</figure>
+						<div class="social">
+						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.13834 4.66778C5.05185 6.27804 2.7907 10.1081 2.7907 14.6753C2.7907 19.3413 4.46367 22.9378 6.86194 26.0201C8.83855 28.5604 11.2313 30.6658 13.5649 32.7191C14.1191 33.2069 14.67 33.6916 15.2113 34.1786C16.1899 35.0591 17.0629 35.8319 17.9044 36.3931C18.7462 36.9547 19.424 37.211 20 37.211C20.576 37.211 21.2538 36.9547 22.0956 36.3931C22.9371 35.8319 23.81 35.0591 24.7888 34.1786C25.33 33.6916 25.8809 33.2069 26.4352 32.7191C28.7687 30.6658 31.1615 28.5604 33.1381 26.0201C35.5364 22.9378 37.2093 19.3413 37.2093 14.6753C37.2093 10.1081 34.9481 6.27804 31.8616 4.66778C28.8631 3.10343 24.834 3.51771 21.0054 8.05794C20.7423 8.36985 20.3793 8.54609 20 8.54609C19.6207 8.54609 19.2577 8.36985 18.9946 8.05794C15.1659 3.51771 11.1369 3.10343 8.13834 4.66778ZM20 4.74131C15.6985 0.34883 10.8818 -0.265627 6.97816 1.77093C2.85527 3.92188 0 8.91642 0 14.6753C0 20.3353 2.06605 24.6533 4.77529 28.1351C6.94487 30.9233 9.60041 33.2572 11.9457 35.3182C12.4774 35.7854 12.9931 36.2387 13.4836 36.68C14.4366 37.5374 15.4596 38.4517 16.4964 39.1431C17.5328 39.8343 18.7155 40.3962 20 40.3962C21.2845 40.3962 22.4672 39.8343 23.5036 39.1431C24.5405 38.4517 25.5634 37.5374 26.5165 36.68C27.0069 36.2387 27.5226 35.7854 28.0543 35.3182C30.3996 33.2572 33.0551 30.9233 35.2247 28.1351C37.934 24.6533 40 20.3353 40 14.6753C40 8.91642 37.1447 3.92188 33.0218 1.77093C29.1181 -0.265627 24.3016 0.34883 20 4.74131Z" fill="#4D4D4D"/>
+							</svg><span>44</span>
+							<a href="{% url 'detail-group-post' %}">
+							<svg xmlns="http://www.w3.org/2000/svg" width="44" height="43" viewBox="0 0 44 43" fill="none">
+							<path d="M10.8889 14.0739H33.4791M10.8889 24.0093H22M42 41.3962L34.6127 37.2675C34.0527 36.9546 33.7727 36.7981 33.4791 36.6878C33.2187 36.5899 32.9504 36.5191 32.6782 36.4764C32.3716 36.4285 32.0584 36.4285 31.4324 36.4285H9.11111C6.62198 36.4285 5.37742 36.4285 4.42671 35.887C3.59042 35.4108 2.91051 34.6508 2.48442 33.7161C2 32.6535 2 31.2623 2 28.4802V9.60296C2 6.82078 2 5.42971 2.48442 4.36707C2.91051 3.43233 3.59042 2.67237 4.42671 2.19612C5.37742 1.65466 6.622 1.65466 9.11111 1.65466H34.8889C37.378 1.65466 38.6227 1.65466 39.5733 2.19612C40.4096 2.67237 41.0896 3.43233 41.5156 4.36707C42 5.42971 42 6.82081 42 9.60296V41.3962Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg><span>15</span> </a>
+							<svg xmlns="http://www.w3.org/2000/svg" style="margin:0 10px 0 620px;" width="52" height="35" viewBox="0 0 52 35" fill="none">
+							<path d="M33.5429 17.3747C33.5429 21.1028 30.1648 24.1249 25.9975 24.1249C21.8304 24.1249 18.4521 21.1028 18.4521 17.3747C18.4521 13.6466 21.8304 10.6245 25.9975 10.6245C30.1648 10.6245 33.5429 13.6466 33.5429 17.3747Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M26 1.62427C14.7381 1.62427 5.20499 8.24594 2 17.3747C5.20494 26.5035 14.7381 33.1252 26 33.1252C37.2618 33.1252 46.795 26.5035 50 17.3747C46.795 8.24601 37.2618 1.62427 26 1.62427Z" stroke="#4D4D4D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg><span>234</span>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		</section>
+	{% else %}
+		<h3 class="product-content__title">Записей не найдено</h3>
+	{% endif %}
 </main>
 {% endblock %}
 

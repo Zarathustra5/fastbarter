@@ -294,7 +294,6 @@ def detail_group(request, group_id):
         elif request.POST["query_type"] == "leave_group":
             Participants.objects.filter(user=request.user, group_id=group_id).delete()
         return HttpResponseRedirect('./')
-    participants = {}
     participants = Participants.objects.filter(group=group_id)
     participants_count = len(participants) + 1
     is_user_participant = False
@@ -306,7 +305,9 @@ def detail_group(request, group_id):
             if request.user.id == participant.user.id:
                 is_user_participant = True
                 break
-    return render(request, 'fastbarterApp/detail-group.html', {'detail_group': detail_group,'participants': participants[:7],'participants_count': participants_count,'is_user_participant': is_user_participant,'is_user_admin': is_user_admin})
+    posts = Posts.objects.filter(group=group_id)
+    createMediaFileHTML(posts)
+    return render(request, 'fastbarterApp/detail-group.html', {'detail_group': detail_group,'participants': participants[:7],'participants_count': participants_count,'is_user_participant': is_user_participant,'is_user_admin': is_user_admin, 'posts': posts})
 
 def detail_group_post(request):
     return render(request, 'fastbarterApp/detail-group-post.html')
@@ -333,6 +334,24 @@ def new_group(request):
         form = NewGroupForm()
 
     return render(request, 'fastbarterApp/new-group.html', {"form": form, "success": success})
+
+@login_required
+def new_post(request):
+    success = False
+    group_id = ""
+    if request.method == "POST":
+        if request.POST.get("group_id"):
+            group_id = request.POST.get("group_id")
+            form = NewPostForm()
+        else:
+            form = NewPostForm(request.POST, request.FILES)
+            obj = form.save(commit=False)
+            obj.save()
+            #form.save()
+            success = True
+    else:
+        form = ""
+    return render(request, 'fastbarterApp/new-post.html', {"form": form, "success": success, "group_id": group_id})
 
 def check_reviews(request):
     success = False

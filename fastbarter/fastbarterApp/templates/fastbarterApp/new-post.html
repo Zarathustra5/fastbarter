@@ -1,0 +1,59 @@
+{% extends 'fastbarterApp/base_layout.html' %}
+
+{% load static %}
+
+{% block header %}
+    {% include 'fastbarterApp/header.html' %}
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/new-product.css' %}">
+    <link rel="stylesheet" href="{% static 'fastbarterApp/css/navigation.css' %}">
+{% endblock %}
+
+{% block title %} Добавление записи сообщества {% endblock %}
+
+{% block content %}
+<main class="page">
+  <div class="navigation"><p>
+    <a href="{% url 'catalog' %}">Главная</a>
+    <span>&nbsp;>&nbsp;</span>
+    <a href="{% url 'new-product' %}">Создание записи сообщества</a>
+  </p></div>
+    <section class="new-product">
+    <div class="container">
+      <form method="post" enctype="multipart/form-data" action="" class="new-product__form">
+        {% csrf_token %}
+        {% if success %}
+          <p class="new-product__row new-product__message">Запись сообщества создана</p>
+        {% endif %}
+        <div class="new-product__row new-product__name">
+          <label class="new-product__title" for="name">Заголовок:</label>
+          <span class="new-product__input">{{form.title}}</span>
+        </div>
+        <div class="new-product__row new-product__images">
+          <p class="new-product__title">Файл записи:</p>
+          <img class="file-preview"/>
+          <label class="new-product__add-image" for="id_file">
+            <svg><use href="#plus"></use></svg>
+            <span>Добавить файл</span>
+          </label>
+		  <div style="display:none;">
+          {{form.file}}
+		  </div>
+        </div>
+        <div class="new-product__row new-product__desc">
+          <label class="new-product__title" for="desc">Текст записи:</label>
+          <span class="new-product__input">{{form.short_desc}}</span>
+        </div>
+        <div class="new-product__row new-product__submit">
+          <input class="new-product__submit-btn" type="submit" name="submit" value="Создать">
+        </div>
+		<input type="hidden" name="group" value="{{group_id}}" id="id_group">
+      </form>
+    </div>
+    </section>
+</main>
+{% endblock %}
+
+{% block footer %}
+    {% include 'fastbarterApp/footer.html' %}
+    <script type="module" src="{% static 'fastbarterApp/js/main.js' %}"></script>
+{% endblock %}
