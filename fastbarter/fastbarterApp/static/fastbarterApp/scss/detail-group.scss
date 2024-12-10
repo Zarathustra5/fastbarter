@@ -260,6 +260,13 @@
     text-align: left;
     width: 1000px;
     }
+    &__subtitle {
+    font-family: Roboto;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 20px;
+    }
     &__link {
       margin: 10px 0 0 20px;
       a {
