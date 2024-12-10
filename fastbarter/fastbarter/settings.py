@@ -26,6 +26,9 @@ SECRET_KEY = 'django-insecure-a4ff537djf@q5s8&zj^^c%m5@$zhunb&%7x&j4m5(bf0+m0-h5
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# !FOR PRODUCTION DEPLOY!
+#ALLOWED_HOSTS = ['*']
+#CSRF_TRUSTED_ORIGINS = ['https://fast-barter.ru']
 
 
 # Application definition
@@ -119,6 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# !FOR PRODUCTION DEPLOY!
+#STATIC_URL = 'fastbarter/fastbarterApp/static/'
+#STATIC_ROOT = 'fastbarterApp/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
